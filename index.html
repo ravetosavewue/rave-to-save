@@ -28,7 +28,6 @@
     .section       { padding: 96px 24px; }
     .h2            { font-size: clamp(32px, 4vw, 52px); }
     .team-grid     { grid-template-columns: repeat(4, 1fr); gap: 28px; }
-    .org-grid      { grid-template-columns: repeat(4, 1fr); }
 
     @media (max-width: 767px) {
       .nav-links   { display: none; }
@@ -41,7 +40,6 @@
       .event-name  { font-size: 22px; }
       .section     { padding: 72px 20px; }
       .team-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .org-grid    { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── Hover states ── */
@@ -183,6 +181,17 @@
           <p style="font-size:14px;color:#5a6b78;line-height:1.75;margin:0;">Grafik Design<br>Dabei seit 2018</p>
         </div>
       </div>
+
+      <!-- Wie wir klingen -->
+      <div style="text-align:center;max-width:620px;margin:72px auto 0;">
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Wie wir klingen</p>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#4a5b69;margin:0 0 16px;">Hör rein.</h3>
+        <p style="font-size:17px;line-height:1.7;color:#5a6b78;margin:0 0 28px;">Musik ist der Kern von allem, was wir tun. Auf SoundCloud teilen wir Mixe und Aufnahmen – hör dir an, wie ein Abend mit uns klingt.</p>
+        <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v-4"/><path d="M7 17V9"/><path d="M11 18V7"/><path d="M15 17v-8"/><path d="M19 15a3 3 0 0 0-1-5.83"/></svg>
+          Auf SoundCloud hören →
+        </a>
+      </div>
     </div>
   </section>
 
@@ -206,11 +215,21 @@
             <div id="carouselTrack" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);transform:translateX(0%);">
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
                 <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
+                  <img src="Past_Events_Grafiken/11.07.26.webp" alt="11. Juli 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                  <div style="padding:16px 18px 18px;">
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">11. Juli 2026</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">950 € an <a href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Kontaktcafé Würzburg</a></strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
+                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
                   <img src="Past_Events_Grafiken/31_01_26_RAVETOSAVE-DORNHEIM-31-01-26_1x1-Website.webp" alt="31. Januar 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
                     <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">31. Januar 2026</p>
                     <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.000 € an Streetwork Würzburg</strong></p>
+                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.000 € an <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Streetwork Würzburg</a></strong></p>
                   </div>
                 </div>
               </div>
@@ -220,7 +239,7 @@
                   <div style="padding:16px 18px 18px;">
                     <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">13. September 2025</p>
                     <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.150 € an Wildwasser e.V.</strong></p>
+                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.150 € an <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Wildwasser e.V.</a></strong></p>
                   </div>
                 </div>
               </div>
@@ -229,8 +248,8 @@
                   <img src="Past_Events_Grafiken/03_05_25_RTS_25_StationRegenbogen_Dornheim_Website.webp" alt="3. Mai 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
                     <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">3. Mai 2025</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Station Regenbogen</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.100 € an Station Regenbogen</strong></p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.100 € an <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Station Regenbogen</a></strong></p>
                   </div>
                 </div>
               </div>
@@ -240,7 +259,7 @@
                   <div style="padding:16px 18px 18px;">
                     <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">11. Januar 2025</p>
                     <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.800 € an Tierheim Würzburg</strong></p>
+                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.800 € an <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Tierheim Würzburg</a></strong></p>
                   </div>
                 </div>
               </div>
@@ -266,28 +285,54 @@
 
       <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:#f0ede8;text-align:center;margin:52px 0 32px;">Letzte Spendenziele</h3>
 
-      <div class="org-grid" style="display:grid;gap:20px;max-width:860px;margin:0 auto;">
-        <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-          <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Tierheim.png" alt="Tierheim Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
-          <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Tierheim Würzburg</p>
-          <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.800 €</p>
-        </a>
-        <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-          <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Station Regenbogen.png" alt="Station Regenbogen" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
-          <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Station Regenbogen</p>
-          <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.100 €</p>
-        </a>
-        <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-          <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Widlwasser.jpg" alt="Wildwasser Würzburg e.V." style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
-          <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Wildwasser Würzburg e.V.</p>
-          <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.150 €</p>
-        </a>
-        <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-          <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/streetwork.png" alt="Streetwork Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
-          <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Streetwork Würzburg</p>
-          <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.000 €</p>
-        </a>
+      <div style="position:relative;max-width:860px;margin:0 auto;">
+        <button id="orgPrev" aria-label="Vorherige Spendenziele" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.4);background:rgba(240,237,232,0.92);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#4a5b69;box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div style="width:100%;overflow:hidden;">
+          <div id="orgTrack" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);transform:translateX(0%);">
+            <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;">
+              <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Tierheim.png" alt="Tierheim Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Tierheim Würzburg</p>
+                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.800 €</p>
+              </a>
+            </div>
+            <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;">
+              <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Station Regenbogen.png" alt="Station Regenbogen" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Station Regenbogen</p>
+                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.100 €</p>
+              </a>
+            </div>
+            <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;">
+              <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Widlwasser.jpg" alt="Wildwasser Würzburg e.V." style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Wildwasser Würzburg e.V.</p>
+                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.150 €</p>
+              </a>
+            </div>
+            <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;">
+              <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/streetwork.png" alt="Streetwork Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Streetwork Würzburg</p>
+                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.000 €</p>
+              </a>
+            </div>
+            <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;">
+              <a href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener" class="org-card" style="background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Kontaktcafe.png" alt="Kontaktcafé Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Kontaktcafé Würzburg</p>
+                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">950 €</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button id="orgNext" aria-label="Nächste Spendenziele" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.4);background:rgba(240,237,232,0.92);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#4a5b69;box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
+      <div id="orgDots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;"></div>
 
       <p style="text-align:center;margin-top:40px;font-size:16px;color:rgba(240,237,232,0.65);">Du hast eine Idee für ein passendes Spendenziel? <a href="#kontakt" style="color:#f0ede8;font-weight:500;text-decoration:underline;text-underline-offset:3px;">Kontaktiere uns</a></p>
     </div>
@@ -379,6 +424,7 @@
         <div>
           <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 16px;">Folge uns</h4>
           <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Instagram</a>
+          <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">SoundCloud</a>
         </div>
         <div>
           <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 16px;">Kontakt</h4>
@@ -489,56 +535,68 @@
   }
   requestAnimationFrame(tick);
 
-  /* ── Past-events carousel ── */
-  var track = document.getElementById('carouselTrack');
-  var cards = track.querySelectorAll('.past-card');
-  var prevBtn = document.getElementById('carouselPrev');
-  var nextBtn = document.getElementById('carouselNext');
-  var dotsWrap = document.getElementById('carouselDots');
-  var totalCards = cards.length;
-  var index = 0;
+  /* ── Carousel (wiederverwendbar: Vergangene Events + Spendenziele) ── */
+  function initCarousel(opts) {
+    var track = document.getElementById(opts.trackId);
+    if (!track) return;
+    var cards = track.querySelectorAll(opts.cardSelector);
+    var prevBtn = document.getElementById(opts.prevId);
+    var nextBtn = document.getElementById(opts.nextId);
+    var dotsWrap = document.getElementById(opts.dotsId);
+    var total = cards.length;
+    var index = 0;
+    var dotIdle = opts.dotIdle || '#d4c9bd';
 
-  function visibleCards() { return window.innerWidth <= 767 ? 1 : 2; }
-  function maxIndex() { return totalCards - visibleCards(); }
+    function visible() { return window.innerWidth <= 767 ? opts.mobile : opts.desktop; }
+    function maxIndex() { return Math.max(0, total - visible()); }
 
-  function render() {
-    var visible = visibleCards();
-    var max = maxIndex();
-    if (index > max) index = max;
-    if (index < 0) index = 0;
-    var pct = 100 / visible;
+    function render() {
+      var v = visible();
+      var max = maxIndex();
+      if (index > max) index = max;
+      if (index < 0) index = 0;
+      var pct = 100 / v;
 
-    Array.prototype.forEach.call(cards, function (c) { c.style.width = pct + '%'; });
-    track.style.transform = 'translateX(-' + (index * pct) + '%)';
+      Array.prototype.forEach.call(cards, function (c) { c.style.width = pct + '%'; });
+      track.style.transform = 'translateX(-' + (index * pct) + '%)';
 
-    prevBtn.style.opacity = index === 0 ? '0.25' : '1';
-    prevBtn.disabled = index === 0;
-    nextBtn.style.opacity = index >= max ? '0.25' : '1';
-    nextBtn.disabled = index >= max;
+      var noNav = total <= v;
+      prevBtn.style.display = noNav ? 'none' : 'flex';
+      nextBtn.style.display = noNav ? 'none' : 'flex';
+      dotsWrap.style.display = noNav ? 'none' : 'flex';
 
-    dotsWrap.innerHTML = '';
-    for (var i = 0; i <= max; i++) {
-      (function (i) {
-        var dot = document.createElement('button');
-        dot.setAttribute('aria-label', 'Zu Position ' + (i + 1));
-        dot.style.cssText = 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s;' +
-          'background:' + (i === index ? '#b87c6e' : '#d4c9bd') + ';transform:' + (i === index ? 'scale(1.3)' : 'scale(1)') + ';';
-        dot.addEventListener('click', function () { index = i; render(); });
-        dotsWrap.appendChild(dot);
-      })(i);
+      prevBtn.style.opacity = index === 0 ? '0.25' : '1';
+      prevBtn.disabled = index === 0;
+      nextBtn.style.opacity = index >= max ? '0.25' : '1';
+      nextBtn.disabled = index >= max;
+
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i <= max; i++) {
+        (function (i) {
+          var dot = document.createElement('button');
+          dot.setAttribute('aria-label', 'Zu Position ' + (i + 1));
+          dot.style.cssText = 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s;' +
+            'background:' + (i === index ? '#b87c6e' : dotIdle) + ';transform:' + (i === index ? 'scale(1.3)' : 'scale(1)') + ';';
+          dot.addEventListener('click', function () { index = i; render(); });
+          dotsWrap.appendChild(dot);
+        })(i);
+      }
     }
+
+    prevBtn.addEventListener('click', function () { index--; render(); });
+    nextBtn.addEventListener('click', function () { index++; render(); });
+
+    var lastV = visible();
+    window.addEventListener('resize', function () {
+      var v = visible();
+      if (v !== lastV) { lastV = v; index = 0; }
+      render();
+    });
+    render();
   }
 
-  prevBtn.addEventListener('click', function () { index--; render(); });
-  nextBtn.addEventListener('click', function () { index++; render(); });
-
-  var lastVisible = visibleCards();
-  window.addEventListener('resize', function () {
-    var v = visibleCards();
-    if (v !== lastVisible) { lastVisible = v; index = 0; }
-    render();
-  });
-  render();
+  initCarousel({ trackId: 'carouselTrack', prevId: 'carouselPrev', nextId: 'carouselNext', dotsId: 'carouselDots', cardSelector: '.past-card', mobile: 1, desktop: 2 });
+  initCarousel({ trackId: 'orgTrack', prevId: 'orgPrev', nextId: 'orgNext', dotsId: 'orgDots', cardSelector: '.org-slide', mobile: 2, desktop: 4, dotIdle: 'rgba(240,237,232,0.35)' });
 
   /* ── Contact form → mailto ── */
   var form = document.getElementById('contactForm');
