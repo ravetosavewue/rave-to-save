@@ -1,0 +1,24 @@
+# OS / Dateisystem
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs / temporär
+*.log
+*.tmp
+
+# Claude Code – lokale Einstellungen (maschinenspezifisch)
+.claude/settings.local.json
