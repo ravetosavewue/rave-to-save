@@ -17,6 +17,9 @@
     /* ── Nav ── */
     .nav-links { display: flex; gap: 28px; flex: 1; }
     .burger { display: none; }
+    .nav-social { display: flex; align-items: center; color: #f0ede8; transition: opacity 0.2s; }
+    .nav-social:hover { opacity: 0.6; }
+    .nav-social-mobile { display: none; }
 
     /* ── Responsive sizing (JS values from the design, as media queries) ── */
     .hero          { padding: 210px 24px 112px; }
@@ -40,6 +43,7 @@
       .event-name  { font-size: 22px; }
       .section     { padding: 72px 20px; }
       .team-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .nav-social-mobile { display: flex; }
     }
 
     /* ── Hover states ── */
@@ -70,6 +74,14 @@
         <a href="#spendenziele" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Spendenziele</a>
         <a href="#unterstuetze-uns" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Unterstütze uns</a>
         <a href="#kontakt" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Kontakt</a>
+        <div style="display:flex;align-items:center;gap:16px;margin-left:4px;">
+          <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="nav-social" style="text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+          </a>
+          <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" aria-label="Rave to Save auf SoundCloud" class="nav-social" style="text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v-4"></path><path d="M7 17V9"></path><path d="M11 18V7"></path><path d="M15 17v-8"></path><path d="M19 15a3 3 0 0 0-1-5.83"></path></svg>
+          </a>
+        </div>
       </div>
 
       <button id="burger" class="burger" aria-label="Menü öffnen" aria-expanded="false" style="flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:201;">
@@ -77,11 +89,20 @@
         <span class="burger-line burger-line2" style="display:block;width:22px;height:2px;background:#f0ede8;border-radius:2px;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));transition:opacity 0.2s ease;"></span>
         <span class="burger-line burger-line3" style="display:block;width:22px;height:2px;background:#f0ede8;border-radius:2px;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));transition:transform 0.3s ease;"></span>
       </button>
+
+      <div class="nav-social-mobile" style="position:absolute;top:0;right:24px;height:96px;align-items:center;gap:20px;z-index:210;">
+        <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="nav-social" style="text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+        </a>
+        <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" aria-label="Rave to Save auf SoundCloud" class="nav-social" style="text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v-4"></path><path d="M7 17V9"></path><path d="M11 18V7"></path><path d="M15 17v-8"></path><path d="M19 15a3 3 0 0 0-1-5.83"></path></svg>
+        </a>
+      </div>
     </nav>
   </div>
 
   <!-- ── MOBILE MENU ── -->
-  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(25,35,42,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(25,35,42,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding-top:172px;padding-bottom:40px;overflow-y:auto;">
     <a href="#mission" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Unsere Mission</a>
     <a href="#wer-wir-sind" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Wer wir sind</a>
     <a href="#events" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Events</a>
