@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sommer Festival · 29.08.2026 – Rave to Save</title>
+  <meta name="description" content="Rave to Save Sommer Festival am 29. August 2026 im Dornheim Club &amp; Garten Würzburg – Outdoor &amp; Indoor Floors, Groovy House &amp; Techno, zugunsten von HERMINE e.V.">
+  <link rel="icon" href="../RAVETOSAVE2026_LOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #eef6f4; color: #1f3b3a; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+
+    .section     { padding: 88px 24px; }
+    .h1          { font-size: clamp(38px, 6vw, 62px); }
+    .h2          { font-size: clamp(30px, 4vw, 44px); }
+    .facts-row   { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .car-track   { display: flex; align-items: stretch; justify-content: flex-start; transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .car-item    { flex-shrink: 0; padding: 0 9px; box-sizing: border-box; display: flex; }
+    .car-item .dj-card, .car-item .idea-card { flex: 1; display: flex; flex-direction: column; }
+    .dj-card > div:first-child { flex-shrink: 0; }
+    .dj-card > div:last-child { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .car-arrow   { position: absolute; top: 38%; transform: translateY(-50%); z-index: 5; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.18); transition: opacity 0.2s; }
+    .car-dots    { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+
+    .activities-list-wrap { display: none; }
+
+    @media (max-width: 767px) {
+      .section     { padding: 64px 20px; }
+      .activities-carousel-wrap { display: none !important; }
+      .activities-list-wrap { display: flex !important; }
+    }
+
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-outline:hover { background: rgba(31,59,58,0.06); }
+    .nav-social:hover { opacity: 0.7; }
+    .idea-card:hover, .dj-card:hover { transform: translateY(-3px); }
+    .idea-card, .dj-card { transition: transform 0.2s; }
+    .dj-sc-link:hover { text-decoration: underline; }
+    .car-arrow:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+<div style="background:#eef6f4;color:#1f3b3a;min-height:100vh;">
+
+  <main>
+    <!-- ── OUTDOOR: Strandbild als Hintergrund, wächst mit dem Inhalt mit ── -->
+    <div style="position:relative;">
+      <img src="Weitere Grafiken/strand-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:85% top;z-index:0;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(20,40,50,0.4) 0%, rgba(20,40,50,0.15) 8%, rgba(20,40,50,0.05) 15%, rgba(216,210,198,0) 20%, rgba(216,210,198,0.5) 40%, rgba(216,210,198,0.85) 60%, rgba(216,210,198,0.97) 80%, #d8d2c6 100%);z-index:1;"></div>
+
+      <!-- Nav, direkt ins Hero-Bild integriert -->
+      <div style="position:relative;z-index:3;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <a href="../index.html#events" style="font-size:14px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.5);text-decoration:none;opacity:0.9;white-space:nowrap;">← Zur Startseite</a>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="nav-social" style="color:#fff;text-decoration:none;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.5));">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+          </a>
+          <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" aria-label="Rave to Save auf SoundCloud" class="nav-social" style="color:#fff;text-decoration:none;filter:drop-shadow(0 1px 6px rgba(0,0,0,0.5));">
+            <svg width="24" height="18" viewBox="0 0 26 18" fill="currentColor"><rect x="0" y="9" width="1.4" height="6.5" rx="0.7"></rect><rect x="2.6" y="7" width="1.4" height="8.5" rx="0.7"></rect><rect x="5.2" y="4.5" width="1.4" height="11" rx="0.7"></rect><rect x="7.8" y="6" width="1.4" height="9.5" rx="0.7"></rect><path d="M10.9 15.5V6.2a3.9 3.9 0 0 1 5.7 1.6 3.6 3.6 0 0 1 1.5-.33 3.6 3.6 0 0 1 .3 7.19q-.09.01-.18.01h-7.02z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kompletter Outdoor-Inhalt, fließend gestapelt — bestimmt die Höhe des Containers -->
+      <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:55px 24px 60px;">
+        <div style="max-width:720px;text-align:center;">
+          <p style="font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.45);margin:0 0 14px;">Sa, 29. August 2026</p>
+          <p style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);margin:0 0 8px;">Rave to Save</p>
+          <h1 class="h1" style="font-family:'DM Serif Display',serif;line-height:1.05;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,0.5);margin:0 0 18px;">Sommer Festival</h1>
+          <p style="font-size:18px;line-height:1.7;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.45);max-width:560px;margin:0 auto 32px;">Outdoor &amp; Indoor Floors, Groovy House &amp; Techno Music — wir tanzen den ganzen Tag für den guten Zweck.</p>
+
+          <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px 0;margin:0 0 20px;font-size:15px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.4);">
+            <span style="padding:0 18px;">Sa, 29.08.2026</span>
+            <span aria-hidden="true" style="opacity:0.6;">·</span>
+            <span style="padding:0 18px;">Waldschänke Dornheim, Würzburg</span>
+          </div>
+
+          <a href="https://hermine.global/" target="_blank" rel="noopener" style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:16px 26px 22px;margin:0 0 32px;box-shadow:0 4px 18px rgba(0,0,0,0.25);text-decoration:none;cursor:pointer;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#5a6b78;">Alle Spenden gehen an</span>
+            <img src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:58px;width:auto;display:block;">
+          </a>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="https://www.eventbrite.de/e/rave-to-save-sommerfestival-tickets-1997136093818?aff=oddtdtcreator" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#4a90c2 0%,#2c5f8a 100%);color:#fff;font-size:17px;font-weight:600;padding:16px 36px;border-radius:12px;text-decoration:none;box-shadow:0 6px 20px rgba(30,60,90,0.4);">Zu den Tickets</a>
+          </div>
+        </div>
+
+        <div style="max-width:1000px;width:100%;margin-top:75px;">
+          <div style="text-align:center;margin-bottom:48px;">
+            <p style="font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#6b3a1a;text-shadow:0 1px 5px rgba(255,255,255,0.35);margin:0 0 14px;">Line-Up &amp; Programm</p>
+            <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);color:#6b5510;margin:0 0 8px;">Outdoor · Dornheim Biergarten</h3>
+            <p style="font-size:14px;font-weight:500;letter-spacing:1px;color:#7a6318;margin:0 0 12px;">15:00 – 00:00 Uhr</p>
+            <p style="font-size:15px;line-height:1.7;color:#5f5220;max-width:520px;margin:0 auto;">Der Garten wird tagsüber zur Bühne: Sommer-Vibes, Drinks in der Sonne und Groovy House, solange das Licht reicht.</p>
+          </div>
+
+          <p style="text-align:center;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#a9764f;margin:0 0 14px;">Line-Up in der Wilderei</p>
+          <div style="position:relative;">
+            <button id="outdoorPrev" aria-label="Vorherige DJs" class="car-arrow" style="left:-10px;background:#fffaf1;border:1px solid #f0c49a;color:#6b5510;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div style="width:100%;overflow:hidden;">
+              <div id="outdoorTrack" class="car-track">
+                <div class="car-item">
+                  <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
+                    <div style="width:100%;height:210px;overflow:hidden;">
+                      <img src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
+                    </div>
+                    <div style="padding:14px 12px 16px;">
+                      <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Flokati</p>
+                      <a href="https://soundcloud.com/flokati" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#a9764f;text-decoration:none;">SoundCloud →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="car-item">
+                  <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
+                    <div style="width:100%;height:210px;overflow:hidden;">
+                      <img src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                    </div>
+                    <div style="padding:14px 12px 16px;">
+                      <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Ranger</p>
+                      <a href="https://soundcloud.com/rangertechno" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#a9764f;text-decoration:none;">SoundCloud →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="car-item">
+                  <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
+                    <div style="width:100%;height:210px;overflow:hidden;">
+                      <img src="DJ Bilder/darth-weber.webp" alt="Darth Weber" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                    </div>
+                    <div style="padding:14px 12px 16px;">
+                      <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Darth Weber</p>
+                      <a href="https://soundcloud.com/darthweber" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#a9764f;text-decoration:none;">SoundCloud →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button id="outdoorNext" aria-label="Nächste DJs" class="car-arrow" style="right:-10px;background:#fffaf1;border:1px solid #f0c49a;color:#6b5510;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+          <div id="outdoorDots" class="car-dots"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── LICHT-ÜBERGANGSZONE: Aktivitäten & Specials ── -->
+    <section id="programm" style="scroll-margin-top:24px;">
+      <div id="aktivitaeten" style="background:linear-gradient(180deg,#d8d2c6 0%,#f3efe6 100%);padding:28px 24px 56px;scroll-margin-top:24px;">
+        <div style="max-width:1000px;margin:0 auto;">
+        <div style="text-align:center;max-width:600px;margin:0 auto 36px;">
+          <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,28px);color:#4a2a1c;margin:0 0 14px;">Aktivitäten &amp; Specials</h3>
+          <p style="font-size:15px;line-height:1.7;color:#6b5a48;margin:0;">Im Verlauf des Tages gibt es einiges zu entdecken für Groß und Klein</p>
+        </div>
+
+        <!-- Desktop/Tablet: Karussell -->
+        <div class="activities-carousel-wrap" style="position:relative;">
+          <button id="activitiesPrev" aria-label="Vorherige Aktivitäten" class="car-arrow" style="left:-10px;background:#fff;border:1px solid rgba(122,59,29,0.2);color:#7a3b1d;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div style="width:100%;overflow:hidden;">
+            <div id="activitiesTrack" class="car-track">
+              <div class="car-item">
+                <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
+                  <div style="font-size:20px;margin-bottom:10px;">📋</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">Infostand</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Flyer, Sticker und Infomaterial rund um HERMINE e.V.</p>
+                </div>
+              </div>
+              <div class="car-item">
+                <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
+                  <div style="font-size:20px;margin-bottom:10px;">👜</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">Jutebeutel bedrucken</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Zum Mitmachen und Mitnehmen.</p>
+                </div>
+              </div>
+              <div class="car-item">
+                <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
+                  <div style="font-size:20px;margin-bottom:10px;">🎨</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">Kinderschminken &amp; Basteln</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Bastelecke für die Kleinen.</p>
+                </div>
+              </div>
+              <div class="car-item">
+                <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
+                  <div style="font-size:20px;margin-bottom:10px;">🖼️</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">Ausstellung „Moria"</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Gemalte Bilder zum Thema.</p>
+                </div>
+              </div>
+              <div class="car-item">
+                <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
+                  <div style="font-size:20px;margin-bottom:10px;">🎤</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">Interview mit HERMINE e.V.</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Digitales Live-Interview in der Wilderei.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="activitiesNext" aria-label="Nächste Aktivitäten" class="car-arrow" style="right:-10px;background:#fff;border:1px solid rgba(122,59,29,0.2);color:#7a3b1d;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <div id="activitiesDots" class="car-dots"></div>
+        </div>
+
+        <!-- Mobile: platzsparende Liste -->
+        <div class="activities-list-wrap" style="flex-direction:column;gap:2px;max-width:520px;margin:0 auto;">
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
+            <div style="font-size:19px;flex-shrink:0;">📋</div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">Infostand</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Flyer, Sticker und Infomaterial rund um HERMINE e.V.</p></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
+            <div style="font-size:19px;flex-shrink:0;">👜</div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">Jutebeutel bedrucken</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Zum Mitmachen und Mitnehmen.</p></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
+            <div style="font-size:19px;flex-shrink:0;">🎨</div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">Kinderschminken &amp; Basteln</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Bastelecke für die Kleinen.</p></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
+            <div style="font-size:19px;flex-shrink:0;">🖼️</div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">Ausstellung „Moria"</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Gemalte Bilder zum Thema.</p></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;">
+            <div style="font-size:19px;flex-shrink:0;">🎤</div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">Interview mit HERMINE e.V.</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Digitales Live-Interview in der Wilderei.</p></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- ── INDOOR: Dark-Environment-Bild als Hintergrund, wächst mit dem Inhalt mit ── -->
+      <div style="position:relative;background:#f3efe6;">
+        <img src="Weitere Grafiken/dark-environment-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:0;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, #f3efe6 0%, rgba(228,224,232,0.75) 5%, rgba(60,48,70,0.45) 12%, rgba(30,20,42,0.55) 20%, rgba(20,15,32,0.22) 30%, rgba(0,0,0,0) 38%);z-index:1;"></div>
+
+        <div style="position:relative;z-index:2;padding:56px 24px 64px;display:flex;flex-direction:column;align-items:center;">
+        <div style="max-width:1000px;width:100%;">
+        <div style="text-align:center;margin-bottom:36px;">
+          <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);color:#fdf2f8;text-shadow:0 2px 10px rgba(0,0,0,0.5);margin:0 0 8px;">Indoor · Club Dornheim</h3>
+          <p style="font-size:14px;font-weight:500;letter-spacing:1px;color:#7dc8dc;text-shadow:0 1px 6px rgba(0,0,0,0.45);margin:0 0 12px;">23:00 – 05:00 Uhr</p>
+          <p style="font-size:15px;line-height:1.7;color:#cfe8ee;text-shadow:0 1px 6px rgba(0,0,0,0.4);max-width:520px;margin:0 auto;">Groovy House &amp; Techno Music bis die Sonne aufgeht, verteilt auf zwei Floors.</p>
+        </div>
+
+        <!-- Fausterei (Housefloor) -->
+          <div style="margin-bottom:48px;">
+            <h4 style="font-family:'DM Serif Display',serif;font-size:19px;color:#f5c26b;text-shadow:0 1px 6px rgba(0,0,0,0.45);margin:0 0 18px;text-align:center;">Fausterei · Housefloor</h4>
+            <div style="position:relative;">
+              <button id="fausRoomPrev" aria-label="Vorherige DJs" class="car-arrow" style="left:-10px;background:rgba(255,255,255,0.1);border:1px solid rgba(245,194,107,0.35);color:#f5c26b;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <div style="width:100%;overflow:hidden;">
+                <div id="fausRoomTrack" class="car-track">
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="DJ Bilder/lucs.webp" alt="Lucs" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Lucs</p>
+                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">23:00 – 00:30</p>
+                        <a href="https://soundcloud.com/lucs138" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="DJ Bilder/raphael-s.webp" alt="Raphael S." style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Raphael S.</p>
+                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">00:30 – 02:00</p>
+                        <a href="https://soundcloud.com/raphaelspunkt" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Flokati</p>
+                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">02:00 – 03:30</p>
+                        <a href="https://soundcloud.com/flokati" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="../Team/ECTIVATE.webp" alt="Ectivate" style="width:100%;height:100%;object-fit:cover;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Ectivate</p>
+                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">03:30 – 05:00</p>
+                        <a href="https://soundcloud.com/ectivatemusic" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button id="fausRoomNext" aria-label="Nächste DJs" class="car-arrow" style="right:-10px;background:rgba(255,255,255,0.1);border:1px solid rgba(245,194,107,0.35);color:#f5c26b;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+            <div id="fausRoomDots" class="car-dots"></div>
+          </div>
+
+          <!-- Ballsaal (Technofloor) -->
+          <div>
+            <h4 style="font-family:'DM Serif Display',serif;font-size:19px;color:#67e8f9;text-shadow:0 1px 6px rgba(0,0,0,0.45);margin:0 0 18px;text-align:center;">Ballsaal · Technofloor</h4>
+            <div style="position:relative;">
+              <button id="ballsaalPrev" aria-label="Vorherige DJs" class="car-arrow" style="left:-10px;background:rgba(255,255,255,0.1);border:1px solid rgba(103,232,249,0.3);color:#67e8f9;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <div style="width:100%;overflow:hidden;">
+                <div id="ballsaalTrack" class="car-track">
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="../Team/c2e.webp" alt="C2E" style="width:100%;height:100%;object-fit:cover;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">C2E</p>
+                        <p style="font-size:12px;font-weight:500;color:#67e8f9;margin:0 0 6px;">00:00 – 01:30</p>
+                        <a href="https://soundcloud.com/djc2e" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#67e8f9;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Ranger</p>
+                        <p style="font-size:12px;font-weight:500;color:#67e8f9;margin:0 0 6px;">01:30 – 03:30</p>
+                        <a href="https://soundcloud.com/rangertechno" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#67e8f9;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-item">
+                    <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
+                      <div style="width:100%;height:210px;overflow:hidden;">
+                        <img src="DJ Bilder/simon-vds-gigi.webp" alt="Simon VDS b2b Gigi" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
+                      </div>
+                      <div style="padding:14px 12px 16px;">
+                        <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Simon VDS b2b Gigi</p>
+                        <p style="font-size:12px;font-weight:500;color:#67e8f9;margin:0 0 6px;">03:30 – 05:00</p>
+                        <a href="https://soundcloud.com/simon-vds" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#67e8f9;text-decoration:none;">SoundCloud →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button id="ballsaalNext" aria-label="Nächste DJs" class="car-arrow" style="right:-10px;background:rgba(255,255,255,0.1);border:1px solid rgba(103,232,249,0.3);color:#67e8f9;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+            <div id="ballsaalDots" class="car-dots"></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SPENDENZIEL ── -->
+    <section id="spendenziel" class="section" style="background:linear-gradient(180deg,#0d2038 0%,#123a5c 55%,#1a5478 100%);scroll-margin-top:24px;">
+      <div style="max-width:680px;margin:0 auto;text-align:center;">
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(238,246,244,0.55);margin:0 0 14px;">Spendenziel</p>
+        <a href="https://hermine.global/" target="_blank" rel="noopener" style="display:inline-block;background:#fff;border-radius:18px;padding:18px 28px;margin:0 0 24px;box-shadow:0 6px 22px rgba(0,0,0,0.3);">
+          <img src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:70px;width:auto;display:block;">
+        </a>
+        <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.1;color:#eef6f4;margin:0 0 18px;">HERMINE e.V.</h2>
+        <p style="font-size:16px;line-height:1.75;color:rgba(238,246,244,0.75);margin:0 0 32px;">Dieses Mal tanzen wir für HERMINE e.V. — Hilfe für Menschen in Not. Der Verein sammelt und verschickt Hilfsgüter für Menschen in Notlagen, u. a. für Geflüchtete an Europas Außengrenzen.</p>
+        <a href="https://hermine.global/" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#f4a261 0%,#e76f51 100%);color:#fff;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">Mehr über HERMINE e.V. →</a>
+      </div>
+    </section>
+
+    <!-- ── ANFAHRT ── -->
+    <section id="anfahrt" class="section" style="background:#f8f1e4;scroll-margin-top:24px;">
+      <div style="max-width:620px;margin:0 auto;text-align:center;">
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a6b68;margin:0 0 14px;">Location</p>
+        <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.1;color:#1f3b3a;margin:0 0 18px;">Waldschänke Dornheim - Club und Biergarten</h2>
+        <p style="font-size:16px;line-height:1.75;color:#42615e;margin:0 0 32px;">Talavera 1<br>97082 Würzburg</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Waldsch%C3%A4nke+Dornheim+Talavera+1%2C+97082+W%C3%BCrzburg" target="_blank" rel="noopener" class="btn-outline" style="display:inline-block;border:1.5px solid rgba(31,59,58,0.35);color:#1f3b3a;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Route planen →</a>
+      </div>
+    </section>
+
+    <!-- ── TICKETS ── -->
+    <section id="tickets" class="section" style="background:#eef6f4;scroll-margin-top:24px;">
+      <div style="max-width:560px;margin:0 auto;text-align:center;background:#fff;border:1px solid #cfe3de;border-radius:24px;padding:44px 36px;">
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a6b68;margin:0 0 14px;">Tickets</p>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,30px);color:#1f3b3a;margin:0 0 14px;">Der Vorverkauf läuft.</h2>
+        <p style="font-size:15px;line-height:1.7;color:#42615e;margin:0 0 28px;">Sichert euch eure Tickets für das Sommer Festival direkt über Eventbrite.</p>
+        <a href="https://www.eventbrite.de/e/rave-to-save-sommerfestival-tickets-1997136093818?aff=oddtdtcreator" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#f4a261 0%,#e76f51 100%);color:#fff;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">Zu Eventbrite →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer style="background:linear-gradient(135deg,#12262a 0%,#1c3a3f 100%);padding:40px 24px 32px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="../index.html" style="font-family:'DM Serif Display',serif;font-size:18px;color:#eef6f4;text-decoration:none;">Rave to Save</a>
+      <span style="font-size:13px;color:#8fb3ae;">© 2026 Rave to Save · <a href="../impressum.html" style="color:#8fb3ae;">Impressum</a> · <a href="../datenschutz.html" style="color:#8fb3ae;">Datenschutz</a></span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  function initCarousel(opts) {
+    var track = document.getElementById(opts.trackId);
+    if (!track) return;
+    var cards = track.querySelectorAll('.car-item');
+    var prevBtn = document.getElementById(opts.prevId);
+    var nextBtn = document.getElementById(opts.nextId);
+    var dotsWrap = document.getElementById(opts.dotsId);
+    var total = cards.length;
+    var index = 0;
+
+    function visible() { return window.innerWidth <= 640 ? opts.mobile : opts.desktop; }
+    function maxIndex() { return Math.max(0, total - visible()); }
+
+    function render() {
+      var v = visible();
+      var max = maxIndex();
+      if (index > max) index = max;
+      if (index < 0) index = 0;
+      var pct = 100 / v;
+
+      Array.prototype.forEach.call(cards, function (c) { c.style.width = pct + '%'; });
+      track.style.transform = 'translateX(-' + (index * pct) + '%)';
+
+      var noNav = total <= v;
+      track.style.justifyContent = noNav ? 'center' : 'flex-start';
+      prevBtn.style.display = noNav ? 'none' : 'flex';
+      nextBtn.style.display = noNav ? 'none' : 'flex';
+      dotsWrap.style.display = noNav ? 'none' : 'flex';
+
+      prevBtn.style.opacity = index === 0 ? '0.3' : '1';
+      prevBtn.disabled = index === 0;
+      nextBtn.style.opacity = index >= max ? '0.3' : '1';
+      nextBtn.disabled = index >= max;
+
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i <= max; i++) {
+        (function (i) {
+          var dot = document.createElement('button');
+          dot.setAttribute('aria-label', 'Zu Position ' + (i + 1));
+          dot.style.cssText = 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s;' +
+            'background:' + (i === index ? opts.dotActive : opts.dotIdle) + ';transform:' + (i === index ? 'scale(1.3)' : 'scale(1)') + ';';
+          dot.addEventListener('click', function () { index = i; render(); });
+          dotsWrap.appendChild(dot);
+        })(i);
+      }
+    }
+
+    prevBtn.addEventListener('click', function () { index--; render(); });
+    nextBtn.addEventListener('click', function () { index++; render(); });
+
+    var lastV = visible();
+    window.addEventListener('resize', function () {
+      var v = visible();
+      if (v !== lastV) { lastV = v; index = 0; }
+      render();
+    });
+    render();
+  }
+
+  initCarousel({ trackId: 'outdoorTrack', prevId: 'outdoorPrev', nextId: 'outdoorNext', dotsId: 'outdoorDots', mobile: 1, desktop: 4, dotIdle: 'rgba(107,85,16,0.25)', dotActive: '#a9764f' });
+  initCarousel({ trackId: 'activitiesTrack', prevId: 'activitiesPrev', nextId: 'activitiesNext', dotsId: 'activitiesDots', mobile: 1, desktop: 4, dotIdle: 'rgba(122,59,29,0.2)', dotActive: '#a9764f' });
+  initCarousel({ trackId: 'fausRoomTrack', prevId: 'fausRoomPrev', nextId: 'fausRoomNext', dotsId: 'fausRoomDots', mobile: 1, desktop: 4, dotIdle: 'rgba(245,194,107,0.3)', dotActive: '#f5c26b' });
+  initCarousel({ trackId: 'ballsaalTrack', prevId: 'ballsaalPrev', nextId: 'ballsaalNext', dotsId: 'ballsaalDots', mobile: 1, desktop: 4, dotIdle: 'rgba(103,232,249,0.3)', dotActive: '#67e8f9' });
+})();
+</script>
+</body>
+</html>

@@ -478,11 +478,11 @@
      Betrifft automatisch beide Stellen (Hero + Events-Sektion).
      ═══════════════════════════════════════════════════════════════ */
   var nextEvent = {
-    ready: false,
-    image: 'Next Party/RAVETOSAVE_1107_Titelbild.webp',
-    name: 'Rave to Save @ Dornheim',
-    info: 'Sa, 11. Juli 2026 · Dornheim Würzburg<br>Spendenziel: Tierheim Würzburg',
-    ticketUrl: '#'
+    ready: true,
+    image: 'Next Party/RTS_2908_Titelbild.webp',
+    name: 'Rave to Save – Sommer Festival',
+    info: 'Sa, 29. August 2026 · Dornheim Club &amp; Garten, Würzburg<br>Spendenziel: HERMINE e.V.',
+    ticketUrl: 'festival2908/'
   };
 
   function renderEventCard(cfg) {
@@ -495,7 +495,7 @@
           '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#4a5b69;margin:0 0 6px;">' + cfg.name + '</p>' +
           '<p style="font-size:14px;line-height:1.65;color:#5a6b78;margin:0 0 14px;">' + cfg.info + '</p>' +
           '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
-            '<a href="' + cfg.ticketUrl + '" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">Tickets sichern →</a>' +
+            '<a href="' + cfg.ticketUrl + '" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">Alle Infos →</a>' +
             '<a href="#spendenziele" class="btn-outline" style="display:inline-block;border:1.5px solid rgba(74,91,105,0.4);color:#4a5b69;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Spendenziel</a>' +
           '</div>' +
         '</div>';
