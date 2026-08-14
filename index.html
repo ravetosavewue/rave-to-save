@@ -44,6 +44,7 @@
       .section     { padding: 72px 20px; }
       .team-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
       .nav-social-mobile { display: flex; }
+      #carouselPrev, #carouselNext, #orgPrev, #orgNext { display: none !important; }
     }
 
     /* ── Hover states ── */
@@ -606,6 +607,33 @@
 
     prevBtn.addEventListener('click', function () { index--; render(); });
     nextBtn.addEventListener('click', function () { index++; render(); });
+
+    var touchStartX = 0, touchStartY = 0, touchTracking = false, touchMoved = false;
+    track.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchTracking = true;
+      touchMoved = false;
+    }, { passive: true });
+    track.addEventListener('touchmove', function (e) {
+      if (!touchTracking) return;
+      var dx = e.touches[0].clientX - touchStartX;
+      var dy = e.touches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+        touchMoved = true;
+        if (e.cancelable) e.preventDefault();
+      }
+    }, { passive: false });
+    track.addEventListener('touchend', function (e) {
+      if (!touchTracking) return;
+      touchTracking = false;
+      if (!touchMoved) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) { index++; } else { index--; }
+      render();
+    });
 
     var lastV = visible();
     window.addEventListener('resize', function () {
