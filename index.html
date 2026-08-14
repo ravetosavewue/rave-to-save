@@ -4,17 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rave to Save – Tanzen für den guten Zweck</title>
+  <meta name="description" content="Rave to Save ist ein ehrenamtliches Party-Kollektiv aus Würzburg: House- und Techno-Nächte, deren gesamter Erlös an lokale Organisationen geht. Bisher 24.750 € gespendet.">
+  <link rel="canonical" href="https://ravetosave.de/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rave to Save">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://ravetosave.de/">
+  <meta property="og:title" content="Rave to Save – Tanzen für den guten Zweck">
+  <meta property="og:description" content="Ehrenamtliches Party-Kollektiv aus Würzburg. House &amp; Techno für den guten Zweck – der gesamte Erlös geht an lokale Organisationen.">
+  <meta property="og:image" content="https://ravetosave.de/Next%20Party/RTS_2908_Titelbild.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Rave to Save Sommer Festival am 29. August 2026">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="RAVETOSAVE2026_LOGO.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* ── Schriften, self-hosted (kein Google-CDN, siehe Datenschutz) ── */
+    @font-face { font-family:'DM Serif Display'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400.woff2') format('woff2'); }
+    @font-face { font-family:'DM Serif Display'; font-style:italic; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400-italic.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-600.woff2') format('woff2'); }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: 'Inter', sans-serif; background: #f0ede8; color: #4a5b69; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     a { color: inherit; }
 
+    /* ── Skip-Link & Fokus ── */
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 300; background: #0e1013; color: #f0ede8; padding: 14px 22px; border-radius: 0 0 12px 0; font-size: 15px; font-weight: 500; text-decoration: none; }
+    .skip-link:focus { left: 0; }
+    :focus-visible { outline: 3px solid #a85a42; outline-offset: 2px; border-radius: 4px; }
+    .sec-dark :focus-visible, .nav-bar :focus-visible, .site-footer :focus-visible, #mobileMenu :focus-visible { outline-color: #67e8f9; }
+
     /* ── Nav ── */
+    .nav-bar { background: rgba(14,16,19,0.18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: space-between; height: 96px; padding: 0 48px; position: relative; overflow: visible; transition: background 0.3s ease, border-color 0.3s ease; }
+    .nav-bar.scrolled { background: rgba(14,16,19,0.94); border-bottom-color: rgba(255,255,255,0.10); }
     .nav-links { display: flex; gap: 28px; flex: 1; }
     .burger { display: none; }
     .nav-social { display: flex; align-items: center; color: #f0ede8; transition: opacity 0.2s; }
@@ -47,20 +76,46 @@
       #carouselPrev, #carouselNext, #orgPrev, #orgNext { display: none !important; }
     }
 
+    /* ── Hero: dunkler Nachthimmel aus dem vorhandenen Wolkenfoto ── */
+    .hero      { min-height: 100vh; min-height: 100svh; }
+    .hero-bg   { position: absolute; inset: 0; background-image: url('Hero-Background.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; filter: brightness(0.38) saturate(0.5) contrast(1.18); }
+    .hero-scrim { position: absolute; inset: 0; background:
+        radial-gradient(115% 75% at 50% 8%, rgba(103,232,249,0.13) 0%, rgba(103,232,249,0) 58%),
+        linear-gradient(180deg, rgba(10,12,15,0.62) 0%, rgba(10,12,15,0.30) 38%, rgba(14,16,19,0.80) 82%, #0e1013 100%); }
+
+    /* ── Dunkle Sektionen ── */
+    .sec-dark  { background: #0e1013; }
+    .dark-card { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.11); }
+    .dark-card:hover { border-color: rgba(103,232,249,0.35); }
+    .dark-card, .org-card { transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+
     /* ── Hover states ── */
     .nav-link:hover { text-decoration: underline; }
     .btn-primary:hover { opacity: 0.9; }
+    .btn-cyan:hover { filter: brightness(1.08); }
     .btn-outline:hover { background: rgba(74,91,105,0.07); }
+    .btn-outline-dark:hover { background: rgba(240,237,232,0.10); }
     .org-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
     .ig-circle:hover { opacity: 0.85; }
+
+    /* ── Formular ── */
+    .field-error { display: none; font-size: 13px; color: #a3372a; margin: 6px 0 0; }
+    .is-invalid .field-error { display: block; }
+    .is-invalid input, .is-invalid textarea { border-color: #a3372a !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
   </style>
 </head>
 <body>
+<a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <div>
 
   <!-- ── NAV ── -->
-  <div style="position:fixed;top:0;left:0;right:0;z-index:200;">
-    <nav style="background:rgba(37,47,55,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:space-between;height:96px;padding:0 48px;position:relative;overflow:visible;">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:200;">
+    <nav id="navBar" class="nav-bar" aria-label="Hauptnavigation">
       <div class="nav-links" style="justify-content:flex-end;padding-right:88px;">
         <a href="#mission" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Unsere Mission</a>
         <a href="#wer-wir-sind" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Wer wir sind</a>
@@ -100,10 +155,10 @@
         </a>
       </div>
     </nav>
-  </div>
+  </header>
 
   <!-- ── MOBILE MENU ── -->
-  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(25,35,42,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding-top:172px;padding-bottom:40px;overflow-y:auto;">
+  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(14,16,19,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding-top:172px;padding-bottom:40px;overflow-y:auto;">
     <a href="#mission" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Unsere Mission</a>
     <a href="#wer-wir-sind" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Wer wir sind</a>
     <a href="#events" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Events</a>
@@ -113,15 +168,18 @@
     <a href="#kontakt" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Kontakt</a>
   </div>
 
+  <main id="inhalt">
+
   <!-- ── HERO ── -->
-  <section class="hero" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background-image:url('Hero-Background.webp');background-size:cover;background-position:center;background-repeat:no-repeat;">
-    <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to bottom, transparent 0%, rgba(240,237,232,0.25) 35%, rgba(240,237,232,0.65) 60%, rgba(240,237,232,0.90) 80%, rgba(240,237,232,1) 100%);pointer-events:none;"></div>
+  <section class="hero sec-dark" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
 
     <div style="position:relative;z-index:2;max-width:680px;width:100%;">
-      <h1 class="hero-title" style="font-family:'DM Serif Display',serif;line-height:1.0;color:#4a5b69;margin:0 0 24px;">Tanzen für<br><em>den guten<br>Zweck</em></h1>
-      <p class="hero-sub" style="line-height:1.7;color:#5a6b78;max-width:500px;margin:0 auto 52px;">Ihr feiert mit uns und spendet damit automatisch an lokale Organisationen.</p>
+      <h1 class="hero-title" style="font-family:'DM Serif Display',serif;line-height:1.0;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.55);margin:0 0 24px;">Tanzen für<br><em style="color:#67e8f9;">den guten<br>Zweck</em></h1>
+      <p class="hero-sub" style="line-height:1.7;color:rgba(240,237,232,0.82);text-shadow:0 2px 14px rgba(0,0,0,0.5);max-width:500px;margin:0 auto 52px;">Ihr feiert mit uns und spendet damit automatisch an lokale Organisationen.</p>
 
-      <div id="heroEventCard" style="background:rgba(240,237,232,0.62);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.55);border-radius:24px;overflow:hidden;max-width:540px;margin:0 auto;text-align:left;"></div>
+      <div id="heroEventCard" style="background:rgba(18,21,26,0.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);border-radius:24px;overflow:hidden;max-width:540px;margin:0 auto;text-align:left;"></div>
     </div>
   </section>
 
@@ -129,7 +187,7 @@
   <section id="mission" class="section" style="background:#f0ede8;scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto 48px;">
-        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Unsere Mission</p>
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Unsere Mission</p>
         <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#4a5b69;margin:0 0 18px;">Gutes tun,<br>gemeinsam feiern.</h2>
         <p style="font-size:17px;line-height:1.7;color:#5a6b78;max-width:100%;margin:0 auto;">Rave to Save verbindet Hedonismus mit echtem gesellschaftlichem Engagement. Alle DJs und Veranstalter arbeiten ehrenamtlich – der gesamte Erlös aus dem Ticketverkauf geht an eine lokale Organisation.</p>
       </div>
@@ -137,7 +195,7 @@
       <div style="display:flex;justify-content:center;margin:40px 0 48px;">
         <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:28px;padding:28px 56px;text-align:center;">
           <p style="font-size:14px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#5a6b78;margin:0 0 12px;">Bisher gespendet</p>
-          <p id="donationDisplay" style="font-family:'DM Serif Display',serif;font-size:clamp(48px,6vw,72px);line-height:1;background:linear-gradient(135deg,#b87c6e,#c49a8a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;">0 €</p>
+          <p id="donationDisplay" data-target="24750" style="font-family:'DM Serif Display',serif;font-size:clamp(48px,6vw,72px);line-height:1;background:linear-gradient(135deg,#a85a42,#c07a5e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;">24.750 €</p>
         </div>
       </div>
 
@@ -165,51 +223,51 @@
   <section id="wer-wir-sind" class="section" style="background:#f5f2ed;scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:620px;margin:0 auto 8px;">
-        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Wer wir sind</p>
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Wer wir sind</p>
         <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#4a5b69;margin:0 0 18px;">Menschen hinter<br>der Musik.</h2>
         <p style="font-size:17px;line-height:1.7;color:#5a6b78;max-width:100%;margin:0 auto;">Wir sind ein kleines, ehrenamtliches Team aus Würzburg – verbunden durch die Liebe zur Musik und den Glauben daran, dass Feiern etwas bewegen kann.</p>
       </div>
       <div class="team-grid" style="display:grid;margin-top:48px;">
         <div style="text-align:center;">
           <div style="width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,#c8d0d8 0%,#a8b4bc 50%,#8a9aa6 100%);display:flex;align-items:center;justify-content:center;">
-            <img src="Team/Ranger.webp" alt="Felix" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+            <img loading="lazy" decoding="async" src="Team/Ranger.webp" alt="Felix" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
           </div>
           <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#4a5b69;margin:0 0 4px;">Felix</p>
-          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#b87c6e;margin:0 0 12px;">Ranger</p>
+          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#a85a42;margin:0 0 12px;">Ranger</p>
           <p style="font-size:14px;color:#5a6b78;line-height:1.75;margin:0;">Organisator &amp; DJ<br>Dabei seit 2018</p>
         </div>
         <div style="text-align:center;">
           <div style="width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,#c8d0d8 0%,#a8b4bc 50%,#8a9aa6 100%);display:flex;align-items:center;justify-content:center;">
-            <img src="Team/c2e.webp" alt="Sebastian" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" decoding="async" src="Team/c2e.webp" alt="Sebastian" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#4a5b69;margin:0 0 4px;">Sebastian</p>
-          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#b87c6e;margin:0 0 12px;">C2E</p>
+          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#a85a42;margin:0 0 12px;">C2E</p>
           <p style="font-size:14px;color:#5a6b78;line-height:1.75;margin:0;">Organisator &amp; DJ<br>Dabei seit 2025</p>
         </div>
         <div style="text-align:center;">
           <div style="width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,#c8d0d8 0%,#a8b4bc 50%,#8a9aa6 100%);display:flex;align-items:center;justify-content:center;">
-            <img src="Team/ECTIVATE.webp" alt="Erhan" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" decoding="async" src="Team/ECTIVATE.webp" alt="Erhan" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#4a5b69;margin:0 0 4px;">Erhan</p>
-          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#b87c6e;margin:0 0 12px;">Ectivate</p>
+          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#a85a42;margin:0 0 12px;">Ectivate</p>
           <p style="font-size:14px;color:#5a6b78;line-height:1.75;margin:0;">Organisator &amp; DJ<br>Dabei seit 2025</p>
         </div>
         <div style="text-align:center;">
           <div style="width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,#c8d0d8 0%,#a8b4bc 50%,#8a9aa6 100%);display:flex;align-items:center;justify-content:center;">
-            <img src="Team/269dsgn.webp" alt="Basti" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <img loading="lazy" decoding="async" src="Team/269dsgn.webp" alt="Basti" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
           <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#4a5b69;margin:0 0 4px;">Basti</p>
-          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#b87c6e;margin:0 0 12px;">269Dsgn</p>
+          <p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#a85a42;margin:0 0 12px;">269Dsgn</p>
           <p style="font-size:14px;color:#5a6b78;line-height:1.75;margin:0;">Grafik Design<br>Dabei seit 2018</p>
         </div>
       </div>
 
       <!-- Wie wir klingen -->
       <div style="text-align:center;max-width:620px;margin:72px auto 0;">
-        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Wie wir klingen</p>
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Wie wir klingen</p>
         <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#4a5b69;margin:0 0 16px;">Hör rein.</h3>
         <p style="font-size:17px;line-height:1.7;color:#5a6b78;margin:0 0 28px;">Musik ist der Kern von allem, was wir tun. Auf SoundCloud teilen wir Mixe und Aufnahmen – hör dir an, wie ein Abend mit uns klingt.</p>
-        <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">
+        <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#a85a42 0%,#c07a5e 100%);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v-4"/><path d="M7 17V9"/><path d="M11 18V7"/><path d="M15 17v-8"/><path d="M19 15a3 3 0 0 0-1-5.83"/></svg>
           Auf SoundCloud hören →
         </a>
@@ -217,18 +275,21 @@
     </div>
   </section>
 
-  <!-- ── EVENTS ── -->
-  <section id="events" class="section" style="background:#f0ede8;scroll-margin-top:180px;">
+  <!-- ── EVENTS (Nacht-Sektion) ── -->
+  <section id="events" class="section sec-dark" style="scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;">
-      <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;text-align:center;">Events</p>
+      <div style="text-align:center;max-width:680px;margin:0 auto 8px;">
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#67e8f9;margin:0 0 14px;">Events</p>
+        <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#f0ede8;margin:0 0 18px;">Wo wir feiern.</h2>
+      </div>
 
       <div style="max-width:680px;margin:0 auto;text-align:center;">
-        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:#4a5b69;margin:16px 0 24px;text-align:center;">In Kürze</h3>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:#f0ede8;margin:40px 0 24px;text-align:center;">In Kürze</h3>
         <div style="text-align:left;">
-          <div id="eventsEventCard" style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:24px;overflow:hidden;max-width:100%;margin:0 auto;"></div>
+          <div id="eventsEventCard" class="dark-card" style="border-radius:24px;overflow:hidden;max-width:100%;margin:0 auto;"></div>
         </div>
 
-        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:#4a5b69;margin:52px 0 24px;text-align:center;">Vergangene Veranstaltungen</h3>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:#f0ede8;margin:52px 0 24px;text-align:center;">Vergangene Veranstaltungen</h3>
         <div style="position:relative;">
           <button id="carouselPrev" aria-label="Vorheriges Event" style="position:absolute;top:38%;left:10px;transform:translateY(-50%);z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.4);background:rgba(240,237,232,0.82);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#4a5b69;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -236,52 +297,52 @@
           <div style="width:100%;overflow:hidden;">
             <div id="carouselTrack" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);transform:translateX(0%);">
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
-                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
-                  <img src="Past_Events_Grafiken/11.07.26.webp" alt="11. Juli 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                <div class="dark-card" style="border-radius:20px;overflow:hidden;">
+                  <img loading="lazy" decoding="async" src="Past_Events_Grafiken/11.07.26.webp" alt="11. Juli 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
-                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">11. Juli 2026</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.260 € an <a href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Kontaktcafé Würzburg</a></strong></p>
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#9aa7b1;margin:0 0 3px;">11. Juli 2026</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#f0ede8;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#b9c2c9;line-height:1.4;margin:0;">Gespendet: <strong style="color:#67e8f9;font-weight:600;">1.260 € an <a href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Kontaktcafé Würzburg</a></strong></p>
                   </div>
                 </div>
               </div>
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
-                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
-                  <img src="Past_Events_Grafiken/31_01_26_RAVETOSAVE-DORNHEIM-31-01-26_1x1-Website.webp" alt="31. Januar 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                <div class="dark-card" style="border-radius:20px;overflow:hidden;">
+                  <img loading="lazy" decoding="async" src="Past_Events_Grafiken/31_01_26_RAVETOSAVE-DORNHEIM-31-01-26_1x1-Website.webp" alt="31. Januar 2026" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
-                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">31. Januar 2026</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.000 € an <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Streetwork Würzburg</a></strong></p>
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#9aa7b1;margin:0 0 3px;">31. Januar 2026</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#f0ede8;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#b9c2c9;line-height:1.4;margin:0;">Gespendet: <strong style="color:#67e8f9;font-weight:600;">1.000 € an <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Streetwork Würzburg</a></strong></p>
                   </div>
                 </div>
               </div>
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
-                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
-                  <img src="Past_Events_Grafiken/13_09_25_Overall_DornheimWebsite.webp" alt="13. September 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                <div class="dark-card" style="border-radius:20px;overflow:hidden;">
+                  <img loading="lazy" decoding="async" src="Past_Events_Grafiken/13_09_25_Overall_DornheimWebsite.webp" alt="13. September 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
-                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">13. September 2025</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.150 € an <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Wildwasser e.V.</a></strong></p>
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#9aa7b1;margin:0 0 3px;">13. September 2025</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#f0ede8;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#b9c2c9;line-height:1.4;margin:0;">Gespendet: <strong style="color:#67e8f9;font-weight:600;">1.150 € an <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Wildwasser e.V.</a></strong></p>
                   </div>
                 </div>
               </div>
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
-                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
-                  <img src="Past_Events_Grafiken/03_05_25_RTS_25_StationRegenbogen_Dornheim_Website.webp" alt="3. Mai 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                <div class="dark-card" style="border-radius:20px;overflow:hidden;">
+                  <img loading="lazy" decoding="async" src="Past_Events_Grafiken/03_05_25_RTS_25_StationRegenbogen_Dornheim_Website.webp" alt="3. Mai 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
-                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">3. Mai 2025</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.100 € an <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Station Regenbogen</a></strong></p>
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#9aa7b1;margin:0 0 3px;">3. Mai 2025</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#f0ede8;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#b9c2c9;line-height:1.4;margin:0;">Gespendet: <strong style="color:#67e8f9;font-weight:600;">1.100 € an <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Station Regenbogen</a></strong></p>
                   </div>
                 </div>
               </div>
               <div class="past-card" style="flex-shrink:0;padding:0 8px;box-sizing:border-box;">
-                <div style="background:#fff8f5;border:1px solid #d4c9bd;border-radius:20px;overflow:hidden;">
-                  <img src="Past_Events_Grafiken/11_01_25_RAVETOSAVE2025_Website_Dornheim.webp" alt="11. Januar 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+                <div class="dark-card" style="border-radius:20px;overflow:hidden;">
+                  <img loading="lazy" decoding="async" src="Past_Events_Grafiken/11_01_25_RAVETOSAVE2025_Website_Dornheim.webp" alt="11. Januar 2025" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
                   <div style="padding:16px 18px 18px;">
-                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 3px;">11. Januar 2025</p>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a5b69;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
-                    <p style="font-size:13px;color:#5a6b78;line-height:1.4;margin:0;">Gespendet: <strong style="color:#b87c6e;font-weight:600;">1.800 € an <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Tierheim Würzburg</a></strong></p>
+                    <p style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#9aa7b1;margin:0 0 3px;">11. Januar 2025</p>
+                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#f0ede8;margin:0 0 6px;line-height:1.2;">Rave to Save @ Dornheim</p>
+                    <p style="font-size:13px;color:#b9c2c9;line-height:1.4;margin:0;">Gespendet: <strong style="color:#67e8f9;font-weight:600;">1.800 € an <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Tierheim Würzburg</a></strong></p>
                   </div>
                 </div>
               </div>
@@ -297,10 +358,10 @@
   </section>
 
   <!-- ── SPENDENZIELE ── -->
-  <section id="spendenziele" class="section" style="background:linear-gradient(135deg,#252f37 0%,#2d3b45 60%,#3d4f5c 100%);scroll-margin-top:180px;">
+  <section id="spendenziele" class="section sec-dark" style="background:linear-gradient(160deg,#14171c 0%,#1b1f26 55%,#232830 100%);scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto;">
-        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,237,232,0.5);margin:0 0 14px;">Spendenziele</p>
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#67e8f9;margin:0 0 14px;">Spendenziele</p>
         <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#f0ede8;margin:0 0 18px;">Lokal. Transparent.<br>Wirkungsvoll.</h2>
         <p style="font-size:17px;line-height:1.7;color:rgba(240,237,232,0.7);max-width:100%;margin:0 auto;">Uns ist es wichtig, lokale Vereine zu unterstützen, bei denen wir sicher sein können, dass das Geld auch dort ankommt, wo es wirklich gebraucht wird.</p>
       </div>
@@ -315,37 +376,37 @@
           <div id="orgTrack" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);transform:translateX(0%);">
             <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;display:flex;">
               <a href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener" class="org-card" style="flex:1;background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Kontaktcafe.png" alt="Kontaktcafé Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img loading="lazy" decoding="async" src="Spendenziele_Logos/Kontaktcafe.png" alt="Kontaktcafé Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
                 <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Kontaktcafé Würzburg</p>
-                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.260 €</p>
+                <p style="font-size:13px;font-weight:600;color:#a85a42;margin:0;">1.260 €</p>
               </a>
             </div>
             <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;display:flex;">
               <a href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="flex:1;background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/streetwork.png" alt="Streetwork Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img loading="lazy" decoding="async" src="Spendenziele_Logos/streetwork.png" alt="Streetwork Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
                 <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Streetwork Würzburg</p>
-                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.000 €</p>
+                <p style="font-size:13px;font-weight:600;color:#a85a42;margin:0;">1.000 €</p>
               </a>
             </div>
             <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;display:flex;">
               <a href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="flex:1;background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Widlwasser.jpg" alt="Wildwasser Würzburg e.V." style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img loading="lazy" decoding="async" src="Spendenziele_Logos/Widlwasser.jpg" alt="Wildwasser Würzburg e.V." style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
                 <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Wildwasser Würzburg e.V.</p>
-                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.150 €</p>
+                <p style="font-size:13px;font-weight:600;color:#a85a42;margin:0;">1.150 €</p>
               </a>
             </div>
             <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;display:flex;">
               <a href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener" class="org-card" style="flex:1;background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Station Regenbogen.png" alt="Station Regenbogen" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img loading="lazy" decoding="async" src="Spendenziele_Logos/Station Regenbogen.png" alt="Station Regenbogen" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
                 <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Station Regenbogen</p>
-                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.100 €</p>
+                <p style="font-size:13px;font-weight:600;color:#a85a42;margin:0;">1.100 €</p>
               </a>
             </div>
             <div class="org-slide" style="flex-shrink:0;padding:0 10px;box-sizing:border-box;display:flex;">
               <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener" class="org-card" style="flex:1;background:#ffffff;border:none;border-radius:20px;padding:24px 20px 20px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.2s,box-shadow 0.2s;">
-                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img src="Spendenziele_Logos/Tierheim.png" alt="Tierheim Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
+                <div style="width:100%;height:88px;display:flex;align-items:center;justify-content:center;"><img loading="lazy" decoding="async" src="Spendenziele_Logos/Tierheim.png" alt="Tierheim Würzburg" style="max-width:100%;max-height:88px;object-fit:contain;display:block;"></div>
                 <p style="font-family:'DM Serif Display',serif;font-size:16px;color:#4a5b69;line-height:1.25;margin:0;">Tierheim Würzburg</p>
-                <p style="font-size:13px;font-weight:600;color:#b87c6e;margin:0;">1.800 €</p>
+                <p style="font-size:13px;font-weight:600;color:#a85a42;margin:0;">1.800 €</p>
               </a>
             </div>
           </div>
@@ -363,7 +424,7 @@
   <!-- ── SUPPORT ── -->
   <section id="unterstuetze-uns" class="section" style="background:#f5f2ed;scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;text-align:center;">
-      <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Unterstütze uns</p>
+      <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Unterstütze uns</p>
       <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#4a5b69;margin:0 0 18px;">Du willst helfen?</h2>
       <p style="font-size:17px;line-height:1.7;color:#5a6b78;max-width:620px;margin:0 auto;">Nichts leichter als das. Komm einfach zu den Parties, teile die Events oder werde Teil des Teams.</p>
 
@@ -382,7 +443,7 @@
           <div style="font-size:22px;margin-bottom:12px;">🙌</div>
           <p style="font-family:'DM Serif Display',serif;font-size:22px;color:#4a5b69;margin:0 0 8px;">Werd Teil vom Team</p>
           <p style="font-size:15px;line-height:1.65;color:#5a6b78;margin:0 0 16px;">Du hast Bock dich einzubringen? Wir suchen immer nach passenden Leuten, um unser Team zu vergrößern!</p>
-          <a href="#kontakt" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:11px 22px;border-radius:12px;text-decoration:none;">Melde dich</a>
+          <a href="#kontakt" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#a85a42 0%,#c07a5e 100%);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:11px 22px;border-radius:12px;text-decoration:none;">Melde dich</a>
         </div>
       </div>
     </div>
@@ -392,32 +453,36 @@
   <section id="kontakt" class="section" style="background:#f0ede8;scroll-margin-top:180px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto;">
-        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Kontakt</p>
+        <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Kontakt</p>
         <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#4a5b69;margin:0 0 18px;">Schreib uns.</h2>
         <p style="font-size:17px;line-height:1.7;color:#5a6b78;max-width:100%;margin:0 auto;">Fragen, Ideen, Kooperationen — wir freuen uns über jede Nachricht.</p>
       </div>
-      <form id="contactForm" style="max-width:560px;margin:48px auto 0;background:#fff8f5;border:1px solid #d4c9bd;border-radius:24px;padding:40px 36px;text-align:left;">
+      <form id="contactForm" novalidate style="max-width:560px;margin:48px auto 0;background:#fff8f5;border:1px solid #d4c9bd;border-radius:24px;padding:40px 36px;text-align:left;">
         <div style="display:flex;flex-direction:column;gap:16px;">
-          <div>
-            <label for="cName" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#7a8c99;margin-bottom:6px;">Name</label>
-            <input id="cName" type="text" placeholder="Dein Name" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;">
+          <div id="fieldName">
+            <label for="cName" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#5c6b78;margin-bottom:6px;">Name</label>
+            <input id="cName" name="name" type="text" required autocomplete="name" aria-describedby="errName" placeholder="Dein Name" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;">
+            <p id="errName" class="field-error">Bitte trag deinen Namen ein.</p>
           </div>
-          <div>
-            <label for="cEmail" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#7a8c99;margin-bottom:6px;">E-Mail</label>
-            <input id="cEmail" type="email" placeholder="deine@email.de" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;">
+          <div id="fieldEmail">
+            <label for="cEmail" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#5c6b78;margin-bottom:6px;">E-Mail</label>
+            <input id="cEmail" name="email" type="email" required autocomplete="email" aria-describedby="errEmail" placeholder="deine@email.de" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;">
+            <p id="errEmail" class="field-error">Bitte trag eine gültige E-Mail-Adresse ein.</p>
           </div>
-          <div>
-            <label for="cMessage" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#7a8c99;margin-bottom:6px;">Nachricht</label>
-            <textarea id="cMessage" placeholder="Deine Nachricht an uns" rows="5" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;resize:vertical;"></textarea>
+          <div id="fieldMessage">
+            <label for="cMessage" style="display:block;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#5c6b78;margin-bottom:6px;">Nachricht</label>
+            <textarea id="cMessage" name="message" required rows="5" aria-describedby="errMessage" placeholder="Deine Nachricht an uns" style="width:100%;padding:13px 16px;border:1px solid #d4c9bd;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;color:#4a5b69;background:#fff;resize:vertical;"></textarea>
+            <p id="errMessage" class="field-error">Bitte schreib uns ein paar Worte.</p>
           </div>
-          <button type="submit" class="btn-primary" style="align-self:flex-start;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;border:none;cursor:pointer;">Nachricht senden</button>
-          <p style="font-size:13px;color:#7a8c99;line-height:1.6;margin:4px 0 0;">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an <a href="mailto:kontakt@ravetosave.de" style="color:#b87c6e;font-weight:500;text-decoration:none;">kontakt@ravetosave.de</a></p>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;background:linear-gradient(135deg,#a85a42 0%,#c07a5e 100%);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;border:none;cursor:pointer;">Nachricht senden</button>
+          <p id="formStatus" role="status" aria-live="polite" style="font-size:14px;line-height:1.6;color:#4a5b69;margin:0;"></p>
+          <p style="font-size:13px;color:#5c6b78;line-height:1.6;margin:4px 0 0;">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an <a href="mailto:kontakt@ravetosave.de" style="color:#a85a42;font-weight:500;text-decoration:underline;text-underline-offset:2px;">kontakt@ravetosave.de</a>. Falls sich nichts tut, schreib uns einfach direkt an diese Adresse.</p>
         </div>
       </form>
 
       <div style="text-align:center;margin-top:40px;">
         <p style="font-size:15px;color:#5a6b78;margin:0 0 16px;">Oder schreib uns direkt auf Instagram</p>
-        <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="ig-circle" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);">
+        <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="ig-circle" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#a85a42 0%,#c07a5e 100%);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="5"></rect>
             <circle cx="12" cy="12" r="4"></circle>
@@ -428,36 +493,38 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── FOOTER ── -->
-  <footer style="background:linear-gradient(135deg,#252f37 0%,#2d3b45 60%,#3d4f5c 100%);padding:64px 32px 36px;">
+  <footer class="site-footer" style="background:linear-gradient(160deg,#0e1013 0%,#14171c 60%,#1b1f26 100%);padding:64px 32px 36px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:52px;">
         <div>
           <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#f0ede8;margin-bottom:10px;">Rave to Save</div>
-          <div style="font-size:13px;color:#7a8c99;max-width:240px;line-height:1.65;">Charity, Community &amp; Musik – gemeinsam etwas bewegen.</div>
+          <div style="font-size:13px;color:#8fa0ac;max-width:240px;line-height:1.65;">Charity, Community &amp; Musik – gemeinsam etwas bewegen.</div>
         </div>
         <div>
-          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 16px;">Navigation</h4>
-          <a href="#mission" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Unsere Mission</a>
-          <a href="#wer-wir-sind" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Wer wir sind</a>
-          <a href="#events" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Events</a>
-          <a href="#kontakt" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Kontakt</a>
+          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#8fa0ac;margin:0 0 16px;">Navigation</h4>
+          <a href="#mission" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">Unsere Mission</a>
+          <a href="#wer-wir-sind" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">Wer wir sind</a>
+          <a href="#events" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">Events</a>
+          <a href="#kontakt" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">Kontakt</a>
         </div>
         <div>
-          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 16px;">Folge uns</h4>
-          <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">Instagram</a>
-          <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">SoundCloud</a>
+          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#8fa0ac;margin:0 0 16px;">Folge uns</h4>
+          <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">Instagram</a>
+          <a href="https://soundcloud.com/ravetosavewue" target="_blank" rel="noopener" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">SoundCloud</a>
         </div>
         <div>
-          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 16px;">Kontakt</h4>
-          <a href="mailto:kontakt@ravetosave.de" style="display:block;font-size:14px;color:#a8b8c2;text-decoration:none;margin-bottom:10px;">kontakt@ravetosave.de</a>
+          <h4 style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#8fa0ac;margin:0 0 16px;">Kontakt</h4>
+          <a href="mailto:kontakt@ravetosave.de" style="display:block;font-size:14px;color:#bcc9d1;text-decoration:none;margin-bottom:10px;">kontakt@ravetosave.de</a>
         </div>
       </div>
       <div style="border-top:1px solid rgba(240,237,232,0.08);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-        <span style="font-size:13px;color:#5a6b78;">© 2026 Rave to Save</span>
+        <span style="font-size:13px;color:#8fa0ac;">© 2026 Rave to Save</span>
         <div style="display:flex;gap:24px;">
-          <a href="impressum.html" style="font-size:13px;color:#5a6b78;text-decoration:none;">Impressum</a>
-          <a href="datenschutz.html" style="font-size:13px;color:#5a6b78;text-decoration:none;">Datenschutz</a>
+          <a href="impressum.html" style="font-size:13px;color:#8fa0ac;text-decoration:underline;text-underline-offset:3px;">Impressum</a>
+          <a href="datenschutz.html" style="font-size:13px;color:#8fa0ac;text-decoration:underline;text-underline-offset:3px;">Datenschutz</a>
         </div>
       </div>
     </div>
@@ -486,40 +553,48 @@
     ticketUrl: 'festival2908/'
   };
 
-  function renderEventCard(cfg) {
-    var inner;
+  /* Beide Karten (Hero + Events) sitzen auf dunklem Grund — daher helle Typo,
+     Cyan als Akzent. `eager` nur für die Hero-Karte, die über der Falz liegt. */
+  function renderEventCard(cfg, eager) {
+    var loadAttr = eager ? '' : ' loading="lazy" decoding="async"';
     if (cfg.ready) {
-      inner =
-        '<img src="' + cfg.image + '" alt="' + cfg.name + '" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">' +
+      return '<img src="' + cfg.image + '" alt="' + cfg.name + '"' + loadAttr + ' style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">' +
         '<div class="event-body">' +
-          '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 6px;">Nächstes Event</p>' +
-          '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#4a5b69;margin:0 0 6px;">' + cfg.name + '</p>' +
-          '<p style="font-size:14px;line-height:1.65;color:#5a6b78;margin:0 0 14px;">' + cfg.info + '</p>' +
+          '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#67e8f9;margin:0 0 6px;">Nächstes Event</p>' +
+          '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#fff;margin:0 0 6px;">' + cfg.name + '</p>' +
+          '<p style="font-size:14px;line-height:1.65;color:#b9c2c9;margin:0 0 14px;">' + cfg.info + '</p>' +
           '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
-            '<a href="' + cfg.ticketUrl + '" class="btn-primary" style="display:inline-block;background:linear-gradient(135deg,#b87c6e 0%,#c49a8a 100%);color:#fff;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;border-radius:12px;text-decoration:none;">Alle Infos →</a>' +
-            '<a href="#spendenziele" class="btn-outline" style="display:inline-block;border:1.5px solid rgba(74,91,105,0.4);color:#4a5b69;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Spendenziel</a>' +
+            '<a href="' + cfg.ticketUrl + '" class="btn-cyan" style="display:inline-block;background:#67e8f9;color:#0e1013;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;text-decoration:none;">Alle Infos →</a>' +
+            '<a href="#spendenziele" class="btn-outline-dark" style="display:inline-block;border:1.5px solid rgba(240,237,232,0.45);color:#f0ede8;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Spendenziel</a>' +
           '</div>' +
-        '</div>';
-    } else {
-      inner =
-        '<div style="position:relative;overflow:hidden;">' +
-          '<img src="' + cfg.image + '" alt="Coming soon" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:blur(18px);transform:scale(1.18);">' +
-          '<div style="position:absolute;inset:0;background:rgba(37,47,55,0.32);display:flex;align-items:center;justify-content:center;">' +
-            '<span style="font-family:\'DM Serif Display\',serif;font-size:clamp(30px,5.5vw,46px);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,0.55);letter-spacing:0.5px;">Coming soon</span>' +
-          '</div>' +
-        '</div>' +
-        '<div class="event-body">' +
-          '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a8c99;margin:0 0 6px;">Nächstes Event</p>' +
-          '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#4a5b69;margin:0 0 6px;">Bald mehr…</p>' +
-          '<p style="font-size:14px;line-height:1.65;color:#5a6b78;margin:0;">Unser nächstes Event wird gerade geplant. Sei gespannt — alle Infos folgen in Kürze!</p>' +
         '</div>';
     }
-    ['heroEventCard', 'eventsEventCard'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.innerHTML = inner;
-    });
+    return '<div style="position:relative;overflow:hidden;">' +
+        '<img src="' + cfg.image + '" alt="Coming soon"' + loadAttr + ' style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:blur(18px);transform:scale(1.18);">' +
+        '<div style="position:absolute;inset:0;background:rgba(14,16,19,0.45);display:flex;align-items:center;justify-content:center;">' +
+          '<span style="font-family:\'DM Serif Display\',serif;font-size:clamp(30px,5.5vw,46px);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,0.55);letter-spacing:0.5px;">Coming soon</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="event-body">' +
+        '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#67e8f9;margin:0 0 6px;">Nächstes Event</p>' +
+        '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#fff;margin:0 0 6px;">Bald mehr…</p>' +
+        '<p style="font-size:14px;line-height:1.65;color:#b9c2c9;margin:0;">Unser nächstes Event wird gerade geplant. Sei gespannt — alle Infos folgen in Kürze!</p>' +
+      '</div>';
   }
-  renderEventCard(nextEvent);
+  [['heroEventCard', true], ['eventsEventCard', false]].forEach(function (pair) {
+    var el = document.getElementById(pair[0]);
+    if (el) el.innerHTML = renderEventCard(nextEvent, pair[1]);
+  });
+
+  /* ── Nav: ab dem Hero solide, sonst wären die hellen Links über den
+     hellen Sektionen praktisch unsichtbar (vorher ~1,3:1 Kontrast) ── */
+  var navBar = document.getElementById('navBar');
+  function syncNav() {
+    if (window.scrollY > 80) navBar.classList.add('scrolled');
+    else navBar.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', syncNav, { passive: true });
+  syncNav();
 
   /* ── Mobile menu ── */
   var burger = document.getElementById('burger');
@@ -542,20 +617,36 @@
     a.addEventListener('click', function () { setMenu(false); });
   });
 
-  /* ── Donation counter (0 → 23.490 €, ease-out-quart over 2s) ── */
+  /* ── Spendenzähler: startet erst, wenn er wirklich im Bild ist.
+     Vorher lief er beim Laden los und war längst durch, bevor jemand
+     hingescrollt hatte. ── */
   var donationEl = document.getElementById('donationDisplay');
-  var target = 24750;
+  var target = parseInt(donationEl.getAttribute('data-target'), 10) || 0;
   var duration = 2000;
   var startTime = null;
   function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+  function setDonation(v) { donationEl.textContent = v.toLocaleString('de-DE') + ' €'; }
   function tick(now) {
     if (startTime === null) startTime = now;
     var progress = Math.min((now - startTime) / duration, 1);
-    var val = Math.round(easeOutQuart(progress) * target);
-    donationEl.textContent = val.toLocaleString('de-DE') + ' €';
+    setDonation(Math.round(easeOutQuart(progress) * target));
     if (progress < 1) requestAnimationFrame(tick);
   }
-  requestAnimationFrame(tick);
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    setDonation(target);
+  } else {
+    var counterSeen = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        setDonation(0);
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.45 });
+    counterSeen.observe(donationEl);
+  }
 
   /* ── Carousel (wiederverwendbar: Vergangene Events + Spendenziele) ── */
   function initCarousel(opts) {
@@ -568,6 +659,7 @@
     var total = cards.length;
     var index = 0;
     var dotIdle = opts.dotIdle || '#d4c9bd';
+    var dotActive = opts.dotActive || '#a85a42';
 
     function visible() { return window.innerWidth <= 767 ? opts.mobile : opts.desktop; }
     function maxIndex() { return Math.max(0, total - visible()); }
@@ -577,10 +669,17 @@
       var max = maxIndex();
       if (index > max) index = max;
       if (index < 0) index = 0;
-      var pct = 100 / v;
+
+      /* Auf Mobile bleibt die Karte schmaler als der Rahmen, damit die
+         nächste ~14 % hereinlugt — das ist der sichtbare Hinweis, dass
+         man wischen kann. Sonst sieht das Karussell aus wie ein Standbild. */
+      var pct = (v === 1 && total > 1) ? 86 : 100 / v;
+      var offset = index * pct;
+      var maxOffset = total * pct - 100;
+      if (maxOffset > 0 && offset > maxOffset) offset = maxOffset;
 
       Array.prototype.forEach.call(cards, function (c) { c.style.width = pct + '%'; });
-      track.style.transform = 'translateX(-' + (index * pct) + '%)';
+      track.style.transform = 'translateX(-' + offset + '%)';
 
       var noNav = total <= v;
       prevBtn.style.display = noNav ? 'none' : 'flex';
@@ -598,7 +697,7 @@
           var dot = document.createElement('button');
           dot.setAttribute('aria-label', 'Zu Position ' + (i + 1));
           dot.style.cssText = 'width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s;' +
-            'background:' + (i === index ? '#b87c6e' : dotIdle) + ';transform:' + (i === index ? 'scale(1.3)' : 'scale(1)') + ';';
+            'background:' + (i === index ? dotActive : dotIdle) + ';transform:' + (i === index ? 'scale(1.3)' : 'scale(1)') + ';';
           dot.addEventListener('click', function () { index = i; render(); });
           dotsWrap.appendChild(dot);
         })(i);
@@ -644,19 +743,57 @@
     render();
   }
 
-  initCarousel({ trackId: 'carouselTrack', prevId: 'carouselPrev', nextId: 'carouselNext', dotsId: 'carouselDots', cardSelector: '.past-card', mobile: 1, desktop: 2 });
-  initCarousel({ trackId: 'orgTrack', prevId: 'orgPrev', nextId: 'orgNext', dotsId: 'orgDots', cardSelector: '.org-slide', mobile: 2, desktop: 4, dotIdle: 'rgba(240,237,232,0.35)' });
+  initCarousel({ trackId: 'carouselTrack', prevId: 'carouselPrev', nextId: 'carouselNext', dotsId: 'carouselDots', cardSelector: '.past-card', mobile: 1, desktop: 2, dotIdle: 'rgba(240,237,232,0.28)', dotActive: '#67e8f9' });
+  initCarousel({ trackId: 'orgTrack', prevId: 'orgPrev', nextId: 'orgNext', dotsId: 'orgDots', cardSelector: '.org-slide', mobile: 2, desktop: 4, dotIdle: 'rgba(240,237,232,0.35)', dotActive: '#67e8f9' });
 
-  /* ── Contact form → mailto ── */
+  /* ── Kontaktformular → mailto, mit Validierung und Rückmeldung.
+     mailto: schlägt auf Geräten ohne Mail-Programm still fehl — deshalb
+     bleibt nach dem Absenden ein Hinweis mit der Adresse zum Kopieren. ── */
   var form = document.getElementById('contactForm');
+  var statusEl = document.getElementById('formStatus');
+  var fields = [
+    { input: document.getElementById('cName'), wrap: document.getElementById('fieldName') },
+    { input: document.getElementById('cEmail'), wrap: document.getElementById('fieldEmail') },
+    { input: document.getElementById('cMessage'), wrap: document.getElementById('fieldMessage') }
+  ];
+
+  function validField(f) {
+    var v = f.input.value.trim();
+    if (!v) return false;
+    if (f.input.type === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    return true;
+  }
+  function markField(f) {
+    var ok = validField(f);
+    f.wrap.classList.toggle('is-invalid', !ok);
+    f.input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    return ok;
+  }
+  fields.forEach(function (f) {
+    f.input.addEventListener('blur', function () { if (f.input.value.trim()) markField(f); });
+    f.input.addEventListener('input', function () {
+      if (f.wrap.classList.contains('is-invalid')) markField(f);
+    });
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = document.getElementById('cName').value;
-    var email = document.getElementById('cEmail').value;
-    var message = document.getElementById('cMessage').value;
-    var subject = encodeURIComponent('Nachricht von ' + (name || 'der Website'));
-    var body = encodeURIComponent([message || '', '', '— ' + (name || ''), email || ''].join('\n'));
+    var firstBad = null;
+    fields.forEach(function (f) { if (!markField(f) && !firstBad) firstBad = f; });
+    if (firstBad) {
+      statusEl.style.color = '#a3372a';
+      statusEl.textContent = 'Bitte füll die markierten Felder aus.';
+      firstBad.input.focus();
+      return;
+    }
+    var name = fields[0].input.value.trim();
+    var email = fields[1].input.value.trim();
+    var message = fields[2].input.value.trim();
+    var subject = encodeURIComponent('Nachricht von ' + name);
+    var body = encodeURIComponent([message, '', '— ' + name, email].join('\n'));
     window.location.href = 'mailto:kontakt@ravetosave.de?subject=' + subject + '&body=' + body;
+    statusEl.style.color = '#4a5b69';
+    statusEl.textContent = 'Dein E-Mail-Programm sollte sich jetzt mit der fertigen Nachricht öffnen. Falls nicht, schreib uns bitte direkt an kontakt@ravetosave.de.';
   });
 })();
 </script>

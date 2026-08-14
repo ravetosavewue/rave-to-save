@@ -5,11 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sommer Festival · 29.08.2026 – Rave to Save</title>
   <meta name="description" content="Rave to Save Sommer Festival am 29. August 2026 im Dornheim Club &amp; Garten Würzburg – Outdoor &amp; Indoor Floors, Groovy House &amp; Techno, zugunsten von HERMINE e.V.">
+  <link rel="canonical" href="https://ravetosave.de/festival2908/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rave to Save">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://ravetosave.de/festival2908/">
+  <meta property="og:title" content="Rave to Save Sommer Festival · 29.08.2026">
+  <meta property="og:description" content="Outdoor ab 15 Uhr, freier Eintritt, Indoor bis 5 Uhr auf zwei Floors. Waldschänke Dornheim, Würzburg – zugunsten von HERMINE e.V.">
+  <meta property="og:image" content="https://ravetosave.de/Next%20Party/RTS_2908_Titelbild.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Rave to Save Sommer Festival am 29. August 2026">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="../RAVETOSAVE2026_LOGO.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/dm-serif-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* ── Schriften, self-hosted (kein Google-CDN, siehe Datenschutz) ── */
+    @font-face { font-family:'DM Serif Display'; font-style:normal; font-weight:400; font-display:swap; src:url('../fonts/dm-serif-display-400.woff2') format('woff2'); }
+    @font-face { font-family:'DM Serif Display'; font-style:italic; font-weight:400; font-display:swap; src:url('../fonts/dm-serif-display-400-italic.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('../fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('../fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('../fonts/inter-600.woff2') format('woff2'); }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: 'Inter', sans-serif; background: #eef6f4; color: #1f3b3a; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -29,6 +49,10 @@
     .car-dots    { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
 
     .activities-list-wrap { display: none; }
+
+    .skip-link { position:absolute; left:-9999px; top:0; z-index:300; background:#12262a; color:#eef6f4; padding:14px 22px; border-radius:0 0 12px 0; font-size:15px; font-weight:500; text-decoration:none; }
+    .skip-link:focus { left:0; }
+    :focus-visible { outline:3px solid #a9764f; outline-offset:2px; border-radius:4px; }
 
     .hermine-trigger:hover { transform: translateY(-3px); }
 
@@ -52,6 +76,11 @@
       .car-arrow   { display: none !important; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    }
+
     .btn-primary:hover { opacity: 0.9; }
     .btn-outline:hover { background: rgba(31,59,58,0.06); }
     .nav-social:hover { opacity: 0.7; }
@@ -62,12 +91,13 @@
   </style>
 </head>
 <body>
+<a href="#inhalt" class="skip-link">Zum Inhalt springen</a>
 <div style="background:#eef6f4;color:#1f3b3a;min-height:100vh;">
 
-  <main>
+  <main id="inhalt">
     <!-- ── OUTDOOR: Strandbild als Hintergrund, wächst mit dem Inhalt mit ── -->
     <div style="position:relative;background:#d8d2c6;margin-bottom:-1px;">
-      <img src="Weitere Grafiken/strand-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:85% top;z-index:0;">
+      <img fetchpriority="high" decoding="async" src="Weitere Grafiken/strand-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:85% top;z-index:0;">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(20,40,50,0.4) 0%, rgba(20,40,50,0.15) 8%, rgba(20,40,50,0.05) 15%, rgba(216,210,198,0) 20%, rgba(216,210,198,0.5) 40%, rgba(216,210,198,0.85) 60%, rgba(216,210,198,0.97) 80%, #d8d2c6 100%);z-index:1;"></div>
 
       <!-- Nav, direkt ins Hero-Bild integriert -->
@@ -99,7 +129,7 @@
 
           <a href="https://hermine.global/" target="_blank" rel="noopener" style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:16px 26px 22px;margin:0 0 32px;box-shadow:0 4px 18px rgba(0,0,0,0.25);text-decoration:none;cursor:pointer;">
             <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#5a6b78;">Alle Spenden gehen an</span>
-            <img src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:58px;width:auto;display:block;">
+            <img decoding="async" src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:58px;width:auto;display:block;">
           </a>
 
           <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
@@ -125,7 +155,7 @@
                 <div class="car-item">
                   <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
                     <div style="width:100%;height:210px;overflow:hidden;">
-                      <img src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
+                      <img loading="lazy" decoding="async" src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
                     </div>
                     <div style="padding:14px 12px 16px;">
                       <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Flokati</p>
@@ -136,7 +166,7 @@
                 <div class="car-item">
                   <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
                     <div style="width:100%;height:210px;overflow:hidden;">
-                      <img src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                      <img loading="lazy" decoding="async" src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
                     </div>
                     <div style="padding:14px 12px 16px;">
                       <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Ranger</p>
@@ -147,7 +177,7 @@
                 <div class="car-item">
                   <div class="dj-card" style="background:#fffaf1;border:1px solid #f0c49a;border-radius:20px;overflow:hidden;text-align:center;">
                     <div style="width:100%;height:210px;overflow:hidden;">
-                      <img src="DJ Bilder/darth-weber.webp" alt="Darth Weber" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                      <img loading="lazy" decoding="async" src="DJ Bilder/darth-weber.webp" alt="Darth Weber" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
                     </div>
                     <div style="padding:14px 12px 16px;">
                       <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#3b2416;margin:0 0 6px;">Darth Weber</p>
@@ -263,7 +293,7 @@
 
       <!-- ── INDOOR: Dark-Environment-Bild als Hintergrund, wächst mit dem Inhalt mit ── -->
       <div style="position:relative;background:#f3efe6;">
-        <img src="Weitere Grafiken/dark-environment-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:0;">
+        <img loading="lazy" decoding="async" src="Weitere Grafiken/dark-environment-tall.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to bottom, #f3efe6 0%, rgba(228,224,232,0.75) 5%, rgba(60,48,70,0.45) 12%, rgba(30,20,42,0.55) 20%, rgba(20,15,32,0.22) 30%, rgba(0,0,0,0) 38%);z-index:1;"></div>
 
         <div style="position:relative;z-index:2;padding:56px 24px 64px;display:flex;flex-direction:column;align-items:center;">
@@ -286,7 +316,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="DJ Bilder/lucs.webp" alt="Lucs" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;">
+                        <img loading="lazy" decoding="async" src="DJ Bilder/lucs.webp" alt="Lucs" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Lucs</p>
@@ -298,7 +328,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="DJ Bilder/raphael-s.webp" alt="Raphael S." style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                        <img loading="lazy" decoding="async" src="DJ Bilder/raphael-s.webp" alt="Raphael S." style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Raphael S.</p>
@@ -310,7 +340,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
+                        <img loading="lazy" decoding="async" src="DJ Bilder/flokati.webp" alt="Flokati" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Flokati</p>
@@ -322,7 +352,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(245,194,107,0.35);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="../Team/ECTIVATE.webp" alt="Ectivate" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <img loading="lazy" decoding="async" src="../Team/ECTIVATE.webp" alt="Ectivate" style="width:100%;height:100%;object-fit:cover;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Ectivate</p>
@@ -352,7 +382,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="../Team/c2e.webp" alt="C2E" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <img loading="lazy" decoding="async" src="../Team/c2e.webp" alt="C2E" style="width:100%;height:100%;object-fit:cover;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">C2E</p>
@@ -364,7 +394,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+                        <img loading="lazy" decoding="async" src="../Team/Ranger.webp" alt="Ranger" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Ranger</p>
@@ -376,7 +406,7 @@
                   <div class="car-item">
                     <div class="dj-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(103,232,249,0.3);border-radius:20px;overflow:hidden;text-align:center;">
                       <div style="width:100%;height:210px;overflow:hidden;">
-                        <img src="DJ Bilder/simon-vds-gigi.webp" alt="Simon VDS b2b Gigi" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
+                        <img loading="lazy" decoding="async" src="DJ Bilder/simon-vds-gigi.webp" alt="Simon VDS b2b Gigi" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Simon VDS b2b Gigi</p>
@@ -403,7 +433,7 @@
       <div style="max-width:680px;margin:0 auto;text-align:center;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(238,246,244,0.55);margin:0 0 14px;">Spendenziel</p>
         <a href="https://hermine.global/" target="_blank" rel="noopener" style="display:inline-block;background:#fff;border-radius:18px;padding:18px 28px;margin:0 0 24px;box-shadow:0 6px 22px rgba(0,0,0,0.3);">
-          <img src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:70px;width:auto;display:block;">
+          <img loading="lazy" decoding="async" src="Weitere Grafiken/hermine-logo.webp" alt="HERMINE e.V. – Hilfe für Menschen in Not" style="height:70px;width:auto;display:block;">
         </a>
         <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.1;color:#eef6f4;margin:0 0 18px;">HERMINE e.V.</h2>
         <p style="font-size:16px;line-height:1.75;color:rgba(238,246,244,0.75);margin:0 0 32px;">Dieses Mal tanzen wir für HERMINE e.V. — Hilfe für Menschen in Not. Der Verein sammelt und verschickt Hilfsgüter für Menschen in Notlagen, u. a. für Geflüchtete an Europas Außengrenzen.</p>
@@ -436,7 +466,7 @@
   <footer style="background:linear-gradient(135deg,#12262a 0%,#1c3a3f 100%);padding:40px 24px 32px;">
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
       <a href="../index.html" style="font-family:'DM Serif Display',serif;font-size:18px;color:#eef6f4;text-decoration:none;">Rave to Save</a>
-      <span style="font-size:13px;color:#8fb3ae;">© 2026 Rave to Save · <a href="../impressum.html" style="color:#8fb3ae;">Impressum</a> · <a href="../datenschutz.html" style="color:#8fb3ae;">Datenschutz</a></span>
+      <span style="font-size:13px;color:#8fb3ae;">© 2026 Rave to Save · <a href="../impressum.html" style="color:#8fb3ae;text-decoration:underline;text-underline-offset:3px;">Impressum</a> · <a href="../datenschutz.html" style="color:#8fb3ae;text-decoration:underline;text-underline-offset:3px;">Datenschutz</a></span>
     </div>
   </footer>
 </div>
@@ -474,7 +504,7 @@
     var total = cards.length;
     var index = 0;
 
-    function visible() { return window.innerWidth <= 640 ? opts.mobile : opts.desktop; }
+    function visible() { return window.innerWidth <= 767 ? opts.mobile : opts.desktop; }
     function maxIndex() { return Math.max(0, total - visible()); }
 
     function render() {
@@ -482,10 +512,15 @@
       var max = maxIndex();
       if (index > max) index = max;
       if (index < 0) index = 0;
-      var pct = 100 / v;
+      /* Auf Mobile schmaler als der Rahmen, damit die nächste Karte ~14 %
+         hereinlugt — sichtbarer Hinweis, dass man wischen kann. */
+      var pct = (v === 1 && total > 1) ? 86 : 100 / v;
+      var offset = index * pct;
+      var maxOffset = total * pct - 100;
+      if (maxOffset > 0 && offset > maxOffset) offset = maxOffset;
 
       Array.prototype.forEach.call(cards, function (c) { c.style.width = pct + '%'; });
-      track.style.transform = 'translateX(-' + (index * pct) + '%)';
+      track.style.transform = 'translateX(-' + offset + '%)';
 
       var noNav = total <= v;
       track.style.justifyContent = noNav ? 'center' : 'flex-start';
