@@ -76,12 +76,14 @@
       #carouselPrev, #carouselNext, #orgPrev, #orgNext { display: none !important; }
     }
 
-    /* ── Hero: dunkler Nachthimmel aus dem vorhandenen Wolkenfoto ── */
-    .hero      { min-height: 100vh; min-height: 100svh; }
-    .hero-bg   { position: absolute; inset: 0; background-image: url('Hero-Background.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; filter: brightness(0.38) saturate(0.5) contrast(1.18); }
+    /* ── Hero: Wolkenfoto in Originalfarbe ── */
+    .hero      { min-height: 100vh; min-height: 100svh; background: #f0ede8; }
+    .hero-bg   { position: absolute; inset: 0; background-image: url('Hero-Background.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+    /* Oben eine leichte Abdunklung, damit die hellen Nav-Links auf den
+       Wolken lesbar bleiben; unten der Verlauf ins Beige der Mission-Sektion. */
     .hero-scrim { position: absolute; inset: 0; background:
-        radial-gradient(115% 75% at 50% 8%, rgba(103,232,249,0.13) 0%, rgba(103,232,249,0) 58%),
-        linear-gradient(180deg, rgba(10,12,15,0.62) 0%, rgba(10,12,15,0.30) 38%, rgba(14,16,19,0.80) 82%, #0e1013 100%); }
+        linear-gradient(180deg, rgba(18,22,28,0.42) 0%, rgba(18,22,28,0.14) 13%, rgba(18,22,28,0) 25%),
+        linear-gradient(to bottom, rgba(240,237,232,0) 60%, rgba(240,237,232,0.25) 74%, rgba(240,237,232,0.65) 84%, rgba(240,237,232,0.90) 92%, #f0ede8 100%); }
 
     /* ── Dunkle Sektionen ── */
     .sec-dark  { background: #0e1013; }
@@ -171,15 +173,15 @@
   <main id="inhalt">
 
   <!-- ── HERO ── -->
-  <section class="hero sec-dark" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;">
+  <section class="hero" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
 
     <div style="position:relative;z-index:2;max-width:680px;width:100%;">
-      <h1 class="hero-title" style="font-family:'DM Serif Display',serif;line-height:1.0;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.55);margin:0 0 24px;">Tanzen für<br><em style="color:#67e8f9;">den guten<br>Zweck</em></h1>
-      <p class="hero-sub" style="line-height:1.7;color:rgba(240,237,232,0.82);text-shadow:0 2px 14px rgba(0,0,0,0.5);max-width:500px;margin:0 auto 52px;">Ihr feiert mit uns und spendet damit automatisch an lokale Organisationen.</p>
+      <h1 class="hero-title" style="font-family:'DM Serif Display',serif;line-height:1.0;color:#4a5b69;margin:0 0 24px;">Tanzen für<br><em>den guten<br>Zweck</em></h1>
+      <p class="hero-sub" style="line-height:1.7;color:#5a6b78;max-width:500px;margin:0 auto 52px;">Ihr feiert mit uns und spendet damit automatisch an lokale Organisationen.</p>
 
-      <div id="heroEventCard" style="background:rgba(18,21,26,0.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);border-radius:24px;overflow:hidden;max-width:540px;margin:0 auto;text-align:left;"></div>
+      <div id="heroEventCard" style="background:rgba(240,237,232,0.62);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.55);border-radius:24px;overflow:hidden;max-width:540px;margin:0 auto;text-align:left;"></div>
     </div>
   </section>
 
@@ -553,37 +555,51 @@
     ticketUrl: 'festival2908/'
   };
 
-  /* Beide Karten (Hero + Events) sitzen auf dunklem Grund — daher helle Typo,
-     Cyan als Akzent. `eager` nur für die Hero-Karte, die über der Falz liegt. */
-  function renderEventCard(cfg, eager) {
+  /* Die Karte erscheint zweimal: hell im Hero (auf dem Wolkenfoto) und
+     dunkel in der Events-Sektion. Es unterscheiden sich nur die Farben. */
+  var cardThemes = {
+    light: {
+      eyebrow: '#5c6b78', name: '#4a5b69', info: '#5a6b78', veil: 'rgba(37,47,55,0.32)',
+      ctaClass: 'btn-primary', cta: 'background:linear-gradient(135deg,#a85a42 0%,#c07a5e 100%);color:#fff;font-weight:500;',
+      altClass: 'btn-outline', alt: 'border:1.5px solid rgba(74,91,105,0.4);color:#4a5b69;'
+    },
+    dark: {
+      eyebrow: '#67e8f9', name: '#fff', info: '#b9c2c9', veil: 'rgba(14,16,19,0.45)',
+      ctaClass: 'btn-cyan', cta: 'background:#67e8f9;color:#0e1013;font-weight:600;',
+      altClass: 'btn-outline-dark', alt: 'border:1.5px solid rgba(240,237,232,0.45);color:#f0ede8;'
+    }
+  };
+
+  function renderEventCard(cfg, eager, themeName) {
+    var t = cardThemes[themeName];
     var loadAttr = eager ? '' : ' loading="lazy" decoding="async"';
+    var eyebrow = '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:' + t.eyebrow + ';margin:0 0 6px;">Nächstes Event</p>';
+
     if (cfg.ready) {
       return '<img src="' + cfg.image + '" alt="' + cfg.name + '"' + loadAttr + ' style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">' +
-        '<div class="event-body">' +
-          '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#67e8f9;margin:0 0 6px;">Nächstes Event</p>' +
-          '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#fff;margin:0 0 6px;">' + cfg.name + '</p>' +
-          '<p style="font-size:14px;line-height:1.65;color:#b9c2c9;margin:0 0 14px;">' + cfg.info + '</p>' +
+        '<div class="event-body">' + eyebrow +
+          '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:' + t.name + ';margin:0 0 6px;">' + cfg.name + '</p>' +
+          '<p style="font-size:14px;line-height:1.65;color:' + t.info + ';margin:0 0 14px;">' + cfg.info + '</p>' +
           '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
-            '<a href="' + cfg.ticketUrl + '" class="btn-cyan" style="display:inline-block;background:#67e8f9;color:#0e1013;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;text-decoration:none;">Alle Infos →</a>' +
-            '<a href="#spendenziele" class="btn-outline-dark" style="display:inline-block;border:1.5px solid rgba(240,237,232,0.45);color:#f0ede8;font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Spendenziel</a>' +
+            '<a href="' + cfg.ticketUrl + '" class="' + t.ctaClass + '" style="display:inline-block;' + t.cta + 'font-family:\'Inter\',sans-serif;font-size:15px;padding:14px 26px;border-radius:12px;text-decoration:none;">Alle Infos →</a>' +
+            '<a href="#spendenziele" class="' + t.altClass + '" style="display:inline-block;' + t.alt + 'font-family:\'Inter\',sans-serif;font-size:15px;font-weight:500;padding:13px 24px;border-radius:12px;text-decoration:none;background:transparent;">Spendenziel</a>' +
           '</div>' +
         '</div>';
     }
     return '<div style="position:relative;overflow:hidden;">' +
         '<img src="' + cfg.image + '" alt="Coming soon"' + loadAttr + ' style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:blur(18px);transform:scale(1.18);">' +
-        '<div style="position:absolute;inset:0;background:rgba(14,16,19,0.45);display:flex;align-items:center;justify-content:center;">' +
+        '<div style="position:absolute;inset:0;background:' + t.veil + ';display:flex;align-items:center;justify-content:center;">' +
           '<span style="font-family:\'DM Serif Display\',serif;font-size:clamp(30px,5.5vw,46px);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,0.55);letter-spacing:0.5px;">Coming soon</span>' +
         '</div>' +
       '</div>' +
-      '<div class="event-body">' +
-        '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#67e8f9;margin:0 0 6px;">Nächstes Event</p>' +
-        '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:#fff;margin:0 0 6px;">Bald mehr…</p>' +
-        '<p style="font-size:14px;line-height:1.65;color:#b9c2c9;margin:0;">Unser nächstes Event wird gerade geplant. Sei gespannt — alle Infos folgen in Kürze!</p>' +
+      '<div class="event-body">' + eyebrow +
+        '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:' + t.name + ';margin:0 0 6px;">Bald mehr…</p>' +
+        '<p style="font-size:14px;line-height:1.65;color:' + t.info + ';margin:0;">Unser nächstes Event wird gerade geplant. Sei gespannt — alle Infos folgen in Kürze!</p>' +
       '</div>';
   }
-  [['heroEventCard', true], ['eventsEventCard', false]].forEach(function (pair) {
-    var el = document.getElementById(pair[0]);
-    if (el) el.innerHTML = renderEventCard(nextEvent, pair[1]);
+  [['heroEventCard', true, 'light'], ['eventsEventCard', false, 'dark']].forEach(function (spec) {
+    var el = document.getElementById(spec[0]);
+    if (el) el.innerHTML = renderEventCard(nextEvent, spec[1], spec[2]);
   });
 
   /* ── Nav: ab dem Hero solide, sonst wären die hellen Links über den
