@@ -30,10 +30,20 @@
 
     .activities-list-wrap { display: none; }
 
-    summary { list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::marker { content: ""; }
-    details[open] .details-chevron { transform: rotate(180deg); }
+    .hermine-trigger:hover { transform: translateY(-3px); }
+
+    /* ── Modal: mobile-first als Bottom-Sheet, ab Tablet als zentriertes Popup ── */
+    #hermineModal { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-end; justify-content: center; background: rgba(20,15,10,0.5); opacity: 0; transition: opacity 0.25s ease; }
+    #hermineModal.is-open { display: flex; opacity: 1; }
+    #hermineModalPanel { position: relative; background: #fffaf1; width: 100%; max-width: 480px; max-height: 82vh; overflow-y: auto; border-radius: 22px 22px 0 0; padding: 28px 24px calc(28px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(0,0,0,0.25); transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    #hermineModal.is-open #hermineModalPanel { transform: translateY(0); }
+    #hermineModalClose { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(122,59,29,0.08); color: #7a3b1d; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    @media (min-width: 640px) {
+      #hermineModal { align-items: center; padding: 24px; }
+      #hermineModalPanel { border-radius: 22px; max-height: 80vh; transform: translateY(16px) scale(0.98); }
+      #hermineModal.is-open #hermineModalPanel { transform: translateY(0) scale(1); }
+    }
 
     @media (max-width: 767px) {
       .section     { padding: 64px 20px; }
@@ -174,27 +184,18 @@
           <div style="width:100%;overflow:hidden;">
             <div id="activitiesTrack" class="car-track">
               <div class="car-item">
-                <details class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
-                  <summary style="list-style:none;cursor:pointer;">
-                    <div style="font-size:20px;margin-bottom:10px;">🤝</div>
-                    <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">HERMINE e.V. vor Ort</p>
-                    <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Infostand, Bilderausstellung, Bastelecke, u.v.m.</p>
-                    <span style="display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:#a9764f;margin-top:10px;">Details <span class="details-chevron" style="display:inline-block;transition:transform 0.2s;">⌄</span></span>
-                  </summary>
-                  <div style="display:flex;flex-direction:column;gap:5px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(122,59,29,0.15);">
-                    <p style="font-size:12.5px;line-height:1.5;color:#7a5a45;margin:0;">📋 Infostand mit Flyern &amp; Infomaterial</p>
-                    <p style="font-size:12.5px;line-height:1.5;color:#7a5a45;margin:0;">🖼️ Ausstellung „Moria"</p>
-                    <p style="font-size:12.5px;line-height:1.5;color:#7a5a45;margin:0;">🎨 Kinderschminken &amp; Basteln</p>
-                    <p style="font-size:12.5px;line-height:1.5;color:#7a5a45;margin:0;">👜 Jutebeutel bedrucken</p>
-                    <p style="font-size:12.5px;line-height:1.5;color:#7a5a45;margin:0;">🎤 Live-Interview in der Wilderei</p>
-                  </div>
-                </details>
+                <div class="idea-card hermine-trigger" role="button" tabindex="0" aria-haspopup="dialog" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;cursor:pointer;">
+                  <div style="font-size:20px;margin-bottom:10px;">🤝</div>
+                  <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">HERMINE e.V. vor Ort</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Infostand, Bilderausstellung, Bastelecke, u.v.m.</p>
+                  <span style="display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:#a9764f;margin-top:10px;">Details ansehen →</span>
+                </div>
               </div>
               <div class="car-item">
                 <div class="idea-card" style="background:rgba(255,250,240,0.92);border:1px solid rgba(122,59,29,0.15);border-radius:20px;padding:22px 20px;">
                   <div style="font-size:20px;margin-bottom:10px;">🎛️</div>
                   <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#4a2a1c;margin:0 0 8px;">DJ Workshop</p>
-                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Erste Mixe selbst ausprobieren – Technik zum Anfassen.</p>
+                  <p style="font-size:13px;line-height:1.55;color:#7a5a45;margin:0;">Erste Mixe selbst ausprobieren - für die DJs von morgen.</p>
                 </div>
               </div>
               <div class="car-item">
@@ -222,25 +223,17 @@
 
         <!-- Mobile: platzsparende Liste -->
         <div class="activities-list-wrap" style="flex-direction:column;gap:2px;max-width:520px;margin:0 auto;">
-          <details style="border-bottom:1px solid rgba(122,59,29,0.14);padding:13px 4px;">
-            <summary style="display:flex;align-items:flex-start;gap:14px;list-style:none;cursor:pointer;">
-              <div style="font-size:19px;flex-shrink:0;">🤝</div>
-              <div>
-                <p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">HERMINE e.V. vor Ort</p>
-                <p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Infostand, Bilderausstellung, Bastelecke, u.v.m.</p>
-              </div>
-            </summary>
-            <div style="display:flex;flex-direction:column;gap:4px;margin:10px 0 0 33px;">
-              <p style="font-size:12px;line-height:1.5;color:#7a5a45;margin:0;">📋 Infostand mit Flyern &amp; Infomaterial</p>
-              <p style="font-size:12px;line-height:1.5;color:#7a5a45;margin:0;">🖼️ Ausstellung „Moria"</p>
-              <p style="font-size:12px;line-height:1.5;color:#7a5a45;margin:0;">🎨 Kinderschminken &amp; Basteln</p>
-              <p style="font-size:12px;line-height:1.5;color:#7a5a45;margin:0;">👜 Jutebeutel bedrucken</p>
-              <p style="font-size:12px;line-height:1.5;color:#7a5a45;margin:0;">🎤 Live-Interview in der Wilderei</p>
+          <div class="hermine-trigger" role="button" tabindex="0" aria-haspopup="dialog" style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);cursor:pointer;">
+            <div style="font-size:19px;flex-shrink:0;">🤝</div>
+            <div>
+              <p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">HERMINE e.V. vor Ort</p>
+              <p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Infostand, Bilderausstellung, Bastelecke, u.v.m.</p>
+              <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:#a9764f;margin-top:4px;">Details ansehen →</span>
             </div>
-          </details>
+          </div>
           <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
             <div style="font-size:19px;flex-shrink:0;">🎛️</div>
-            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">DJ Workshop</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Erste Mixe selbst ausprobieren.</p></div>
+            <div><p style="font-family:'DM Serif Display',serif;font-size:15px;color:#4a2a1c;margin:0 0 2px;">DJ Workshop</p><p style="font-size:12px;line-height:1.4;color:#7a5a45;margin:0;">Erste Mixe selbst ausprobieren - für die DJs von morgen.</p></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-bottom:1px solid rgba(122,59,29,0.14);">
             <div style="font-size:19px;flex-shrink:0;">🧘</div>
@@ -287,8 +280,8 @@
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Lucs</p>
-                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">23:00 – 00:30</p>
-                        <a href="https://soundcloud.com/lucs138" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                        <p style="font-size:12px;font-weight:500;color:#f6dfb0;text-shadow:0 1px 5px rgba(0,0,0,0.6);margin:0 0 6px;">23:00 – 00:30</p>
+                        <a href="https://soundcloud.com/lucs138" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f6dfb0;text-decoration:none;text-shadow:0 1px 5px rgba(0,0,0,0.6);">SoundCloud →</a>
                       </div>
                     </div>
                   </div>
@@ -299,8 +292,8 @@
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Raphael S.</p>
-                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">00:30 – 02:00</p>
-                        <a href="https://soundcloud.com/raphaelspunkt" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                        <p style="font-size:12px;font-weight:500;color:#f6dfb0;text-shadow:0 1px 5px rgba(0,0,0,0.6);margin:0 0 6px;">00:30 – 02:00</p>
+                        <a href="https://soundcloud.com/raphaelspunkt" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f6dfb0;text-decoration:none;text-shadow:0 1px 5px rgba(0,0,0,0.6);">SoundCloud →</a>
                       </div>
                     </div>
                   </div>
@@ -311,8 +304,8 @@
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Flokati</p>
-                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">02:00 – 03:30</p>
-                        <a href="https://soundcloud.com/flokati" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                        <p style="font-size:12px;font-weight:500;color:#f6dfb0;text-shadow:0 1px 5px rgba(0,0,0,0.6);margin:0 0 6px;">02:00 – 03:30</p>
+                        <a href="https://soundcloud.com/flokati" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f6dfb0;text-decoration:none;text-shadow:0 1px 5px rgba(0,0,0,0.6);">SoundCloud →</a>
                       </div>
                     </div>
                   </div>
@@ -323,8 +316,8 @@
                       </div>
                       <div style="padding:14px 12px 16px;">
                         <p style="font-family:'DM Serif Display',serif;font-size:17px;color:#fdf2f8;margin:0 0 4px;">Ectivate</p>
-                        <p style="font-size:12px;font-weight:500;color:#f5c26b;margin:0 0 6px;">03:30 – 05:00</p>
-                        <a href="https://soundcloud.com/ectivatemusic" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f5c26b;text-decoration:none;">SoundCloud →</a>
+                        <p style="font-size:12px;font-weight:500;color:#f6dfb0;text-shadow:0 1px 5px rgba(0,0,0,0.6);margin:0 0 6px;">03:30 – 05:00</p>
+                        <a href="https://soundcloud.com/ectivatemusic" target="_blank" rel="noopener" class="dj-sc-link" style="font-size:11px;color:#f6dfb0;text-decoration:none;text-shadow:0 1px 5px rgba(0,0,0,0.6);">SoundCloud →</a>
                       </div>
                     </div>
                   </div>
@@ -438,6 +431,25 @@
   </footer>
 </div>
 
+<!-- ── HERMINE-Detail-Popup ── -->
+<div id="hermineModal" role="dialog" aria-modal="true" aria-labelledby="hermineModalTitle">
+  <div id="hermineModalPanel">
+    <button id="hermineModalClose" aria-label="Schließen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <p style="font-size:20px;margin:0 0 8px;">🤝</p>
+    <p id="hermineModalTitle" style="font-family:'DM Serif Display',serif;font-size:20px;color:#4a2a1c;margin:0 0 14px;">HERMINE e.V. vor Ort</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <p style="font-size:14px;line-height:1.5;color:#7a5a45;margin:0;">📋 Infostand mit Flyern &amp; Infomaterial</p>
+      <p style="font-size:14px;line-height:1.5;color:#7a5a45;margin:0;">🖼️ Ausstellung „Moria"</p>
+      <p style="font-size:14px;line-height:1.5;color:#7a5a45;margin:0;">🎨 Kinderschminken &amp; Basteln</p>
+      <p style="font-size:14px;line-height:1.5;color:#7a5a45;margin:0;">👜 Jutebeutel bedrucken</p>
+      <p style="font-size:14px;line-height:1.5;color:#7a5a45;margin:0;">🎤 Live-Interview in der Wilderei</p>
+    </div>
+    <a href="https://hermine.global/" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;font-size:13px;font-weight:600;color:#a9764f;text-decoration:none;">Mehr über HERMINE e.V. →</a>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
@@ -527,6 +539,42 @@
     });
     render();
   }
+
+  /* ── HERMINE-Detail-Popup ── */
+  (function () {
+    var modal = document.getElementById('hermineModal');
+    if (!modal) return;
+    var closeBtn = document.getElementById('hermineModalClose');
+    var lastFocused = null;
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () { modal.classList.add('is-open'); });
+      closeBtn.focus();
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () { modal.style.display = 'none'; }, 300);
+      if (lastFocused) lastFocused.focus();
+    }
+
+    var triggers = document.querySelectorAll('.hermine-trigger');
+    Array.prototype.forEach.call(triggers, function (t) {
+      t.addEventListener('click', openModal);
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
 
   initCarousel({ trackId: 'outdoorTrack', prevId: 'outdoorPrev', nextId: 'outdoorNext', dotsId: 'outdoorDots', mobile: 1, desktop: 4, dotIdle: 'rgba(107,85,16,0.25)', dotActive: '#a9764f' });
   initCarousel({ trackId: 'activitiesTrack', prevId: 'activitiesPrev', nextId: 'activitiesNext', dotsId: 'activitiesDots', mobile: 1, desktop: 4, dotIdle: 'rgba(122,59,29,0.2)', dotActive: '#a9764f' });
