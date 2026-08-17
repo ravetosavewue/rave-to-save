@@ -41,7 +41,24 @@
     :focus-visible { outline: 3px solid #a85a42; outline-offset: 2px; border-radius: 4px; }
     .sec-dark :focus-visible, .nav-bar :focus-visible, .site-footer :focus-visible, #mobileMenu :focus-visible { outline-color: #67e8f9; }
 
+    /* ── Ankündigungsleiste über der Nav ── */
+    .event-bar { background: #67e8f9; color: #0e1013; }
+    .event-bar-link { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 8px; padding: 10px 20px; font-size: 14px; line-height: 1.35; color: inherit; text-decoration: none; }
+    .event-bar-cta { font-weight: 600; margin-left: 4px; }
+    .event-bar-link:hover .event-bar-cta { text-decoration: underline; }
+    .event-bar :focus-visible { outline-color: #0e1013; }
+
     /* ── Nav ── */
+    .nav-tickets { background: #67e8f9; color: #0e1013; font-size: 15px; font-weight: 600; padding: 9px 18px; border-radius: 10px; text-decoration: none; margin-left: 4px; white-space: nowrap; transition: filter 0.2s; }
+    .nav-tickets:hover { filter: brightness(1.08); }
+    .mobile-tickets { font-family: 'Inter', sans-serif !important; font-size: 17px !important; font-weight: 600; background: #67e8f9; color: #0e1013 !important; padding: 13px 30px !important; border-radius: 12px; margin-bottom: 12px; }
+
+    @media (max-width: 767px) {
+      .event-bar-detail { display: none; }
+      .event-bar-link { font-size: 13px; padding: 9px 14px; gap: 3px 6px; }
+      .nav-tickets { display: none; }
+    }
+
     .nav-bar { background: rgba(14,16,19,0.18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: space-between; height: 96px; padding: 0 48px; position: relative; overflow: visible; transition: background 0.3s ease, border-color 0.3s ease; }
     .nav-bar.scrolled { background: rgba(14,16,19,0.94); border-bottom-color: rgba(255,255,255,0.10); }
     .nav-links { display: flex; gap: 28px; flex: 1; }
@@ -64,7 +81,7 @@
     @media (max-width: 767px) {
       .nav-links   { display: none; }
       .burger      { display: flex; }
-      .hero        { padding: 130px 20px 88px; }
+      .hero        { padding: calc(var(--header-h, 96px) + 34px) 20px 88px; }
       .logo        { width: 88px; height: 88px; }
       .hero-title  { font-size: clamp(38px, 11vw, 54px); }
       .hero-sub    { font-size: 16px; }
@@ -77,7 +94,7 @@
     }
 
     /* ── Hero: Wolkenfoto in Originalfarbe ── */
-    .hero      { min-height: 100vh; min-height: 100svh; background: #f0ede8; }
+    .hero      { min-height: 100vh; min-height: 100svh; background: #f0ede8; padding: calc(var(--header-h, 96px) + 24px) 24px 64px; }
     .hero-bg   { position: absolute; inset: 0; background-image: url('Hero-Background.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; }
     /* Oben eine leichte Abdunklung, damit die hellen Nav-Links auf den
        Wolken lesbar bleiben; unten der Verlauf ins Beige der Mission-Sektion. */
@@ -116,7 +133,19 @@
 <div>
 
   <!-- ── NAV ── -->
-  <header style="position:fixed;top:0;left:0;right:0;z-index:200;">
+  <header id="siteHeader" style="position:fixed;top:0;left:0;right:0;z-index:200;">
+    <!-- Ankündigungsleiste: wird per JS aus nextEvent befüllt und blendet
+         sich nach dem Event-Datum von selbst wieder aus. -->
+    <div id="eventBar" class="event-bar" hidden>
+      <a id="eventBarLink" href="festival2908/" class="event-bar-link">
+        <strong id="eventBarName">Nächstes Event</strong>
+        <span aria-hidden="true">·</span>
+        <span id="eventBarDate"></span>
+        <span id="eventBarDetail" class="event-bar-detail"></span>
+        <span class="event-bar-cta">Alle Infos →</span>
+      </a>
+    </div>
+
     <nav id="navBar" class="nav-bar" aria-label="Hauptnavigation">
       <div class="nav-links" style="justify-content:flex-end;padding-right:88px;">
         <a href="#mission" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Unsere Mission</a>
@@ -132,6 +161,7 @@
         <a href="#spendenziele" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Spendenziele</a>
         <a href="#unterstuetze-uns" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Unterstütze uns</a>
         <a href="#kontakt" class="nav-link" style="font-size:15px;font-weight:500;color:#f0ede8;text-decoration:none;letter-spacing:0.2px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Kontakt</a>
+        <a id="navTickets" class="nav-tickets" href="festival2908/#tickets" hidden>Tickets</a>
         <div style="display:flex;align-items:center;gap:16px;margin-left:4px;">
           <a href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener" aria-label="Rave to Save auf Instagram" class="nav-social" style="text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4));">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
@@ -160,7 +190,8 @@
   </header>
 
   <!-- ── MOBILE MENU ── -->
-  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(14,16,19,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding-top:172px;padding-bottom:40px;overflow-y:auto;">
+  <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(14,16,19,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding-top:calc(var(--header-h, 96px) + 76px);padding-bottom:40px;overflow-y:auto;">
+    <a id="mobileTickets" class="mobile-link mobile-tickets" href="festival2908/#tickets" hidden>Tickets sichern →</a>
     <a href="#mission" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Unsere Mission</a>
     <a href="#wer-wir-sind" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Wer wir sind</a>
     <a href="#events" class="mobile-link" style="font-family:'DM Serif Display',serif;font-size:28px;color:rgba(240,237,232,0.85);text-decoration:none;padding:12px 32px;">Events</a>
@@ -186,7 +217,7 @@
   </section>
 
   <!-- ── MISSION ── -->
-  <section id="mission" class="section" style="background:#f0ede8;scroll-margin-top:180px;">
+  <section id="mission" class="section" style="background:#f0ede8;scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto 48px;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Unsere Mission</p>
@@ -222,7 +253,7 @@
   </section>
 
   <!-- ── WER WIR SIND ── -->
-  <section id="wer-wir-sind" class="section" style="background:#f5f2ed;scroll-margin-top:180px;">
+  <section id="wer-wir-sind" class="section" style="background:#f5f2ed;scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:620px;margin:0 auto 8px;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Wer wir sind</p>
@@ -278,7 +309,7 @@
   </section>
 
   <!-- ── EVENTS (Nacht-Sektion) ── -->
-  <section id="events" class="section sec-dark" style="scroll-margin-top:180px;">
+  <section id="events" class="section sec-dark" style="scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto 8px;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#67e8f9;margin:0 0 14px;">Events</p>
@@ -360,7 +391,7 @@
   </section>
 
   <!-- ── SPENDENZIELE ── -->
-  <section id="spendenziele" class="section sec-dark" style="background:linear-gradient(160deg,#14171c 0%,#1b1f26 55%,#232830 100%);scroll-margin-top:180px;">
+  <section id="spendenziele" class="section sec-dark" style="background:linear-gradient(160deg,#14171c 0%,#1b1f26 55%,#232830 100%);scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#67e8f9;margin:0 0 14px;">Spendenziele</p>
@@ -424,7 +455,7 @@
   </section>
 
   <!-- ── SUPPORT ── -->
-  <section id="unterstuetze-uns" class="section" style="background:#f5f2ed;scroll-margin-top:180px;">
+  <section id="unterstuetze-uns" class="section" style="background:#f5f2ed;scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;text-align:center;">
       <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Unterstütze uns</p>
       <h2 class="h2" style="font-family:'DM Serif Display',serif;line-height:1.08;color:#4a5b69;margin:0 0 18px;">Du willst helfen?</h2>
@@ -452,7 +483,7 @@
   </section>
 
   <!-- ── KONTAKT ── -->
-  <section id="kontakt" class="section" style="background:#f0ede8;scroll-margin-top:180px;">
+  <section id="kontakt" class="section" style="background:#f0ede8;scroll-margin-top:var(--anchor-offset, 180px);">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;max-width:680px;margin:0 auto;">
         <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5c6b78;margin:0 0 14px;">Kontakt</p>
@@ -543,17 +574,37 @@
      ───────────────────────────────────────────────────────────────
      ready:  false = "Coming soon" (Bild geblurrt, keine Fakten, keine Buttons)
              true  = volle Event-Karte mit allen Fakten + Buttons
-     Sobald das Event steht: ready auf true setzen und die Felder
-     darunter (image / name / info / ticketUrl) mit den echten Daten füllen.
-     Betrifft automatisch beide Stellen (Hero + Events-Sektion).
+     date:   Tag des Events (JJJJ-MM-TT). Ab dem Tag danach blenden sich
+             Ankündigungsleiste und Tickets-Buttons von selbst aus und die
+             Karte fällt automatisch auf "Coming soon" zurück — es muss
+             also nichts von Hand zurückgesetzt werden.
+             Leer lassen = läuft unbegrenzt weiter.
+     Sobald das nächste Event steht: date, shortName, dateLabel, teaser,
+     image, name, info und ticketUrl füllen — der Rest passiert automatisch,
+     an allen Stellen gleichzeitig (Leiste, Nav, Hero, Events-Sektion).
      ═══════════════════════════════════════════════════════════════ */
   var nextEvent = {
     ready: true,
+    date: '2026-08-29',
+    shortName: 'Sommer Festival',
+    dateLabel: 'Sa 29.08.',
+    teaser: 'Outdoor ab 15 Uhr · Freier Eintritt',
     image: 'Next Party/RTS_2908_Titelbild.webp',
     name: 'Rave to Save – Sommer Festival',
     info: 'Sa, 29. August 2026 · Dornheim Club &amp; Garten, Würzburg<br>Spendenziel: HERMINE e.V.',
     ticketUrl: 'festival2908/'
   };
+
+  /* Läuft das Event noch? Ein kaputtes Datum wird bewusst als "läuft noch"
+     gewertet — lieber eine Leiste zu viel als eine verschwundene Ankündigung. */
+  function eventIsUpcoming(cfg) {
+    if (!cfg.ready) return false;
+    if (!cfg.date) return true;
+    var end = new Date(cfg.date + 'T23:59:59');
+    if (isNaN(end.getTime())) return true;
+    return Date.now() <= end.getTime();
+  }
+  var eventUpcoming = eventIsUpcoming(nextEvent);
 
   /* Die Karte erscheint zweimal: hell im Hero (auf dem Wolkenfoto) und
      dunkel in der Events-Sektion. Es unterscheiden sich nur die Farben. */
@@ -570,12 +621,12 @@
     }
   };
 
-  function renderEventCard(cfg, eager, themeName) {
+  function renderEventCard(cfg, upcoming, eager, themeName) {
     var t = cardThemes[themeName];
     var loadAttr = eager ? '' : ' loading="lazy" decoding="async"';
     var eyebrow = '<p style="font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:' + t.eyebrow + ';margin:0 0 6px;">Nächstes Event</p>';
 
-    if (cfg.ready) {
+    if (upcoming) {
       return '<img src="' + cfg.image + '" alt="' + cfg.name + '"' + loadAttr + ' style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">' +
         '<div class="event-body">' + eyebrow +
           '<p class="event-name" style="font-family:\'DM Serif Display\',serif;color:' + t.name + ';margin:0 0 6px;">' + cfg.name + '</p>' +
@@ -599,8 +650,35 @@
   }
   [['heroEventCard', true, 'light'], ['eventsEventCard', false, 'dark']].forEach(function (spec) {
     var el = document.getElementById(spec[0]);
-    if (el) el.innerHTML = renderEventCard(nextEvent, spec[1], spec[2]);
+    if (el) el.innerHTML = renderEventCard(nextEvent, eventUpcoming, spec[1], spec[2]);
   });
+
+  /* ── Ankündigungsleiste + Tickets-Buttons, alle am selben Datum haengend ── */
+  var siteHeader = document.getElementById('siteHeader');
+  var eventBar = document.getElementById('eventBar');
+  if (eventUpcoming) {
+    document.getElementById('eventBarName').textContent = nextEvent.shortName || nextEvent.name;
+    document.getElementById('eventBarDate').textContent = nextEvent.dateLabel || '';
+    var detail = document.getElementById('eventBarDetail');
+    if (nextEvent.teaser) detail.textContent = '· ' + nextEvent.teaser;
+    document.getElementById('eventBarLink').setAttribute('href', nextEvent.ticketUrl);
+    eventBar.hidden = false;
+    ['navTickets', 'mobileTickets'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.hidden = false;
+    });
+  }
+
+  /* Anker-Offsets und Menue-Abstand an die echte Header-Hoehe koppeln,
+     damit die Leiste die Sprungmarken nicht verschiebt. */
+  function syncHeaderOffset() {
+    var h = Math.round(siteHeader.getBoundingClientRect().height);
+    var root = document.documentElement.style;
+    root.setProperty('--header-h', h + 'px');
+    root.setProperty('--anchor-offset', (h + 84) + 'px');
+  }
+  window.addEventListener('resize', syncHeaderOffset);
+  syncHeaderOffset();
 
   /* ── Nav: ab dem Hero solide, sonst wären die hellen Links über den
      hellen Sektionen praktisch unsichtbar (vorher ~1,3:1 Kontrast) ── */
