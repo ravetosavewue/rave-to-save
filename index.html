@@ -261,6 +261,9 @@
   .team.no-pin .team-grid { width: 100%; }
   .team.no-pin .flip { transform: rotateY(180deg); transition: transform 1.1s var(--ease); transition-delay: var(--d, 0s); }
   .team.no-pin .member.dealt .flip { transform: none; }
+  .team.no-pin .face.front { visibility: hidden; }
+  .team.no-pin .member.dealt .face.front { visibility: visible; transition: visibility 0s linear calc(var(--d, 0s) + .2s); }
+  .team.no-pin .member.dealt .face.back { visibility: hidden; transition: visibility 0s linear calc(var(--d, 0s) + .2s); }
   .team.no-pin .cap { opacity: 0; transform: translateY(12px); transition: opacity .6s, transform .6s var(--ease); transition-delay: calc(var(--d, 0s) + .5s); }
   .team.no-pin .member.dealt .cap { opacity: 1; transform: none; }
   .sound { margin-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 40px; background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 44px 48px; }
@@ -527,7 +530,7 @@
     .rv-img { clip-path: none !important; }
     .pop > *, .rv.from-r { opacity: 1 !important; transform: none !important; }
     .ev-grid .evc { opacity: 1 !important; transform: none !important; }
-    .team .flip { transform: none !important; } .team .cap { opacity: 1 !important; transform: none !important; } .rv-img img { transform: none !important; }
+    .team .flip { transform: none !important; } .team .face.front { visibility: visible !important; } .team .face.back { visibility: hidden !important; } .team .cap { opacity: 1 !important; transform: none !important; } .rv-img img { transform: none !important; }
   }
 </style>
 </head>
@@ -1186,7 +1189,8 @@
   var team = document.getElementById('team'), teamStage = document.getElementById('teamStage'), teamGrid = document.getElementById('teamGrid');
   var members = teamGrid.querySelectorAll('.member');
   var flips = [], caps = [], isLive = [];
-  members.forEach(function (m, i) { flips[i] = m.querySelector('.flip'); caps[i] = m.querySelector('.cap'); m.style.zIndex = String(10 - i); });
+  var fronts = [], backs = [];
+  members.forEach(function (m, i) { flips[i] = m.querySelector('.flip'); caps[i] = m.querySelector('.cap'); fronts[i] = m.querySelector('.face.front'); backs[i] = m.querySelector('.face.back'); m.style.zIndex = String(10 - i); });
   var teamLastQ = -1, teamLastPre = -1;
   var deckRot = [-8, 5, -3, 10], deckY = [-10, 6, -4, 12];
   var deckDx = [], pinMode = null, teamAfter = document.querySelector('.team-after');
@@ -1214,6 +1218,7 @@
     members.forEach(function (m) {
       m.style.transform = '';
       m.querySelector('.flip').style.transform = '';
+      m.querySelector('.face.front').style.visibility = ''; m.querySelector('.face.back').style.visibility = '';
       var cap = m.querySelector('.cap'); cap.style.opacity = ''; cap.style.transform = '';
     });
     if (pin) measureDeck(); else { teamGrid.style.width = ''; teamAfter.style.marginTop = ''; members.forEach(function (m) { teamIO.observe(m); }); }
@@ -1234,7 +1239,11 @@
       var fe = fl < .5 ? 4 * fl * fl * fl : 1 - Math.pow(-2 * fl + 2, 3) / 2;
       var arc = -40 * Math.sin(Math.PI * sp);
       m.style.transform = 'translate3d(' + (deckDx[i] * (1 - sp)).toFixed(2) + 'px,' + (deckY[i] * (1 - sp) + arc + rise).toFixed(2) + 'px,0) rotate(' + (deckRot[i] * (1 - sp)).toFixed(3) + 'deg)';
-      flips[i].style.transform = 'rotateY(' + (180 * (1 - fe)).toFixed(3) + 'deg) scale(' + (1 + 0.07 * Math.sin(Math.PI * fe)).toFixed(4) + ')';
+      var angle = 180 * (1 - fe);
+      flips[i].style.transform = 'rotateY(' + angle.toFixed(3) + 'deg) scale(' + (1 + 0.07 * Math.sin(Math.PI * fe)).toFixed(4) + ')';
+      /* Ab 90° ist die Rückseite dran, darunter die Vorderseite — explizit, nicht nur über backface-visibility */
+      fronts[i].style.visibility = angle > 90 ? 'hidden' : 'visible';
+      backs[i].style.visibility = angle > 90 ? 'visible' : 'hidden';
       var c = seg(q, 0.55 + i * 0.08, 0.75 + i * 0.08);
       caps[i].style.opacity = String(c);
       caps[i].style.transform = 'translate3d(0,' + (12 * (1 - c)).toFixed(1) + 'px,0)';
