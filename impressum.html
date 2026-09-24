@@ -1,62 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impressum – Rave to Save</title>
-  <link rel="icon" href="RAVETOSAVE2026_LOGO.png">
-  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-    @font-face { font-family:'DM Serif Display'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400.woff2') format('woff2'); }
-    @font-face { font-family:'DM Serif Display'; font-style:italic; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400-italic.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-400.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-500.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-600.woff2') format('woff2'); }
-  </style>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #f0ede8; -webkit-font-smoothing: antialiased; }
-    a { color: #a85a42; }
-    a:hover { opacity: 0.8; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum – Rave to Save</title>
+<link rel="icon" href="RAVETOSAVE2026_LOGO.png">
+<link rel="preload" href="fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Schriften lokal (kein Google-CDN) */
+  @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/bricolage-grotesque-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/manrope-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/space-mono-700.woff2') format('woff2'); }
+  :root {
+    --night: #17152A; --night-rgb: 23,21,42; --glow: #C9B8FF; --glow-rgb: 201,184,255; --warm: #6A4FC4;
+    --cream: #F6F2EA; --paper: #FAF7F0; --line: #E4DCC9; --ink: #1E2635; --ink-2: #4E5260; --ink-3: #676A74;
+    --display: 'Bricolage Grotesque', system-ui, sans-serif; --sans: 'Manrope', system-ui, sans-serif; --mono: 'Space Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(.22, 1, .36, 1); --gutter: clamp(20px, 5vw, 56px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: var(--warm); }
+  :focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 8px; z-index: 999; background: var(--glow); color: var(--night); padding: 10px 16px; border-radius: 8px; }
+  .skip:focus { left: 8px; }
+
+  /* Bubble-Menü wie auf der Startseite */
+  .hdr { position: fixed; top: 28px; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; padding: 0 12px; pointer-events: none; }
+  .bubble { pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 6px; border-radius: 999px; background: rgba(250,247,240,.82); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); border: 1px solid rgba(255,255,255,.7); box-shadow: 0 10px 40px -14px rgba(var(--night-rgb),.45), inset 0 1px 0 rgba(255,255,255,.6); }
+  .b-logo { display: flex; margin: -18px 12px -18px -4px; border-radius: 50%; transition: transform .5s var(--ease); }
+  .b-logo:hover { transform: rotate(-12deg) scale(1.04); }
+  .b-logo img { width: 78px; height: 78px; padding: 5px; border-radius: 50%; background: radial-gradient(circle at 32% 26%, #2E2856, var(--night) 70%); box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 0 0 5px rgba(var(--glow-rgb),.6), 0 14px 30px -8px rgba(var(--night-rgb),.6); }
+  .b-links { display: flex; }
+  .b-links a { padding: 10px 16px; font-size: 15px; font-weight: 500; color: #6A6E78; border-radius: 999px; text-decoration: none; white-space: nowrap; transition: color .3s; }
+  .b-links a:hover { color: var(--ink); }
+  .b-back { display: none; padding: 10px 18px 10px 14px; font-size: 14.5px; font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--warm); margin: 0 0 16px; }
+  h1 { font-family: var(--display); font-weight: 700; letter-spacing: -.04em; font-size: clamp(40px, 6vw, 64px); line-height: 1; margin: 0 0 40px; }
+
+  /* Rechtstexte: lesbare Spalte auf heller Karte */
+  .legal-wrap { max-width: 860px; margin: 0 auto; padding: 170px var(--gutter) 110px; }
+  .legal { background: var(--paper); border: 1px solid var(--line); border-radius: 30px; padding: clamp(28px, 5vw, 56px); box-shadow: 0 30px 60px -44px rgba(var(--night-rgb),.4); }
+  .legal h2 { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: 26px; line-height: 1.15; margin: 44px 0 14px; }
+  .legal h2:first-child { margin-top: 0; }
+  .legal h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; font-size: 19px; margin: 26px 0 8px; }
+  .legal p, .legal li { font-size: 16px; line-height: 1.8; color: var(--ink-2); }
+  .legal p { margin: 0 0 14px; }
+  .legal ul { margin: 0 0 14px; padding-left: 22px; }
+  .legal strong { color: var(--ink); }
+  .legal p > em:only-child, .legal .stand { font-size: 13px; color: var(--ink-3); }
+
+  footer { background: var(--night); color: var(--cream); padding: 40px 0; }
+  .fb { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13px; color: #8b867e; }
+  .fb a { color: #C7C2B8; text-decoration: none; }
+  .fb a:hover { color: var(--glow); }
+  .fb div { display: flex; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--cream) !important; font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: 18px; }
+  .brand img { width: 40px; height: 40px; border-radius: 50%; }
+
+  /* 404 */
+  .nf { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 150px var(--gutter) 80px; background: radial-gradient(90% 70% at 50% 0%, rgba(var(--glow-rgb),.25), transparent 60%), var(--night); color: var(--cream); }
+  .nf h1 { margin-bottom: 18px; }
+  .nf p { color: #B9B5C4; line-height: 1.7; max-width: 440px; margin: 0 auto 32px; }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; padding: 15px 26px; border-radius: 999px; text-decoration: none; transition: transform .35s var(--ease); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-glow { background: var(--glow); color: var(--night); }
+  .btn-ghost { border: 1.5px solid rgba(246,242,234,.4); color: var(--cream); }
+
+  @media (max-width: 980px) { .b-links { display: none; } .b-back { display: block; } }
+  @media (max-width: 767px) { .hdr { top: 24px; } .legal-wrap { padding-top: 140px; } .legal { border-radius: 24px; } }
+</style>
 </head>
 <body>
-<div style="background:#f0ede8;color:#4a5b69;min-height:100vh;">
-  <header style="background:#252f37;padding:28px 24px;display:flex;align-items:center;justify-content:center;position:relative;">
-    <a href="index.html" style="position:absolute;left:24px;font-size:14px;color:#f0ede8;text-decoration:none;opacity:0.8;">← Zur Startseite</a>
-    <img src="RAVETOSAVE2026_LOGO.png" alt="Rave to Save" style="width:56px;height:56px;border-radius:50%;display:block;" />
-  </header>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="hdr">
+  <nav class="bubble" aria-label="Hauptnavigation">
+    <a href="./" class="b-logo" aria-label="Rave to Save — zur Startseite"><img src="RAVETOSAVE2026_LOGO.png" alt=""></a>
+    <div class="b-links">
+      <a href="./">Home</a>
+      <a href="./#mission">Mission</a>
+      <a href="./#team">Team</a>
+      <a href="./#events">Events</a>
+      <a href="./#spendenziele">Spendenziele</a>
+      <a href="./#kontakt">Kontakt</a>
+    </div>
+    <a class="b-back" href="./">← Zur Startseite</a>
+  </nav>
+</header>
+<main id="inhalt" class="legal-wrap">
+  <p class="eyebrow">Rechtliches</p>
+  <h1>Impressum</h1>
+  <article class="legal">
+<h3>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</h3>
+    <p>Verantwortlich für den Inhalt dieser Website:<br>Felix Sauer<br>Sulzbacher Straße 81<br>90489 Nürnberg<br>Deutschland</p>
 
-  <main style="max-width:720px;margin:0 auto;padding:64px 24px 96px;">
-    <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Rechtliches</p>
-    <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,48px);line-height:1.1;color:#4a5b69;margin:0 0 40px;">Impressum</h1>
+    <h3>Kontakt</h3>
+    <p>E-Mail: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
 
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 28px;">Verantwortlich für den Inhalt dieser Website:<br>Felix Sauer<br>Sulzbacher Straße 81<br>90489 Nürnberg<br>Deutschland</p>
+    <h3>Hinweis zum Projekt</h3>
+    <p>Rave to Save ist ein ehrenamtliches, nicht als eingetragener Verein organisiertes Projekt mehrerer Privatpersonen. Verantwortlich im Sinne des Presserechts und für rechtliche Belange dieser Website ist die oben genannte Person.</p>
 
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Kontakt</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 28px;">E-Mail: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
+    <h2>Haftungsausschluss</h2>
 
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Hinweis zum Projekt</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 40px;">Rave to Save ist ein ehrenamtliches, nicht als eingetragener Verein organisiertes Projekt mehrerer Privatpersonen. Verantwortlich im Sinne des Presserechts und für rechtliche Belange dieser Website ist die oben genannte Person.</p>
+    <h3>Haftung für Inhalte</h3>
+    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
 
-    <div style="border-top:1px solid #d4c9bd;margin:40px 0;"></div>
+    <h3>Haftung für Links</h3>
+    <p>Unsere Website enthält Links zu externen Websites Dritter (z. B. Ticketshop, Instagram), auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.</p>
 
-    <h2 style="font-family:'DM Serif Display',serif;font-size:26px;color:#4a5b69;margin:0 0 24px;">Haftungsausschluss</h2>
-
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Haftung für Inhalte</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 28px;">Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
-
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Haftung für Links</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 28px;">Unsere Website enthält Links zu externen Websites Dritter (z. B. Ticketshop, Instagram), auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.</p>
-
-    <p style="font-size:15px;font-weight:600;color:#4a5b69;line-height:1.7;margin:0 0 8px;">Urheberrecht</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0;">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.</p>
-  </main>
-
-  <footer style="background:linear-gradient(160deg,#0e1013 0%,#14171c 60%,#1b1f26 100%);padding:32px 24px;text-align:center;">
-    <span style="font-size:13px;color:#8fa0ac;">© 2026 Rave to Save · <a href="datenschutz.html" style="color:#8fa0ac;text-decoration:underline;text-underline-offset:3px;">Datenschutz</a></span>
-  </footer>
-</div>
+    <h3>Urheberrecht</h3>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.</p>
+  </article>
+</main>
+<footer>
+  <div class="fb">
+    <a class="brand" href="./"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></a>
+    <span>© 2026 Rave to Save</span>
+    <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,64 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datenschutzerklärung – Rave to Save</title>
-  <link rel="icon" href="RAVETOSAVE2026_LOGO.png">
-  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-    @font-face { font-family:'DM Serif Display'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400.woff2') format('woff2'); }
-    @font-face { font-family:'DM Serif Display'; font-style:italic; font-weight:400; font-display:swap; src:url('fonts/dm-serif-display-400-italic.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-400.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-500.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-600.woff2') format('woff2'); }
-  </style>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #f0ede8; -webkit-font-smoothing: antialiased; }
-    a { color: #a85a42; }
-    a:hover { opacity: 0.8; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung – Rave to Save</title>
+<link rel="icon" href="RAVETOSAVE2026_LOGO.png">
+<link rel="preload" href="fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Schriften lokal (kein Google-CDN) */
+  @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/bricolage-grotesque-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/manrope-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/space-mono-700.woff2') format('woff2'); }
+  :root {
+    --night: #17152A; --night-rgb: 23,21,42; --glow: #C9B8FF; --glow-rgb: 201,184,255; --warm: #6A4FC4;
+    --cream: #F6F2EA; --paper: #FAF7F0; --line: #E4DCC9; --ink: #1E2635; --ink-2: #4E5260; --ink-3: #676A74;
+    --display: 'Bricolage Grotesque', system-ui, sans-serif; --sans: 'Manrope', system-ui, sans-serif; --mono: 'Space Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(.22, 1, .36, 1); --gutter: clamp(20px, 5vw, 56px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: var(--warm); }
+  :focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 8px; z-index: 999; background: var(--glow); color: var(--night); padding: 10px 16px; border-radius: 8px; }
+  .skip:focus { left: 8px; }
+
+  /* Bubble-Menü wie auf der Startseite */
+  .hdr { position: fixed; top: 28px; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; padding: 0 12px; pointer-events: none; }
+  .bubble { pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 6px; border-radius: 999px; background: rgba(250,247,240,.82); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); border: 1px solid rgba(255,255,255,.7); box-shadow: 0 10px 40px -14px rgba(var(--night-rgb),.45), inset 0 1px 0 rgba(255,255,255,.6); }
+  .b-logo { display: flex; margin: -18px 12px -18px -4px; border-radius: 50%; transition: transform .5s var(--ease); }
+  .b-logo:hover { transform: rotate(-12deg) scale(1.04); }
+  .b-logo img { width: 78px; height: 78px; padding: 5px; border-radius: 50%; background: radial-gradient(circle at 32% 26%, #2E2856, var(--night) 70%); box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 0 0 5px rgba(var(--glow-rgb),.6), 0 14px 30px -8px rgba(var(--night-rgb),.6); }
+  .b-links { display: flex; }
+  .b-links a { padding: 10px 16px; font-size: 15px; font-weight: 500; color: #6A6E78; border-radius: 999px; text-decoration: none; white-space: nowrap; transition: color .3s; }
+  .b-links a:hover { color: var(--ink); }
+  .b-back { display: none; padding: 10px 18px 10px 14px; font-size: 14.5px; font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--warm); margin: 0 0 16px; }
+  h1 { font-family: var(--display); font-weight: 700; letter-spacing: -.04em; font-size: clamp(40px, 6vw, 64px); line-height: 1; margin: 0 0 40px; }
+
+  /* Rechtstexte: lesbare Spalte auf heller Karte */
+  .legal-wrap { max-width: 860px; margin: 0 auto; padding: 170px var(--gutter) 110px; }
+  .legal { background: var(--paper); border: 1px solid var(--line); border-radius: 30px; padding: clamp(28px, 5vw, 56px); box-shadow: 0 30px 60px -44px rgba(var(--night-rgb),.4); }
+  .legal h2 { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: 26px; line-height: 1.15; margin: 44px 0 14px; }
+  .legal h2:first-child { margin-top: 0; }
+  .legal h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; font-size: 19px; margin: 26px 0 8px; }
+  .legal p, .legal li { font-size: 16px; line-height: 1.8; color: var(--ink-2); }
+  .legal p { margin: 0 0 14px; }
+  .legal ul { margin: 0 0 14px; padding-left: 22px; }
+  .legal strong { color: var(--ink); }
+  .legal p > em:only-child, .legal .stand { font-size: 13px; color: var(--ink-3); }
+
+  footer { background: var(--night); color: var(--cream); padding: 40px 0; }
+  .fb { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13px; color: #8b867e; }
+  .fb a { color: #C7C2B8; text-decoration: none; }
+  .fb a:hover { color: var(--glow); }
+  .fb div { display: flex; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--cream) !important; font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: 18px; }
+  .brand img { width: 40px; height: 40px; border-radius: 50%; }
+
+  /* 404 */
+  .nf { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 150px var(--gutter) 80px; background: radial-gradient(90% 70% at 50% 0%, rgba(var(--glow-rgb),.25), transparent 60%), var(--night); color: var(--cream); }
+  .nf h1 { margin-bottom: 18px; }
+  .nf p { color: #B9B5C4; line-height: 1.7; max-width: 440px; margin: 0 auto 32px; }
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; padding: 15px 26px; border-radius: 999px; text-decoration: none; transition: transform .35s var(--ease); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-glow { background: var(--glow); color: var(--night); }
+  .btn-ghost { border: 1.5px solid rgba(246,242,234,.4); color: var(--cream); }
+
+  @media (max-width: 980px) { .b-links { display: none; } .b-back { display: block; } }
+  @media (max-width: 767px) { .hdr { top: 24px; } .legal-wrap { padding-top: 140px; } .legal { border-radius: 24px; } }
+</style>
 </head>
 <body>
-<div style="background:#f0ede8;color:#4a5b69;min-height:100vh;">
-  <header style="background:#252f37;padding:28px 24px;display:flex;align-items:center;justify-content:center;position:relative;">
-    <a href="index.html" style="position:absolute;left:24px;font-size:14px;color:#f0ede8;text-decoration:none;opacity:0.8;">← Zur Startseite</a>
-    <img src="RAVETOSAVE2026_LOGO.png" alt="Rave to Save" style="width:56px;height:56px;border-radius:50%;display:block;" />
-  </header>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="hdr">
+  <nav class="bubble" aria-label="Hauptnavigation">
+    <a href="./" class="b-logo" aria-label="Rave to Save — zur Startseite"><img src="RAVETOSAVE2026_LOGO.png" alt=""></a>
+    <div class="b-links">
+      <a href="./">Home</a>
+      <a href="./#mission">Mission</a>
+      <a href="./#team">Team</a>
+      <a href="./#events">Events</a>
+      <a href="./#spendenziele">Spendenziele</a>
+      <a href="./#kontakt">Kontakt</a>
+    </div>
+    <a class="b-back" href="./">← Zur Startseite</a>
+  </nav>
+</header>
+<main id="inhalt" class="legal-wrap">
+  <p class="eyebrow">Rechtliches</p>
+  <h1>Datenschutz&shy;erklärung</h1>
+  <article class="legal">
+<h2>1. Verantwortlicher</h2>
+    <p>Felix Sauer<br>Sulzbacher Straße 81<br>90489 Nürnberg<br>Deutschland<br>E-Mail: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
 
-  <main style="max-width:720px;margin:0 auto;padding:64px 24px 96px;">
-    <p style="font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#7a8c99;margin:0 0 14px;">Rechtliches</p>
-    <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,48px);line-height:1.1;color:#4a5b69;margin:0 0 40px;">Datenschutzerklärung</h1>
+    <h2>2. Allgemeines zur Datenverarbeitung</h2>
+    <p>Wir verarbeiten personenbezogene Daten der Nutzer dieser Website nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung erfolgt regelmäßig nur nach Einwilligung des Nutzers oder soweit die Verarbeitung durch gesetzliche Vorschriften gestattet ist (Art. 6 DSGVO).</p>
 
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">1. Verantwortlicher</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 36px;">Felix Sauer<br>Sulzbacher Straße 81<br>90489 Nürnberg<br>Deutschland<br>E-Mail: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
-
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">2. Allgemeines zur Datenverarbeitung</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 36px;">Wir verarbeiten personenbezogene Daten der Nutzer dieser Website nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung erfolgt regelmäßig nur nach Einwilligung des Nutzers oder soweit die Verarbeitung durch gesetzliche Vorschriften gestattet ist (Art. 6 DSGVO).</p>
-
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">3. Hosting</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 12px;">Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (ein Unternehmen der Microsoft Corporation). Beim Aufruf der Website erhebt GitHub automatisch technische Daten (sogenannte Server-Logfiles), u. a.:</p>
-    <ul style="font-size:16px;line-height:1.9;color:#5a6b78;margin:0 0 12px;padding-left:22px;">
+    <h2>3. Hosting</h2>
+    <p>Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (ein Unternehmen der Microsoft Corporation). Beim Aufruf der Website erhebt GitHub automatisch technische Daten (sogenannte Server-Logfiles), u. a.:</p>
+    <ul>
       <li>IP-Adresse des aufrufenden Geräts</li>
       <li>Datum und Uhrzeit des Zugriffs</li>
       <li>aufgerufene Datei / Seite</li>
       <li>verwendeter Browser und Betriebssystem</li>
       <li>verweisende Website (Referrer)</li>
     </ul>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 12px;">Diese Daten werden ausschließlich zur technischen Bereitstellung und Absicherung der Website verarbeitet und nicht mit anderen Daten zusammengeführt. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und funktionsfähigen Webauftritt (Art. 6 Abs. 1 lit. f DSGVO).</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 36px;">Da GitHub personenbezogene Daten auch in den USA verarbeiten kann, stützt sich eine etwaige Übermittlung auf das EU-US Data Privacy Framework, unter dem die Microsoft Corporation (Muttergesellschaft von GitHub) zertifiziert ist. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Datenschutzerklärung</a>.</p>
+    <p>Diese Daten werden ausschließlich zur technischen Bereitstellung und Absicherung der Website verarbeitet und nicht mit anderen Daten zusammengeführt. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und funktionsfähigen Webauftritt (Art. 6 Abs. 1 lit. f DSGVO).</p>
+    <p>Da GitHub personenbezogene Daten auch in den USA verarbeiten kann, stützt sich eine etwaige Übermittlung auf das EU-US Data Privacy Framework, unter dem die Microsoft Corporation (Muttergesellschaft von GitHub) zertifiziert ist. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Datenschutzerklärung</a>.</p>
 
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">4. Schriftarten (Webfonts)</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 36px;">Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts (&bdquo;DM Serif Display&ldquo; und &bdquo;Inter&ldquo;). Diese Schriftarten sind lokal auf unserem Server eingebunden und werden ausschließlich von dort geladen. Es wird <strong>keine Verbindung zu Servern von Google oder anderen Dritten</strong> aufgebaut, und es werden dabei keine personenbezogenen Daten – insbesondere nicht Ihre IP-Adresse – an Dritte übertragen.</p>
+    <h2>4. Schriftarten (Webfonts)</h2>
+    <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts (&bdquo;Bricolage Grotesque&ldquo;, &bdquo;Manrope&ldquo; und &bdquo;Space Mono&ldquo;). Diese Schriftarten sind lokal auf unserem Server eingebunden und werden ausschließlich von dort geladen. Es wird <strong>keine Verbindung zu Servern von Google oder anderen Dritten</strong> aufgebaut, und es werden dabei keine personenbezogenen Daten – insbesondere nicht Ihre IP-Adresse – an Dritte übertragen.</p>
 
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">5. Kontaktaufnahme</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 12px;">Auf unserer Website befindet sich ein Kontakt-Link, der Ihr lokales E-Mail-Programm mit einer vorausgefüllten Nachricht an kontakt@ravetosave.de öffnet. Bei diesem Vorgang selbst findet <strong>keine Datenverarbeitung durch uns oder unsere Website statt</strong> – der Link öffnet lediglich Ihr eigenes E-Mail-Programm.</p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 36px;">Erst wenn Sie die E-Mail tatsächlich absenden, verarbeiten wir die von Ihnen übermittelten Daten (z. B. Name, E-Mail-Adresse, Nachrichteninhalt) zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO (Vertragsanbahnung bzw. berechtigtes Interesse an der Beantwortung von Anfragen). Ihre Daten werden gelöscht, sobald die Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+    <h2>5. Kontaktaufnahme</h2>
+    <h3>5.1 Kontaktformular</h3>
+    <p>Wenn Sie uns über das Kontaktformular auf unserer Website eine Nachricht senden, verarbeiten wir die von Ihnen eingegebenen Daten – <strong>Name, E-Mail-Adresse, gewähltes Anliegen und Nachrichtentext</strong> –, um Ihre Anfrage zu bearbeiten und Ihnen zu antworten. Die Angabe von Name, E-Mail-Adresse und Nachricht ist erforderlich, da wir Ihre Anfrage sonst nicht beantworten können.</p>
+    <p>Für den Versand nutzen wir den Dienst <strong>Web3Forms</strong>, betrieben von Web3Creative mit Sitz in Indien. Beim Absenden werden Ihre Formulardaten sowie technisch bedingt Ihre IP-Adresse verschlüsselt an Web3Forms übertragen, das die Nachricht per E-Mail an unser Postfach kontakt@ravetosave.de weiterleitet. Web3Forms verarbeitet diese Daten ausschließlich in unserem Auftrag als Auftragsverarbeiter (Art. 28 DSGVO) auf Grundlage seines Auftragsverarbeitungsvertrags.</p>
+    <p>Nach Angaben von Web3Forms gilt dabei Folgendes:</p>
+    <ul>
+      <li>Die Infrastruktur wird von Amazon Web Services (Hosting, Datenbank, E-Mail-Versand), Cloudflare (Auslieferung und Sicherheit) und Hetzner bereitgestellt.</li>
+      <li>Zum Schutz vor Spam und Missbrauch können Ihre IP-Adresse und E-Mail-Adresse an die Spamschutz-Dienste CleanTalk und Akismet (Automattic) übermittelt werden.</li>
+      <li>Formulareinsendungen werden bei Web3Forms höchstens drei Jahre gespeichert und danach automatisch gelöscht.</li>
+    </ul>
+    <p>Da Web3Forms von Indien aus betrieben wird und seine Dienstleister Daten auch in anderen Ländern außerhalb der EU (z. B. den USA) verarbeiten können, kann eine Übermittlung in Drittländer stattfinden. Diese erfolgt auf Grundlage der EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Weitere Informationen: <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Web3Forms</a> und <a href="https://web3forms.com/dpa" target="_blank" rel="noopener">Auftragsverarbeitungsvertrag (DPA)</a>.</p>
+    <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf eine Zusammenarbeit oder Mitwirkung abzielt, im Übrigen unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Wir löschen Ihre Nachricht aus unserem Postfach, sobald Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
 
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a5b69;margin:0 0 16px;">6. Ihre Rechte als betroffene Person</h2>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 12px;">Sie haben jederzeit das Recht auf:</p>
-    <ul style="font-size:16px;line-height:1.9;color:#5a6b78;margin:0 0 16px;padding-left:22px;">
+    <h3>5.2 Kontakt per E-Mail</h3>
+    <p>Sie können uns auch direkt per E-Mail an <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a> schreiben. In diesem Fall verarbeiten wir die mit Ihrer E-Mail übermittelten Daten (z. B. Name, E-Mail-Adresse, Nachrichteninhalt) ausschließlich zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage und Löschung wie unter 5.1.</p>
+
+    <h2>6. Ihre Rechte als betroffene Person</h2>
+    <p>Sie haben jederzeit das Recht auf:</p>
+    <ul>
       <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
       <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
       <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
@@ -66,15 +140,18 @@
       <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
       <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
     </ul>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0 0 12px;">Wenden Sie sich hierfür an: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
-    <p style="font-size:16px;line-height:1.8;color:#5a6b78;margin:0;">Zudem steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu, z. B. beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA).</p>
+    <p>Wenden Sie sich hierfür an: <a href="mailto:kontakt@ravetosave.de">kontakt@ravetosave.de</a></p>
+    <p>Zudem steht Ihnen ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu, z. B. beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA).</p>
 
-    <p style="font-size:13px;color:#7a8c99;margin:48px 0 0;font-style:italic;">Stand: August 2026</p>
-  </main>
-
-  <footer style="background:linear-gradient(160deg,#0e1013 0%,#14171c 60%,#1b1f26 100%);padding:32px 24px;text-align:center;">
-    <span style="font-size:13px;color:#8fa0ac;">© 2026 Rave to Save · <a href="impressum.html" style="color:#8fa0ac;text-decoration:underline;text-underline-offset:3px;">Impressum</a></span>
-  </footer>
-</div>
+    <p class="stand">Stand: September 2026</p>
+  </article>
+</main>
+<footer>
+  <div class="fb">
+    <a class="brand" href="./"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></a>
+    <span>© 2026 Rave to Save</span>
+    <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+  </div>
+</footer>
 </body>
 </html>
