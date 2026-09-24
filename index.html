@@ -12,19 +12,19 @@
 <meta property="og:url" content="https://ravetosave.de/">
 <meta property="og:title" content="Rave to Save – Tanzen für den guten Zweck">
 <meta property="og:description" content="Ehrenamtliches House- &amp; Techno-Kollektiv aus Würzburg. Der gesamte Erlös geht an lokale Organisationen — bisher 26.350 €.">
-<meta property="og:image" content="https://ravetosave.de/Hero-Background.webp">
+<meta property="og:image" content="https://ravetosave.de/assets/bilder/hero-wolken.webp">
 <meta property="og:image:alt" content="Rave to Save – Tanzen für den guten Zweck">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="RAVETOSAVE2026_LOGO.png">
+<link rel="icon" href="assets/bilder/logo-rave-to-save.png">
 <!-- Schriften liegen auf dem eigenen Server (kein Google-CDN, siehe Datenschutzerklärung Abschnitt 4) -->
-<link rel="preload" href="fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="video" href="hero-video-web.mp4" type="video/mp4">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="video" href="assets/video/hero-wolken.mp4" type="video/mp4">
 <style>
-  @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/bricolage-grotesque-var.woff2') format('woff2'); }
-  @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('fonts/manrope-var.woff2') format('woff2'); }
-  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/space-mono-400.woff2') format('woff2'); }
-  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/space-mono-700.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('assets/fonts/bricolage-grotesque-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('assets/fonts/manrope-var.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/space-mono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/space-mono-700.woff2') format('woff2'); }
 
   /* Farbwelt "Flieder": tiefes Violett + Flieder, Apricot als zweiter Akzent — greift die Töne der Wolken auf */
   :root {
@@ -128,7 +128,7 @@
   .hero-stage { position: relative; height: 170vh; }
   .hero { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 640px; overflow: hidden; background: var(--hero-bg, var(--night)); color: var(--hero-ink); isolation: isolate; }
   /* Standbild dahinter: falls ein Handy das Video (noch) nicht abspielt, sieht man trotzdem die Wolken statt einer leeren Fläche */
-  .hero-media { position: absolute; inset: 0; z-index: -2; background: url("Hero-Background.webp") center / cover; }
+  .hero-media { position: absolute; inset: 0; z-index: -2; background: url("assets/bilder/hero-wolken.webp") center / cover; }
   /* Weicher Loop: zwei Videos, das nächste wird kurz vor Ende über das laufende geblendet.
      Dazu ein sehr langsamer Kamera-Drift über allem, der nie neu startet. */
   .hero-drift { position: absolute; inset: 0; animation: drift 40s ease-in-out infinite alternate; }
@@ -140,7 +140,7 @@
   @keyframes heroIn { to { opacity: 1; transform: scale(1); } }
   .hero-shade { position: absolute; inset: 0; z-index: -1; background: var(--hero-shade); }
   .hero-content, .marquee { will-change: transform, opacity, filter; }
-  .hero-fog, .mission::before { background: linear-gradient(rgba(246,242,234,.58), rgba(246,242,234,.58)), url("Hero-Background.webp") center / cover fixed; }
+  .hero-fog, .mission::before { background: linear-gradient(rgba(246,242,234,.58), rgba(246,242,234,.58)), url("assets/bilder/hero-wolken.webp") center / cover fixed; }
   .hero-fog { position: absolute; inset: 0; z-index: 4; opacity: 0; pointer-events: none; }
   .scroll-hint { position: absolute; left: 50%; bottom: 76px; z-index: 2; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--hero-sub); }
   .scroll-hint i { width: 1.5px; height: 34px; background: linear-gradient(var(--hero-ink), transparent); transform-origin: top; animation: hint 2s var(--ease) infinite; }
@@ -342,7 +342,7 @@
   /* ── Spendenziele ── */
   /* Spendenziele: helle Wolkenfläche mit runden oberen Ecken, die sichtbar über den dunklen Events-Bereich schiebt */
   .orgs-sec { position: relative; z-index: 2; margin-top: -56px; padding: 120px 0 140px; border-radius: 56px 56px 0 0; color: var(--ink); overflow: hidden;
-      background: linear-gradient(rgba(246,242,234,.62), rgba(246,242,234,.62)), url("Hero-Background.webp") center / cover fixed;
+      background: linear-gradient(rgba(246,242,234,.62), rgba(246,242,234,.62)), url("assets/bilder/hero-wolken.webp") center / cover fixed;
       box-shadow: 0 -30px 60px -30px rgba(0,0,0,.6); }
   .orgs-sec::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 200px; background: linear-gradient(transparent, var(--cream)); pointer-events: none; }
   .orgs-sec .wrap { position: relative; z-index: 1; }
@@ -540,7 +540,7 @@
 <!-- ═══ HEADER ═══ -->
 <header class="hdr hdr-anim" id="hdr">
   <nav class="bubble" aria-label="Hauptnavigation">
-    <a href="#top" class="b-logo" aria-label="Rave to Save — nach oben"><img src="RAVETOSAVE2026_LOGO.png" alt=""></a>
+    <a href="#top" class="b-logo" aria-label="Rave to Save — nach oben"><img src="assets/bilder/logo-rave-to-save.png" alt=""></a>
     <div class="b-links">
       <a href="#top" data-sec="top">Home</a>
       <a href="#mission" data-sec="mission">Mission</a>
@@ -570,8 +570,8 @@
 <section class="hero" id="top">
   <div class="hero-media" id="heroMedia">
     <div class="hero-drift">
-      <video class="hv on" autoplay muted playsinline preload="auto" poster="Hero-Background.webp" aria-hidden="true"><source src="hero-video-web.mp4" type="video/mp4"></video>
-      <video class="hv" muted playsinline preload="auto" poster="Hero-Background.webp" aria-hidden="true"><source src="hero-video-web.mp4" type="video/mp4"></video>
+      <video class="hv on" autoplay muted playsinline preload="auto" poster="assets/bilder/hero-wolken.webp" aria-hidden="true"><source src="assets/video/hero-wolken.mp4" type="video/mp4"></video>
+      <video class="hv" muted playsinline preload="auto" poster="assets/bilder/hero-wolken.webp" aria-hidden="true"><source src="assets/video/hero-wolken.mp4" type="video/mp4"></video>
     </div>
   </div>
   <div class="hero-shade" aria-hidden="true"></div>
@@ -594,7 +594,7 @@
     <div class="hero-stat">
       <!-- Rückblick-Card: führt zur Sommerfest-Rückblick-Seite -->
       <a class="hero-card fade-up" href="festival2908/" style="animation-delay: 1.9s;">
-        <img src="festival2908/teaser_rueckblick.webp" alt="" width="64" height="64">
+        <img src="festival2908/bilder/teaser-rueckblick.webp" alt="" width="64" height="64">
         <span class="hc-txt"><small>Rückblick</small><strong>Sommer Festival 2026</strong><em>Fotos &amp; Eindrücke</em><span class="hc-credit">Foto: Marc Montero Deistler</span></span>
         <svg class="hc-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
@@ -654,20 +654,20 @@
         </div>
         <div class="team-grid" id="teamGrid">
         <div class="member"><div class="card3d"><div class="flip">
-          <div class="face back" aria-hidden="true"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></div>
-          <div class="face front"><img src="Team/Ranger.webp" alt="Felix" decoding="async" style="object-position: center 20%;"></div>
+          <div class="face back" aria-hidden="true"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>Rave to Save</span></div>
+          <div class="face front"><img src="assets/bilder/team/ranger.webp" alt="Felix" decoding="async" style="object-position: center 20%;"></div>
         </div></div><div class="cap"><h3>Felix</h3><p class="tag">Ranger</p><p>Organisator &amp; DJ · seit 2018</p></div></div>
         <div class="member"><div class="card3d"><div class="flip">
-          <div class="face back" aria-hidden="true"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></div>
-          <div class="face front"><img src="Team/c2e.webp" alt="Sebastian" decoding="async"></div>
+          <div class="face back" aria-hidden="true"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>Rave to Save</span></div>
+          <div class="face front"><img src="assets/bilder/team/c2e.webp" alt="Sebastian" decoding="async"></div>
         </div></div><div class="cap"><h3>Sebastian</h3><p class="tag">C2E</p><p>Organisator &amp; DJ · seit 2025</p></div></div>
         <div class="member"><div class="card3d"><div class="flip">
-          <div class="face back" aria-hidden="true"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></div>
-          <div class="face front"><img src="Team/ECTIVATE.webp" alt="Erhan" decoding="async"></div>
+          <div class="face back" aria-hidden="true"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>Rave to Save</span></div>
+          <div class="face front"><img src="assets/bilder/team/ectivate.webp" alt="Erhan" decoding="async"></div>
         </div></div><div class="cap"><h3>Erhan</h3><p class="tag">Ectivate</p><p>Organisator &amp; DJ · seit 2025</p></div></div>
         <div class="member"><div class="card3d"><div class="flip">
-          <div class="face back" aria-hidden="true"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></div>
-          <div class="face front"><img src="Team/269dsgn.webp" alt="Basti" decoding="async"></div>
+          <div class="face back" aria-hidden="true"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>Rave to Save</span></div>
+          <div class="face front"><img src="assets/bilder/team/269dsgn.webp" alt="Basti" decoding="async"></div>
         </div></div><div class="cap"><h3>Basti</h3><p class="tag">269Dsgn</p><p>Grafik Design · seit 2018</p></div></div>
         </div>
       </div>
@@ -723,12 +723,12 @@
       <p class="lead rv" style="--d: .2s; color: var(--ink-2);">Wir unterstützen lokale Vereine, bei denen wir sicher sein können, dass das Geld dort ankommt, wo es wirklich gebraucht wird.</p>
     </div>
     <div class="orgs pop">
-      <a class="org" href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener"><div class="logo"><img src="Spendenziele_Logos/Kontaktcafe.png" alt="" loading="lazy"></div><h3>Kontaktcafé Würzburg</h3><p class="sum" data-count="1260">1.260 €</p></a>
-      <a class="org" href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="Spendenziele_Logos/streetwork.png" alt="" loading="lazy"></div><h3>Streetwork Würzburg</h3><p class="sum" data-count="1000">1.000 €</p></a>
-      <a class="org" href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="Spendenziele_Logos/Widlwasser.jpg" alt="" loading="lazy"></div><h3>Wildwasser Würzburg e.V.</h3><p class="sum" data-count="1150">1.150 €</p></a>
-      <a class="org" href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener"><div class="logo"><img src="Spendenziele_Logos/Station%20Regenbogen.png" alt="" loading="lazy"></div><h3>Station Regenbogen</h3><p class="sum" data-count="1100">1.100 €</p></a>
-      <a class="org" href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="Spendenziele_Logos/Tierheim.png" alt="" loading="lazy"></div><h3>Tierheim Würzburg</h3><p class="sum" data-count="1800">1.800 €</p></a>
-      <a class="org" href="https://hermine.global/" target="_blank" rel="noopener"><div class="logo"><img src="festival2908/Weitere%20Grafiken/hermine-logo.webp" alt="" loading="lazy"></div><h3>HERMINE e.V.</h3><p class="sum" data-count="1600">1.600 €</p></a>
+      <a class="org" href="https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/kontaktcafe.png" alt="" loading="lazy"></div><h3>Kontaktcafé Würzburg</h3><p class="sum" data-count="1260">1.260 €</p></a>
+      <a class="org" href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/streetwork.png" alt="" loading="lazy"></div><h3>Streetwork Würzburg</h3><p class="sum" data-count="1000">1.000 €</p></a>
+      <a class="org" href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/wildwasser.jpg" alt="" loading="lazy"></div><h3>Wildwasser Würzburg e.V.</h3><p class="sum" data-count="1150">1.150 €</p></a>
+      <a class="org" href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/station-regenbogen.png" alt="" loading="lazy"></div><h3>Station Regenbogen</h3><p class="sum" data-count="1100">1.100 €</p></a>
+      <a class="org" href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/tierheim.png" alt="" loading="lazy"></div><h3>Tierheim Würzburg</h3><p class="sum" data-count="1800">1.800 €</p></a>
+      <a class="org" href="https://hermine.global/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/hermine.webp" alt="" loading="lazy"></div><h3>HERMINE e.V.</h3><p class="sum" data-count="1600">1.600 €</p></a>
     </div>
     <p class="orgs-note rv">Du hast eine Idee für ein passendes Spendenziel? <a href="#kontakt">Sag uns Bescheid</a></p>
   </div>
@@ -824,7 +824,7 @@
   <div class="wrap">
     <div class="ft pop">
       <div>
-        <a href="#top" class="brand"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>Rave to Save</span></a>
+        <a href="#top" class="brand"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>Rave to Save</span></a>
         <p>Charity, Community &amp; Musik — gemeinsam etwas bewegen. Aus Würzburg, seit 2018.</p>
       </div>
       <div><h4>Navigation</h4><a class="fl" href="#mission">Mission</a><a class="fl" href="#team">Team</a><a class="fl" href="#events">Events</a><a class="fl" href="#spendenziele">Spendenziele</a></div>
@@ -849,7 +849,7 @@
     date: '2026-08-29',
     shortName: 'Sommer Festival',
     dateLabel: 'Sa 29.08.',
-    image: 'Next Party/RTS_2908_Titelbild.webp',
+    image: 'assets/bilder/naechstes-event/sommer-festival-2026-titelbild.webp',
     name: 'Sommer Festival',
     info: 'Sa, 29. August 2026 · Dornheim Club &amp; Garten, Würzburg<br>Spendenziel: HERMINE e.V.',
     ticketUrl: 'festival2908/'
@@ -886,25 +886,25 @@
      img leer lassen → Platzhalter mit Logo. url optional (Link zum Spendenziel).
      Daten wie auf den Plakaten: 15.09.2018 (Tabelle: 24.08.2018) und 14.02.2020 (Tabelle: 14.02.2019). */
   var ALL_EVENTS = [
-    { date: '2018-09-15', place: 'Dornheim',        amount: 2000, org: 'Kiwi e.V.',                                      img: '15_09_18_Dornheim_Website.webp' },
-    { date: '2019-02-08', place: 'Dornheim',        amount: 1500, org: 'HERMINE Flüchtlingshilfe',                       img: '08_02_19_Dornheim_Website.webp' },
+    { date: '2018-09-15', place: 'Dornheim',        amount: 2000, org: 'Kiwi e.V.',                                      img: '2018-09-15_dornheim.webp' },
+    { date: '2019-02-08', place: 'Dornheim',        amount: 1500, org: 'HERMINE Flüchtlingshilfe',                       img: '2019-02-08_dornheim.webp' },
     { date: '2019-03-01', place: 'Chambinzky',      amount: 2100, org: 'HERMINE Flüchtlingshilfe',                       img: '' },
     { date: '2019-06-14', place: 'Hilde Coburg',    amount: 500,  org: 'Gewalt gegen Frauen e.V.',                       img: '' },
-    { date: '2019-06-28', place: 'Dornheim',        amount: 900,  org: 'OceanCare',                                      img: '28_06_19_Dornheim_Website.webp' },
-    { date: '2019-10-04', place: 'Dornheim',        amount: 1040, org: 'Tierheim Würzburg',                              img: '04_10_19_Dornheim_Website.webp', url: 'https://www.tierheim-wuerzburg.de/' },
-    { date: '2019-12-21', place: 'Hilde Coburg',    amount: 500,  org: 'Jugend- und Kulturzentrum Domino',               img: '21_12_19_HildeCoburg_Website.webp' },
-    { date: '2020-02-14', place: 'Färberei Kassel', amount: 700,  org: 'Verein für krebskranke Kinder',                  img: '14_02_20_Faerberei_Website.webp' },
+    { date: '2019-06-28', place: 'Dornheim',        amount: 900,  org: 'OceanCare',                                      img: '2019-06-28_dornheim.webp' },
+    { date: '2019-10-04', place: 'Dornheim',        amount: 1040, org: 'Tierheim Würzburg',                              img: '2019-10-04_dornheim.webp', url: 'https://www.tierheim-wuerzburg.de/' },
+    { date: '2019-12-21', place: 'Hilde Coburg',    amount: 500,  org: 'Jugend- und Kulturzentrum Domino',               img: '2019-12-21_hilde-coburg.webp' },
+    { date: '2020-02-14', place: 'Färberei Kassel', amount: 700,  org: 'Verein für krebskranke Kinder',                  img: '2020-02-14_faerberei-kassel.webp' },
     { date: '2020-02-22', place: 'Haus33',          amount: 1800, org: 'Rettung des Regenwalds',                         img: '' },
     { date: '2020-03-06', place: 'Dornheim',        amount: 1500, org: 'Lebenshilfe Würzburg',                           img: '' },
-    { date: '2022-03-12', place: 'Hilde Coburg',    amount: 500,  org: 'Auffangstationen für Geflüchtete Suhl/Bamberg',  img: '12_03_22_HildeCoburg_Website.webp' },
-    { date: '2022-05-25', place: 'Chambinzky',      amount: 5000, org: 'Sachspenden für Geflüchtete aus der Ukraine',    img: '25_05_22_Chambinzky_Website.webp' },
-    { date: '2023-08-15', place: 'Zauberberg',      amount: 400,  org: 'HERMINE Flüchtlingshilfe',                       img: '15_08_23_Zauberberg_Website.webp' },
-    { date: '2025-01-11', place: 'Dornheim',        amount: 1800, org: 'Tierheim Würzburg',                              img: '11_01_25_RAVETOSAVE2025_Website_Dornheim.webp', url: 'https://www.tierheim-wuerzburg.de/' },
-    { date: '2025-05-03', place: 'Dornheim',        amount: 1100, org: 'Station Regenbogen',                             img: '03_05_25_RTS_25_StationRegenbogen_Dornheim_Website.webp', url: 'https://elterninitiative-regenbogen.com/' },
-    { date: '2025-09-13', place: 'Dornheim',        amount: 1150, org: 'Wildwasser e.V.',                                img: '13_09_25_Overall_DornheimWebsite.webp', url: 'https://www.wildwasserwuerzburg.de/' },
-    { date: '2026-01-31', place: 'Dornheim',        amount: 1000, org: 'Streetwork Würzburg',                            img: '31_01_26_RAVETOSAVE-DORNHEIM-31-01-26_1x1-Website.webp', url: 'https://streetwork-wuerzburg.de/' },
-    { date: '2026-07-11', place: 'Dornheim',        amount: 1260, org: 'Kontaktcafé Würzburg',                           img: '11.07.26.webp', url: 'https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/' },
-    { date: '2026-08-29', place: 'Dornheim', title: 'Sommer Festival', amount: 1600, org: 'HERMINE e.V.',               img: '29_08_26_RTS_Sommerfestival_Website.webp', url: 'https://hermine.global/' }
+    { date: '2022-03-12', place: 'Hilde Coburg',    amount: 500,  org: 'Auffangstationen für Geflüchtete Suhl/Bamberg',  img: '2022-03-12_hilde-coburg.webp' },
+    { date: '2022-05-25', place: 'Chambinzky',      amount: 5000, org: 'Sachspenden für Geflüchtete aus der Ukraine',    img: '2022-05-25_chambinzky.webp' },
+    { date: '2023-08-15', place: 'Zauberberg',      amount: 400,  org: 'HERMINE Flüchtlingshilfe',                       img: '2023-08-15_zauberberg.webp' },
+    { date: '2025-01-11', place: 'Dornheim',        amount: 1800, org: 'Tierheim Würzburg',                              img: '2025-01-11_dornheim.webp', url: 'https://www.tierheim-wuerzburg.de/' },
+    { date: '2025-05-03', place: 'Dornheim',        amount: 1100, org: 'Station Regenbogen',                             img: '2025-05-03_dornheim.webp', url: 'https://elterninitiative-regenbogen.com/' },
+    { date: '2025-09-13', place: 'Dornheim',        amount: 1150, org: 'Wildwasser e.V.',                                img: '2025-09-13_dornheim.webp', url: 'https://www.wildwasserwuerzburg.de/' },
+    { date: '2026-01-31', place: 'Dornheim',        amount: 1000, org: 'Streetwork Würzburg',                            img: '2026-01-31_dornheim.webp', url: 'https://streetwork-wuerzburg.de/' },
+    { date: '2026-07-11', place: 'Dornheim',        amount: 1260, org: 'Kontaktcafé Würzburg',                           img: '2026-07-11_dornheim.webp', url: 'https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/' },
+    { date: '2026-08-29', place: 'Dornheim', title: 'Sommer Festival', amount: 1600, org: 'HERMINE e.V.',               img: '2026-08-29_sommer-festival.webp', url: 'https://hermine.global/' }
   ];
   var MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
   function euro(n) { return Math.round(n).toLocaleString('de-DE') + '\u00a0€'; }
@@ -919,8 +919,8 @@
     var p = e.date.split('-'), dateTxt = (+p[2]) + '. ' + MONTHS[+p[1] - 1] + ' ' + p[0];
     var title = e.title || e.place;
     var pic = e.img
-      ? '<div class="pic" style="--img: url(&quot;Past_Events_Grafiken/' + encodeURI(e.img) + '&quot;)"><img src="Past_Events_Grafiken/' + encodeURI(e.img) + '" alt="Plakat: Rave to Save, ' + esc(dateTxt) + '" loading="lazy" decoding="async"></div>'
-      : '<div class="pic ph"><img src="RAVETOSAVE2026_LOGO.png" alt=""><span>' + esc(e.place) + '</span></div>';
+      ? '<div class="pic" style="--img: url(&quot;assets/bilder/events/' + encodeURI(e.img) + '&quot;)"><img src="assets/bilder/events/' + encodeURI(e.img) + '" alt="Plakat: Rave to Save, ' + esc(dateTxt) + '" loading="lazy" decoding="async"></div>'
+      : '<div class="pic ph"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>' + esc(e.place) + '</span></div>';
     var org = e.url ? '<a href="' + e.url + '" target="_blank" rel="noopener">' + esc(e.org) + '</a>' : esc(e.org);
     return '<article class="evc" data-year="' + p[0] + '">' + pic + '<div class="pb"><p class="date">' + dateTxt + (e.title ? ' · ' + esc(e.place) : '') + '</p><h3>' + esc(title) + '</h3><p class="amt">' + euro(e.amount) + '</p><p class="to">an ' + org + '</p></div></article>';
   }).join('');
