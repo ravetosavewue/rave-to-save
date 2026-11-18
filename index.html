@@ -287,12 +287,12 @@
   .ev-top .lead { color: var(--mute-dark); max-width: 460px; }
   .ev-top .lead strong { color: var(--cream); font-weight: 700; }
   /* Nächstes Event: hervorgehobene Card neben der Überschrift */
-  .ev-feature { display: grid; grid-template-columns: 1fr 1.1fr; background: var(--night-2); border-radius: 26px; overflow: hidden; border: 1px solid rgba(var(--glow-rgb),.4); box-shadow: 0 0 0 1px rgba(var(--glow-rgb),.18), 0 30px 70px -30px rgba(var(--glow-rgb),.45); }
-  .ev-feature .ev-img { position: relative; min-height: 230px; overflow: hidden; }
+  .ev-feature { display: grid; grid-template-columns: 1fr; background: var(--night-2); border-radius: 26px; overflow: hidden; border: 1px solid rgba(var(--glow-rgb),.4); box-shadow: 0 0 0 1px rgba(var(--glow-rgb),.18), 0 30px 70px -30px rgba(var(--glow-rgb),.45); }
+  .ev-feature .ev-img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; } /* Titelbilder sind 16:9 – volle Breite, nichts abgeschnitten */
   .ev-feature .ev-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ev-feature.soon .ev-img img { filter: blur(20px) saturate(1.2); transform: scale(1.2); }
   .ev-feature .soon-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: 30px; color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,.5); background: rgba(var(--night-rgb),.35); }
-  .ev-feature .ev-body { padding: 26px 26px 24px; display: flex; flex-direction: column; justify-content: center; }
+  .ev-feature .ev-body { padding: 22px 26px 24px; display: flex; flex-direction: column; justify-content: center; }
   .ev-feature .date { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--glow); margin: 0 0 8px; }
   .ev-feature h3 { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: 26px; margin: 0 0 8px; }
   .ev-feature .to { font-size: 14px; color: #C7C2B8; line-height: 1.55; margin: 0; }
@@ -506,7 +506,6 @@
     .events { padding: 96px 0 90px; }
     .ev-top { grid-template-columns: 1fr; gap: 32px; margin-bottom: 44px; }
     .ev-feature { grid-template-columns: 1fr; }
-    .ev-feature .ev-img { min-height: 0; aspect-ratio: 16/9; }
     .ev-bar { flex-direction: column; align-items: flex-start; }
     .ev-total { text-align: left; }
     .ev-chips { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; padding-bottom: 2px; }
@@ -533,6 +532,7 @@
     .hero-drift { animation: none !important; }
     .rv-img { clip-path: none !important; }
     .pop > *, .rv.from-r { opacity: 1 !important; transform: none !important; }
+    .bub { opacity: 1 !important; transform: none !important; } /* Mission-Kästchen: ohne Scroll-Animation sofort sichtbar */
     .ev-grid .evc { opacity: 1 !important; transform: none !important; }
     .team .flip { transform: none !important; } .team .face.front { visibility: visible !important; } .team .face.back { visibility: hidden !important; } .team .cap { opacity: 1 !important; transform: none !important; } .rv-img img { transform: none !important; }
   }
