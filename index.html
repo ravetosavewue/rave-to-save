@@ -162,7 +162,27 @@
   .hero h1 .line { display: block; overflow: hidden; padding: 0 .06em .08em 0; margin-bottom: -.08em; }
   .hero h1 .w { display: inline-block; transform: translateY(110%) rotate(4deg); transform-origin: left bottom; animation: rise 1.3s var(--ease) forwards; }
   .hero h1 em { font-style: var(--em-style); background: linear-gradient(100deg, var(--em-a) 0%, var(--em-a) 30%, var(--em-b) 65%, var(--em-c) 100%); background-size: 200% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise 1.3s var(--ease) forwards, shimmer 2.6s var(--ease) 1.2s forwards; }
+  /* Farbverlauf (background-clip: text) endet am Kasten des Worts – unten Luft lassen, sonst fehlt die Unterlänge vom „g“ */
+  .hero h1 em { padding-bottom: .16em; margin-bottom: -.16em; }
+  .hero h1 .line { padding-bottom: .18em; margin-bottom: -.18em; }
   @keyframes rise { to { transform: none; } }
+
+  /* ── Nächstes Event groß im Hero (nur solange eins ansteht; sonst bleibt der Hero wie gehabt) ── */
+  .hero-next { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(20px, 2.4vw, 36px); margin-top: 26px; padding: 16px clamp(18px, 2.2vw, 30px) 16px 16px; border-radius: 30px; background: var(--hero-glass); border: 1px solid var(--hero-line); backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3); box-shadow: 0 30px 70px -32px rgba(0,0,0,.55); }
+  .hero-next[hidden] { display: none; }
+  .hn-img { display: block; width: clamp(240px, 24vw, 400px); aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; box-shadow: 0 14px 34px -16px rgba(0,0,0,.6); }
+  .hn-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+  .hn-img:hover img { transform: scale(1.04); }
+  .hn-eye { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--glow); margin: 0 0 8px; }
+  .hn-eye .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--glow); animation: ping 2s infinite; }
+  .hn-date { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: clamp(34px, 3.6vw, 58px); line-height: .95; color: var(--hero-ink); margin: 0 0 8px; }
+  .hn-sub { font-size: clamp(15px, 1.2vw, 18px); font-weight: 600; color: var(--hero-ink); margin: 0 0 12px; }
+  .hn-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .hn-tags li { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--hero-line); font-size: 13px; font-weight: 600; color: var(--hero-sub); }
+  .hn-acts { display: flex; flex-direction: column; gap: 10px; min-width: 190px; }
+  .hn-acts .btn { justify-content: center; }
+  .hero.has-next .hero-pill, .hero.has-next .hero-sub, .hero.has-next .hero-ctas, .hero.has-next .hero-card { display: none; }
+  .hero.has-next h1 { font-size: min(var(--h1size), 9.5svh); margin-bottom: 0; }
   @keyframes shimmer { to { background-position: 0 0; } }
   .hero-sub { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; color: var(--hero-sub); max-width: 520px; margin: 0 0 36px; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -484,6 +504,15 @@
     .hero-stat .lbl { margin: 0; }
     .hero-card { width: 100%; padding: 9px 16px 9px 9px; gap: 14px; }
     .hero-card img { width: 64px; height: 64px; border-radius: 13px; }
+    .hero-next { grid-template-columns: 38% minmax(0, 1fr); gap: 14px; padding: 10px; border-radius: 22px; margin-top: 18px; }
+    .hn-img { width: 100%; border-radius: 14px; }
+    .hn-date { font-size: 28px; margin-bottom: 4px; }
+    .hn-sub { font-size: 13.5px; margin-bottom: 0; }
+    .hn-eye { font-size: 10px; letter-spacing: 2px; margin-bottom: 4px; }
+    .hn-tags { display: none; }
+    .hn-acts { grid-column: 1 / -1; flex-direction: row; min-width: 0; }
+    .hn-acts .btn { flex: 1; padding: 13px 14px; font-size: 14px; }
+    .hero.has-next .hero-stat { flex-direction: row; }
     .hc-txt strong { font-size: 16px; }
     .scroll-hint { display: none; } /* auf dem Handy kollidiert der Hinweis mit der Rückblick-Card */
     .hero-sub { margin-bottom: 28px; }
@@ -521,6 +550,8 @@
   @media (max-width: 767px) and (max-height: 800px) {
     .hero-sub { display: none; }
     .hero-pill { margin-bottom: 18px; }
+    .hero-next { grid-template-columns: 1fr; }
+    .hn-img { display: none; }
     .hero h1 { margin-bottom: 22px; }
   }
 
@@ -608,6 +639,8 @@
       </div>
     </div>
    </div>
+   <!-- Nächstes Event, groß – wird per Script aus nextEvent befüllt, solange das Event ansteht -->
+   <div class="hero-next fade-up" id="heroNext" style="animation-delay: 1.3s;" hidden></div>
   </div>
 
   <div class="scroll-hint fade-up" id="scrollHint" style="animation-delay: 2.2s;" aria-hidden="true">Scroll<i></i></div>
@@ -856,6 +889,11 @@
     image: 'assets/bilder/naechstes-event/dornheim-2026-12-05-titelbild.webp',
     name: 'Zwei Floors, eine Mission',
     info: 'Sa, 5. Dezember 2026 · ab 22 Uhr · Dornheim Club &amp; Garten, Würzburg<br>7 DJs · Spendenziel: Tierheim Würzburg',
+    /* für den großen Block im Hero */
+    heroDate: 'Sa, 05.12.2026',
+    heroSub: 'ab 22 Uhr · Dornheim Club &amp; Garten, Würzburg',
+    heroTags: ['7 DJs · 2 Floors', 'Groovy House &amp; Techno', '♥ für das Tierheim Würzburg'],
+    heroImage: 'dornheim0512/bilder/titelbild.webp',
     pageUrl: 'dornheim0512/',
     ticketUrl: 'https://www.eventbrite.de/e/rave-to-save-tickets-2004699390843?aff=oddtdtcreator'
   };
@@ -878,6 +916,14 @@
     cta.hidden = false; cta.href = nextEvent.ticketUrl; cta.target = '_blank'; cta.rel = 'noopener'; /* Tickets-Button nur, solange ein Event ansteht */
     var heroBtn = document.querySelector('.hero .btn-glow');
     heroBtn.href = nextEvent.pageUrl; heroBtn.firstChild.textContent = 'Zum nächsten Event ';
+    /* Großer Event-Block im Hero */
+    var hn = document.getElementById('heroNext');
+    hn.innerHTML = '<a class="hn-img" href="' + nextEvent.pageUrl + '" aria-label="Infos zum Event"><img src="' + encodeURI(nextEvent.heroImage || nextEvent.image) + '" alt="Plakat: ' + nextEvent.name + '" width="1920" height="1080" fetchpriority="high"></a>'
+      + '<div class="hn-txt"><p class="hn-eye"><span class="dot" aria-hidden="true"></span>Nächstes Event</p><p class="hn-date">' + nextEvent.heroDate + '</p><p class="hn-sub">' + nextEvent.heroSub + '</p>'
+      + '<ul class="hn-tags">' + (nextEvent.heroTags || []).map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>'
+      + '<div class="hn-acts"><a class="btn btn-glow" href="' + nextEvent.ticketUrl + '" target="_blank" rel="noopener">Tickets <span class="arr">↗</span></a><a class="btn btn-ghost" href="' + nextEvent.pageUrl + '">Infos &amp; Tiere <span class="arr">→</span></a></div>';
+    hn.hidden = false;
+    document.querySelector('.hero').classList.add('has-next');
   } else {
     box.classList.add('soon');
     box.innerHTML = img + '<div class="ev-body"><p class="date">Als Nächstes</p><h3>Bald mehr…</h3><p class="to">Unser nächstes Event wird gerade geplant — folgt uns, dann verpasst ihr die Ankündigung nicht.</p><a class="btn btn-ghost" href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener">@ravetosave_wue <span class="arr">↗</span></a></div>';
