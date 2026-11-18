@@ -336,6 +336,8 @@
   .evc .amt { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: 24px; line-height: 1; color: var(--glow); margin: 0 0 4px; }
   .evc .to { font-size: 13px; color: #B9B5C4; line-height: 1.45; margin: 0; }
   .evc .to a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(199,194,184,.4); }
+  .evc .evlink { display: inline-block; margin-top: 10px; padding: 6px 12px; border-radius: 999px; background: rgba(var(--glow-rgb),.14); color: var(--glow); font-size: 12.5px; font-weight: 700; text-decoration: none; }
+  .evc .evlink:hover { background: rgba(var(--glow-rgb),.26); }
   /* Auftritt: diagonale Welle, Cards klappen nach vorn auf */
   .ev-grid .evc { opacity: 0; transform: translateY(46px) rotateX(-28deg) scale(.94); transform-origin: 50% 0; transition: opacity .7s var(--ease), transform 1s var(--ease), border-color .3s, box-shadow .4s var(--ease); transition-delay: calc(var(--w, 0) * 70ms); }
   .ev-grid.in .evc { opacity: 1; transform: none; }
@@ -594,10 +596,10 @@
       </div>
     </div>
     <div class="hero-stat">
-      <!-- Rückblick-Card: führt zur Sommerfest-Rückblick-Seite -->
-      <a class="hero-card fade-up" href="festival2908/" style="animation-delay: 1.9s;">
-        <img src="festival2908/bilder/teaser-rueckblick.webp" alt="" width="64" height="64">
-        <span class="hc-txt"><small>Rückblick</small><strong>Sommer Festival 2026</strong><em>Fotos &amp; Eindrücke</em><span class="hc-credit">Foto: Marc Montero Deistler</span></span>
+      <!-- Teaser-Card: Tiere vom Tierheim Würzburg (Spendenziel der Party am 05.12.) -->
+      <a class="hero-card fade-up" href="dornheim0512/#tiere" style="animation-delay: 1.9s;">
+        <img src="dornheim0512/bilder/teaser-tiere.webp" alt="" width="64" height="64">
+        <span class="hc-txt"><small>05.12. · Tierheim Würzburg</small><strong>Diese Tiere suchen ein Zuhause</strong><em>24 Hunde &amp; Katzen kennenlernen</em></span>
         <svg class="hc-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
       <div class="fade-up" style="animation-delay: 1.6s;">
@@ -729,10 +731,10 @@
       <a class="org" href="https://streetwork-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/streetwork.png" alt="" loading="lazy"></div><h3>Streetwork Würzburg</h3><p class="sum" data-count="1000">1.000 €</p></a>
       <a class="org" href="https://www.wildwasserwuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/wildwasser.jpg" alt="" loading="lazy"></div><h3>Wildwasser Würzburg e.V.</h3><p class="sum" data-count="1150">1.150 €</p></a>
       <a class="org" href="https://elterninitiative-regenbogen.com/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/station-regenbogen.png" alt="" loading="lazy"></div><h3>Station Regenbogen</h3><p class="sum" data-count="1100">1.100 €</p></a>
-      <a class="org" href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/tierheim.png" alt="" loading="lazy"></div><h3>Tierheim Würzburg</h3><p class="sum" data-count="1800">1.800 €</p></a>
-      <a class="org" href="https://hermine.global/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/hermine.webp" alt="" loading="lazy"></div><h3>HERMINE e.V.</h3><p class="sum" data-count="1600">1.600 €</p></a>
+      <a class="org" href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/tierheim.png" alt="" loading="lazy"></div><h3>Tierheim Würzburg</h3><p class="sum" data-count="2840">2.840 €</p></a>
+      <a class="org" href="https://hermine.global/" target="_blank" rel="noopener"><div class="logo"><img src="assets/bilder/spendenziele/hermine.webp" alt="" loading="lazy"></div><h3>HERMINE e.V.</h3><p class="sum" data-count="5600">5.600 €</p></a>
     </div>
-    <p class="orgs-note rv">Du hast eine Idee für ein passendes Spendenziel? <a href="#kontakt">Sag uns Bescheid</a></p>
+    <p class="orgs-note rv">Beträge: alles, was über unsere Partys bisher insgesamt an die jeweilige Organisation ging.<br>Du hast eine Idee für ein passendes Spendenziel? <a href="#kontakt">Sag uns Bescheid</a></p>
   </div>
 </section>
 
@@ -909,7 +911,7 @@
     { date: '2025-09-13', place: 'Dornheim',        amount: 1150, org: 'Wildwasser e.V.',                                img: '2025-09-13_dornheim.webp', url: 'https://www.wildwasserwuerzburg.de/' },
     { date: '2026-01-31', place: 'Dornheim',        amount: 1000, org: 'Streetwork Würzburg',                            img: '2026-01-31_dornheim.webp', url: 'https://streetwork-wuerzburg.de/' },
     { date: '2026-07-11', place: 'Dornheim',        amount: 1260, org: 'Kontaktcafé Würzburg',                           img: '2026-07-11_dornheim.webp', url: 'https://www.condrobs.de/einrichtungen/kontaktcafe-wuerzburg/' },
-    { date: '2026-08-29', place: 'Dornheim', title: 'Sommer Festival', amount: 1600, org: 'HERMINE e.V.',               img: '2026-08-29_sommer-festival.webp', url: 'https://hermine.global/' }
+    { date: '2026-08-29', place: 'Dornheim', title: 'Sommer Festival', amount: 1600, org: 'HERMINE e.V.',               img: '2026-08-29_sommer-festival.webp', url: 'https://hermine.global/', page: 'festival2908/' }
   ];
   var MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
   function euro(n) { return Math.round(n).toLocaleString('de-DE') + '\u00a0€'; }
@@ -927,7 +929,8 @@
       ? '<div class="pic" style="--img: url(&quot;assets/bilder/events/' + encodeURI(e.img) + '&quot;)"><img src="assets/bilder/events/' + encodeURI(e.img) + '" alt="Plakat: Rave to Save, ' + esc(dateTxt) + '" loading="lazy" decoding="async"></div>'
       : '<div class="pic ph"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>' + esc(e.place) + '</span></div>';
     var org = e.url ? '<a href="' + e.url + '" target="_blank" rel="noopener">' + esc(e.org) + '</a>' : esc(e.org);
-    return '<article class="evc" data-year="' + p[0] + '">' + pic + '<div class="pb"><p class="date">' + dateTxt + (e.title ? ' · ' + esc(e.place) : '') + '</p><h3>' + esc(title) + '</h3><p class="amt">' + euro(e.amount) + '</p><p class="to">an ' + org + '</p></div></article>';
+    return '<article class="evc" data-year="' + p[0] + '">' + pic + '<div class="pb"><p class="date">' + dateTxt + (e.title ? ' · ' + esc(e.place) : '') + '</p><h3>' + esc(title) + '</h3><p class="amt">' + euro(e.amount) + '</p><p class="to">an ' + org + '</p>'
+      + (e.page ? '<a class="evlink" href="' + e.page + '">Fotos &amp; Rückblick →</a>' : '') + '</div></article>';
   }).join('');
   var evCards = Array.prototype.slice.call(evGrid.children);
 
