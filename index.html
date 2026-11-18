@@ -297,6 +297,8 @@
   .ev-feature h3 { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: 26px; margin: 0 0 8px; }
   .ev-feature .to { font-size: 14px; color: #C7C2B8; line-height: 1.55; margin: 0; }
   .ev-feature .btn { align-self: flex-start; margin-top: 16px; padding: 10px 18px; font-size: 13.5px; }
+  .ev-feature .ev-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .ev-feature .ev-btns .btn { margin-top: 0; }
   /* Filterleiste */
   .ev-bar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 28px; }
   .ev-chips { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -846,13 +848,14 @@
      ready:false oder Datum vorbei → "Coming soon"-Karte, Hero-Pill ohne Tickets. */
   var nextEvent = {
     ready: true,
-    date: '2026-08-29',
-    shortName: 'Sommer Festival',
-    dateLabel: 'Sa 29.08.',
-    image: 'assets/bilder/naechstes-event/sommer-festival-2026-titelbild.webp',
-    name: 'Sommer Festival',
-    info: 'Sa, 29. August 2026 · Dornheim Club &amp; Garten, Würzburg<br>Spendenziel: HERMINE e.V.',
-    ticketUrl: 'festival2908/'
+    date: '2026-12-05',
+    shortName: 'Dornheim',
+    dateLabel: 'Sa 05.12.',
+    image: 'assets/bilder/naechstes-event/dornheim-2026-12-05-titelbild.webp',
+    name: 'Zwei Floors, eine Mission',
+    info: 'Sa, 5. Dezember 2026 · ab 22 Uhr · Dornheim Club &amp; Garten, Würzburg<br>7 DJs · Spendenziel: Tierheim Würzburg',
+    pageUrl: 'dornheim0512/',
+    ticketUrl: 'https://www.eventbrite.de/e/rave-to-save-tickets-2004699390843?aff=oddtdtcreator'
   };
 
   function isUpcoming(cfg) {
@@ -865,12 +868,14 @@
   var box = document.getElementById('nextEvent');
   var img = '<div class="ev-img"><img src="' + encodeURI(nextEvent.image) + '" alt="' + (upcoming ? nextEvent.name : '') + '" loading="lazy">' + (upcoming ? '' : '<span class="soon-label">Coming soon</span>') + '</div>';
   if (upcoming) {
-    box.innerHTML = img + '<div class="ev-body"><p class="date">Nächstes Event</p><h3>' + nextEvent.name + '</h3><p class="to">' + nextEvent.info + '</p><a class="btn btn-glow" href="' + nextEvent.ticketUrl + '">Tickets &amp; Infos <span class="arr">→</span></a></div>';
+    box.innerHTML = img + '<div class="ev-body"><p class="date">Nächstes Event</p><h3>' + nextEvent.name + '</h3><p class="to">' + nextEvent.info + '</p><span class="ev-btns"><a class="btn btn-glow" href="' + nextEvent.ticketUrl + '" target="_blank" rel="noopener">Tickets <span class="arr">↗</span></a><a class="btn btn-ghost" href="' + nextEvent.pageUrl + '">Infos &amp; Tiere <span class="arr">→</span></a></span></div>';
     document.getElementById('heroPillText').textContent = nextEvent.dateLabel + ' · ' + nextEvent.shortName + ' — Tickets';
-    document.getElementById('heroPill').href = nextEvent.ticketUrl;
+    var pill = document.getElementById('heroPill');
+    pill.href = nextEvent.ticketUrl; pill.target = '_blank'; pill.rel = 'noopener';
     var cta = document.getElementById('navCta');
-    cta.hidden = false; cta.href = nextEvent.ticketUrl; /* Tickets-Button nur, solange ein Event ansteht */
-    document.querySelector('.hero .btn-glow').href = nextEvent.ticketUrl;
+    cta.hidden = false; cta.href = nextEvent.ticketUrl; cta.target = '_blank'; cta.rel = 'noopener'; /* Tickets-Button nur, solange ein Event ansteht */
+    var heroBtn = document.querySelector('.hero .btn-glow');
+    heroBtn.href = nextEvent.pageUrl; heroBtn.firstChild.textContent = 'Zum nächsten Event ';
   } else {
     box.classList.add('soon');
     box.innerHTML = img + '<div class="ev-body"><p class="date">Als Nächstes</p><h3>Bald mehr…</h3><p class="to">Unser nächstes Event wird gerade geplant — folgt uns, dann verpasst ihr die Ankündigung nicht.</p><a class="btn btn-ghost" href="https://www.instagram.com/ravetosave_wue" target="_blank" rel="noopener">@ravetosave_wue <span class="arr">↗</span></a></div>';
