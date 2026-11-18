@@ -186,6 +186,11 @@
   .hero.has-next h1 { font-size: min(var(--h1size), 9.5svh); margin-bottom: 0; }
   /* Überschrift + Event-Block als Gruppe mittig zwischen Menü und Laufband */
   .hero.has-next .hero-next { margin-bottom: auto; }
+  /* Spendensumme rechts oben sitzt vor den hellsten Wolken – dunkles Glas dahinter, damit sie lesbar bleibt (Desktop) */
+  @media (min-width: 768px) {
+    .hero.has-next .hero-stat > div:last-child { padding: 16px 24px 14px; border-radius: 24px; background: rgba(var(--night-rgb), .5); border: 1px solid rgba(var(--glow-rgb), .28); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 20px 50px -24px rgba(0,0,0,.6); }
+    .hero.has-next .hero-stat .lbl { color: rgba(246,242,234,.82); }
+  }
   @keyframes shimmer { to { background-position: 0 0; } }
   .hero-sub { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; color: var(--hero-sub); max-width: 520px; margin: 0 0 36px; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
