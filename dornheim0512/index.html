@@ -107,17 +107,23 @@
     .animals .wrap { position: relative; z-index: 1; }
     .animals .sec-head .eyebrow { color: var(--pink-2); }
     .animals .sec-head p { color: #b8b3c9; }
-    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 22px; }
-    .chips button { font: 700 14px var(--sans); padding: 11px 18px; border-radius: 999px; border: 1px solid rgba(246,242,234,.18); background: rgba(246,242,234,.06); color: var(--cream); cursor: pointer; transition: background .25s, color .25s; }
-    .chips button small { font: 700 11px var(--mono); opacity: .7; margin-left: 4px; }
-    .chips button[aria-pressed="true"] { background: var(--cream); color: var(--night); border-color: var(--cream); }
-    .pets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-    .pet { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 18px; overflow: hidden; background: #2a2742; cursor: zoom-in; aspect-ratio: 1; opacity: 0; transform: translateY(30px) scale(.97); transition: opacity .8s var(--ease), transform .9s var(--ease), box-shadow .4s var(--ease); }
-    .pet.in { opacity: 1; transform: none; }
-    .pet[hidden] { display: none; }
+    .rows { display: grid; grid-template-columns: minmax(0, 1fr); gap: 46px; }
+    .row { min-width: 0; }
+    .row-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 0 0 16px; }
+    .row-head h3 { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(26px, 3.2vw, 36px); letter-spacing: -.02em; line-height: 1; color: var(--cream); }
+    .row-head h3 small { font: 700 12px var(--mono); letter-spacing: 1.5px; color: var(--pink-2); margin-left: 10px; vertical-align: middle; }
+    .row-nav { display: flex; gap: 8px; }
+    .row-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(246,242,234,.22); background: rgba(246,242,234,.06); color: var(--cream); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .25s, opacity .25s; }
+    .row-nav button:hover:not(:disabled) { background: rgba(246,242,234,.18); }
+    .row-nav button:disabled { opacity: .3; cursor: default; }
+    .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 0; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 4px 0 18px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scroll-padding-inline: 24px; }
+    .track::-webkit-scrollbar { display: none; }
+    .pet { position: relative; flex: 0 0 clamp(220px, 23%, 290px); display: block; padding: 0; border: 0; border-radius: 18px; overflow: hidden; background: #2a2742; cursor: zoom-in; aspect-ratio: 1; scroll-snap-align: start; transition: box-shadow .4s var(--ease), transform .4s var(--ease); }
     .pet:hover { box-shadow: 0 22px 46px -18px rgba(240,106,168,.55); }
     .pet img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
     .pet:hover img { transform: scale(1.04); }
+    .bar { height: 3px; border-radius: 3px; background: rgba(246,242,234,.12); overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 20%; border-radius: 3px; background: linear-gradient(90deg, var(--pink-2), #7cc0f2); transform-origin: left; transition: margin-left .15s linear; }
     .hint { display: flex; gap: 14px; align-items: flex-start; margin: 28px 0 0; padding: 18px 20px; border-radius: 18px; background: rgba(246,242,234,.06); border: 1px solid rgba(246,242,234,.12); font-size: 15px; line-height: 1.6; color: #d6d1e2; }
     .hint svg { flex-shrink: 0; color: var(--pink-2); margin-top: 2px; }
     .hint a { color: var(--pink-2); font-weight: 700; }
@@ -169,7 +175,6 @@
       .b-links { display: none; }
       .b-back { display: block; }
       .hero-in { grid-template-columns: 1fr; gap: 36px; padding-top: 140px; }
-      .pets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .ft { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 767px) {
@@ -182,8 +187,10 @@
       .dj { padding: 14px 16px; border-radius: 16px; }
       .dj strong { font-size: 20px; }
       .animals { padding: 70px 14px 80px; }
-      .pets { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .pet { border-radius: 12px; }
+      .rows { gap: 36px; }
+      .row-nav { display: none; }
+      .track { gap: 10px; margin: 0 -14px; padding-left: 14px; padding-right: 14px; scroll-padding-inline: 14px; }
+      .pet { flex-basis: 68vw; border-radius: 14px; }
       .lb .prev, .lb .next { top: auto; bottom: 18px; transform: none; }
       .lb .prev { left: calc(50% - 62px); } .lb .next { right: calc(50% - 62px); }
       .lb img { width: 92vw; }
@@ -193,7 +200,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
-      .fade, .pet, .rv { opacity: 1 !important; transform: none !important; }
+      .fade, .rv { opacity: 1 !important; transform: none !important; }
       .poster.fade { transform: rotate(1.2deg) !important; }
     }
   </style>
@@ -272,8 +279,7 @@
         <div><p class="eyebrow">Tierheim Würzburg</p><h2>Für sie tanzen wir.</h2></div>
         <p>Diese Hunde und Katzen leben gerade im Tierheim Würzburg und warten auf ein neues Zuhause. Euer Ticket hilft, sie bis dahin gut zu versorgen.</p>
       </div>
-      <div class="chips rv" id="chips" role="group" aria-label="Tiere filtern"></div>
-      <div class="pets" id="pets"></div>
+      <div class="rows" id="rows"></div>
       <p class="hint rv">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.1 5.2 3 1.6-1.9 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>
         <span>Verliebt? Auf jeder Karte ist ein QR-Code zum Steckbrief – in der Großansicht kannst du ihn mit dem Handy scannen. Alle Tiere in Vermittlung findest du auch direkt beim <a href="https://www.tierheim-wuerzburg.de/" target="_blank" rel="noopener">Tierschutzverein Würzburg ↗</a></span>
@@ -343,41 +349,53 @@
     { a: 'katze', n: 'Mila', f: 'katze-mila' }, { a: 'katze', n: 'Nakoa', f: 'katze-nakoa' }, { a: 'katze', n: 'Sriracha', f: 'katze-sriracha' },
     { a: 'katze', n: 'Steffi', f: 'katze-steffi' }, { a: 'katze', n: 'Todrick', f: 'katze-todrick' }
   ];
-  /* Hunde und Katzen gemischt anzeigen, damit es nicht nach Liste aussieht */
-  var dogs = PETS.filter(function (p) { return p.a === 'hund'; }), cats = PETS.filter(function (p) { return p.a === 'katze'; });
-  var order = []; while (dogs.length || cats.length) { if (dogs.length) order.push(dogs.shift()); if (cats.length) order.push(cats.shift()); }
-  PETS = order;
   var ART = { hund: 'Hund', katze: 'Katze' };
-  var filter = 'alle';
+  var GROUPS = [['hund', 'Hunde'], ['katze', 'Katzen']];
+  var SVG_L = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+  var SVG_R = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
 
-  var grid = document.getElementById('pets'), chips = document.getElementById('chips');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
 
-  grid.innerHTML = PETS.map(function (p, i) {
-    return '<button type="button" class="pet" data-i="' + i + '" data-a="' + p.a + '" aria-label="' + ART[p.a] + ' ' + p.n + ' groß anzeigen" style="transition-delay:' + (i % 4) * 70 + 'ms">'
-      + '<img src="bilder/tiere/' + p.f + '.webp" width="900" height="900" alt="' + ART[p.a] + ' ' + p.n + ' aus dem Tierheim Würzburg" loading="lazy" decoding="async"></button>';
+  /* Zwei Reihen zum Durchwischen: erst Hunde, dann Katzen */
+  var rows = document.getElementById('rows');
+  rows.innerHTML = GROUPS.map(function (g) {
+    var n = PETS.filter(function (p) { return p.a === g[0]; }).length;
+    return '<div class="row rv" data-a="' + g[0] + '">'
+      + '<div class="row-head"><h3>' + g[1] + '<small>' + n + '</small></h3>'
+      + '<div class="row-nav"><button type="button" class="r-prev" aria-label="' + g[1] + ' zurück">' + SVG_L + '</button><button type="button" class="r-next" aria-label="Weitere ' + g[1] + '">' + SVG_R + '</button></div></div>'
+      + '<div class="track" tabindex="0" aria-label="' + g[1] + ' aus dem Tierheim Würzburg">'
+      + PETS.map(function (p, i) {
+          if (p.a !== g[0]) return '';
+          return '<button type="button" class="pet" data-i="' + i + '" aria-label="' + ART[p.a] + ' ' + p.n + ' groß anzeigen">'
+            + '<img src="bilder/tiere/' + p.f + '.webp" width="900" height="900" alt="' + ART[p.a] + ' ' + p.n + ' aus dem Tierheim Würzburg" loading="lazy" decoding="async"></button>';
+        }).join('')
+      + '</div><div class="bar" aria-hidden="true"><i></i></div></div>';
   }).join('');
-  Array.prototype.forEach.call(grid.children, function (el) { io.observe(el); });
 
-  function count(a) { return PETS.filter(function (p) { return a === 'alle' || p.a === a; }).length; }
-  function renderChips() {
-    chips.innerHTML = [['alle', 'Alle'], ['hund', 'Hunde'], ['katze', 'Katzen']].map(function (c) {
-      return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (filter === c[0]) + '">' + c[1] + ' <small>' + count(c[0]) + '</small></button>';
-    }).join('');
-  }
-  renderChips();
-  chips.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-f]'); if (!b) return;
-    filter = b.dataset.f; renderChips();
-    Array.prototype.forEach.call(grid.children, function (el) { el.hidden = filter !== 'alle' && el.dataset.a !== filter; });
+  Array.prototype.forEach.call(rows.querySelectorAll('.row'), function (row) {
+    var track = row.querySelector('.track'), prev = row.querySelector('.r-prev'), next = row.querySelector('.r-next'), bar = row.querySelector('.bar i');
+    function step() { var c = track.querySelector('.pet'); return c ? (c.offsetWidth + 16) * Math.max(1, Math.floor(track.clientWidth / (c.offsetWidth + 16))) : track.clientWidth; }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth, x = track.scrollLeft;
+      var w = Math.min(100, track.clientWidth / track.scrollWidth * 100);
+      bar.style.width = w + '%';
+      bar.style.marginLeft = (max > 0 ? x / max * (100 - w) : 0) + '%';
+      prev.disabled = x <= 2; next.disabled = x >= max - 2;
+    }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }); });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   });
 
-  /* Lightbox: blättert nur durch die gerade sichtbaren Tiere */
+  /* Lightbox: blättert nur durch die Tiere der angeklickten Reihe */
   var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbName = document.getElementById('lbName'), lbCount = document.getElementById('lbCount');
   var cur = 0, list = [], lastFocus = null;
-  function visible() { return PETS.map(function (p, i) { return i; }).filter(function (i) { return filter === 'alle' || PETS[i].a === filter; }); }
+  function sameKind(a) { return PETS.map(function (p, i) { return i; }).filter(function (i) { return PETS[i].a === a; }); }
   function show(k) {
     cur = (k + list.length) % list.length;
     var p = PETS[list[cur]];
@@ -387,9 +405,9 @@
     pre.src = 'bilder/tiere/' + p.f + '.webp';
     lbName.textContent = p.n; lbCount.textContent = ART[p.a] + ' · ' + (cur + 1) + ' / ' + list.length;
   }
-  function open(i) { lastFocus = document.activeElement; list = visible(); show(list.indexOf(i)); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
+  function open(i) { lastFocus = document.activeElement; list = sameKind(PETS[i].a); show(list.indexOf(i)); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
   function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
-  grid.addEventListener('click', function (e) { var b = e.target.closest('.pet'); if (b) open(+b.dataset.i); });
+  rows.addEventListener('click', function (e) { var b = e.target.closest('.pet'); if (b) open(+b.dataset.i); });
   document.getElementById('lbClose').addEventListener('click', close);
   document.getElementById('lbPrev').addEventListener('click', function () { show(cur - 1); });
   document.getElementById('lbNext').addEventListener('click', function () { show(cur + 1); });
