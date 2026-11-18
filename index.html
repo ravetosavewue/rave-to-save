@@ -177,6 +177,7 @@
   .hn-eye .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--glow); animation: ping 2s infinite; }
   .hn-date { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dls); font-size: clamp(34px, 3.6vw, 58px); line-height: .95; color: var(--hero-ink); margin: 0 0 8px; }
   .hn-sub { font-size: clamp(15px, 1.2vw, 18px); font-weight: 600; color: var(--hero-ink); margin: 0 0 12px; }
+  .hn-cause { display: none; margin: 4px 0 0; font-size: 13px; font-weight: 700; color: var(--glow); }
   .hn-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
   .hn-tags li { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--hero-line); font-size: 13px; font-weight: 600; color: var(--hero-sub); }
   .hn-acts { display: flex; flex-direction: column; gap: 10px; min-width: 190px; }
@@ -342,9 +343,9 @@
   .ev-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 18px; perspective: 1600px; }
   .evc { background: var(--night-2); border-radius: 20px; overflow: hidden; border: 1px solid rgba(246,242,234,.07); transition: border-color .3s, box-shadow .4s var(--ease); }
   .evc:hover { border-color: rgba(var(--glow-rgb),.4); box-shadow: 0 24px 50px -24px rgba(var(--glow-rgb),.35); }
-  .evc .pic { position: relative; aspect-ratio: 1; overflow: hidden; background: #221f36; }
-  /* Querformate: unscharfe Kopie füllt die Fläche, das Plakat selbst bleibt komplett sichtbar */
-  .evc .pic::before { content: ""; position: absolute; inset: -12%; background: var(--img) center / cover; filter: blur(22px) brightness(.7) saturate(1.2); }
+  /* Nicht-quadratische Plakate: ruhiger Verlauf aus den Randfarben füllt die freie Fläche (EV_BG im Script).
+     Früher eine weichgezeichnete Kopie – die hat beim Animieren auf Handys geflackert. */
+  .evc .pic { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--bg, #221f36); }
   .evc .pic img { position: relative; width: 100%; height: 100%; object-fit: contain; transition: transform .8s var(--ease); }
   .evc.fill .pic img { object-fit: cover; }
   .evc:hover .pic img { transform: scale(1.05); }
@@ -511,7 +512,8 @@
     .hn-date { font-size: 28px; margin-bottom: 4px; }
     .hn-sub { font-size: 13.5px; margin-bottom: 0; }
     .hn-eye { font-size: 10px; letter-spacing: 2px; margin-bottom: 4px; }
-    .hn-tags { display: none; }
+    .hn-tags, .hn-long { display: none; }
+    .hn-cause { display: block; }
     .hn-acts { grid-column: 1 / -1; flex-direction: row; min-width: 0; }
     .hn-acts .btn { flex: 1; padding: 13px 14px; font-size: 14px; }
     .hero.has-next .hero-stat { flex-direction: row; }
@@ -566,6 +568,7 @@
     .rv-img { clip-path: none !important; }
     .pop > *, .rv.from-r { opacity: 1 !important; transform: none !important; }
     .bub { opacity: 1 !important; transform: none !important; } /* Mission-Kästchen: ohne Scroll-Animation sofort sichtbar */
+    .hero-content, .marquee { opacity: 1 !important; transform: none !important; filter: none !important; visibility: visible !important; } /* Hero nie von der Scroll-Szene ausblenden lassen */
     .ev-grid .evc { opacity: 1 !important; transform: none !important; }
     .team .flip { transform: none !important; } .team .face.front { visibility: visible !important; } .team .face.back { visibility: hidden !important; } .team .cap { opacity: 1 !important; transform: none !important; } .rv-img img { transform: none !important; }
   }
@@ -893,7 +896,8 @@
     info: 'Sa, 5. Dezember 2026 · ab 22 Uhr · Dornheim Club &amp; Garten, Würzburg<br>7 DJs · Spendenziel: Tierheim Würzburg',
     /* für den großen Block im Hero */
     heroDate: 'Sa, 05.12.2026',
-    heroSub: 'ab 22 Uhr · Dornheim Club &amp; Garten, Würzburg',
+    heroSub: 'ab 22 Uhr · Dornheim<span class="hn-long"> Club &amp; Garten, Würzburg</span>',
+    heroCause: 'Ticket-Erlös fürs Tierheim Würzburg', /* nur am Handy sichtbar – dort fehlen die Stichworte */
     heroTags: ['7 DJs · 2 Floors', 'Groovy House &amp; Techno', '♥ für das Tierheim Würzburg'],
     heroImage: 'dornheim0512/bilder/titelbild.webp',
     pageUrl: 'dornheim0512/',
@@ -922,6 +926,7 @@
     var hn = document.getElementById('heroNext');
     hn.innerHTML = '<a class="hn-img" href="' + nextEvent.pageUrl + '" aria-label="Infos zum Event"><img src="' + encodeURI(nextEvent.heroImage || nextEvent.image) + '" alt="Plakat: ' + nextEvent.name + '" width="1920" height="1080" fetchpriority="high"></a>'
       + '<div class="hn-txt"><p class="hn-eye"><span class="dot" aria-hidden="true"></span>Nächstes Event</p><p class="hn-date">' + nextEvent.heroDate + '</p><p class="hn-sub">' + nextEvent.heroSub + '</p>'
+      + (nextEvent.heroCause ? '<p class="hn-cause"><span aria-hidden="true">♥</span> ' + nextEvent.heroCause + '</p>' : '')
       + '<ul class="hn-tags">' + (nextEvent.heroTags || []).map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>'
       + '<div class="hn-acts"><a class="btn btn-glow" href="' + nextEvent.ticketUrl + '" target="_blank" rel="noopener">Tickets <span class="arr">↗</span></a><a class="btn btn-ghost" href="' + nextEvent.pageUrl + '">Infos &amp; Tiere <span class="arr">→</span></a></div>';
     hn.hidden = false;
@@ -970,11 +975,22 @@
   var evSumAll = 0; evList.forEach(function (e) { evSumAll += e.amount; });
   document.getElementById('evLead').innerHTML = '<strong>' + evList.length + ' Events</strong> seit 2018 — zusammen <strong>' + euro(evSumAll) + '</strong> für Vereine und Initiativen.';
 
+  /* Hintergrund für nicht-quadratische Plakate: Verlauf aus den Randfarben (einmalig per Bildanalyse ermittelt).
+     Neues Hoch-/Querformat-Plakat → hier eine Zeile ergänzen, sonst bleibt der dunkle Standard-Hintergrund. */
+  var EV_BG = {
+    '2019-10-04_dornheim.webp': 'linear-gradient(180deg, #816403, #7f6103)',
+    '2019-12-21_hilde-coburg.webp': 'linear-gradient(180deg, #110102, #0b0102)',
+    '2020-02-14_faerberei-kassel.webp': 'linear-gradient(180deg, #493f39, #59232e)',
+    '2022-03-12_hilde-coburg.webp': 'linear-gradient(180deg, #636316, #07055d)',
+    '2022-05-25_chambinzky.webp': 'linear-gradient(180deg, #658864, #528378)',
+    '2026-07-11_dornheim.webp': 'linear-gradient(90deg, #769eca, #87a6c6)',
+    '2026-08-29_sommer-festival.webp': 'linear-gradient(90deg, #64815a, #5e795e)'
+  };
   evGrid.innerHTML = evList.map(function (e) {
     var p = e.date.split('-'), dateTxt = (+p[2]) + '. ' + MONTHS[+p[1] - 1] + ' ' + p[0];
     var title = e.title || e.place;
     var pic = e.img
-      ? '<div class="pic" style="--img: url(&quot;assets/bilder/events/' + encodeURI(e.img) + '&quot;)"><img src="assets/bilder/events/' + encodeURI(e.img) + '" alt="Plakat: Rave to Save, ' + esc(dateTxt) + '" loading="lazy" decoding="async"></div>'
+      ? '<div class="pic"' + (EV_BG[e.img] ? ' style="--bg: ' + EV_BG[e.img] + '"' : '') + '><img src="assets/bilder/events/' + encodeURI(e.img) + '" alt="Plakat: Rave to Save, ' + esc(dateTxt) + '" loading="lazy" decoding="async"></div>'
       : '<div class="pic ph"><img src="assets/bilder/logo-rave-to-save.png" alt=""><span>' + esc(e.place) + '</span></div>';
     var org = e.url ? '<a href="' + e.url + '" target="_blank" rel="noopener">' + esc(e.org) + '</a>' : esc(e.org);
     return '<article class="evc" data-year="' + p[0] + '">' + pic + '<div class="pb"><p class="date">' + dateTxt + (e.title ? ' · ' + esc(e.place) : '') + '</p><h3>' + esc(title) + '</h3><p class="amt">' + euro(e.amount) + '</p><p class="to">an ' + org + '</p>'
